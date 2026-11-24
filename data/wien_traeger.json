@@ -1,0 +1,233 @@
+{
+ "hinweis": "Wohnbauträger für die Rubrik „Wohnbauträger Wien“. Zuordnung zuerst über die Firmenbuchnummer (fn), sonst über muster = regulärer Ausdruck (ohne Groß-/Kleinschreibung). typ: gemeinnützig | gewerblich | kommunal. Nicht aufgeführte Unternehmen erscheinen automatisch, sobald sie in einer Förderzusage stehen.",
+ "traeger": [
+  {
+   "key": "siedlungsunion",
+   "name": "Siedlungsunion",
+   "typ": "gemeinnützig",
+   "muster": "siedlungsunion"
+  },
+  {
+   "key": "gesiba",
+   "name": "GESIBA",
+   "typ": "gemeinnützig",
+   "muster": "\\bgesiba\\b|gemeinn(?:ü|ue)tzige siedlungs- und bau(?:aktiengesellschaft|-ag)",
+   "fn": [
+    "52149s"
+   ]
+  },
+  {
+   "key": "wigeba",
+   "name": "WIGEBA (Gemeindebau Neu)",
+   "typ": "kommunal",
+   "muster": "\\bwigeba\\b|gemeindewohnungs-?\\s*baugesellschaft",
+   "info": "Wiener Gemeindewohnungs-Baugesellschaft; 51 % GESIBA, 49 % Wiener Wohnen"
+  },
+  {
+   "key": "wiener-wohnen",
+   "name": "Stadt Wien – Wiener Wohnen",
+   "typ": "kommunal",
+   "muster": "^(?:stadt wien|gemeinde wien|wiener wohnen)$",
+   "info": "Gemeindebauten; Förderungswerber ist die Stadt Wien, vertreten durch Wiener Wohnen"
+  },
+  {
+   "key": "heimbau",
+   "name": "Heimbau",
+   "typ": "gemeinnützig",
+   "muster": "\\bheimbau\\b",
+   "fn": [
+    "97431g"
+   ]
+  },
+  {
+   "key": "migra",
+   "name": "MIGRA",
+   "typ": "gemeinnützig",
+   "muster": "\\bmigra\\b",
+   "fn": [
+    "91878s"
+   ]
+  },
+  {
+   "key": "schoenere-zukunft",
+   "name": "Schönere Zukunft",
+   "typ": "gemeinnützig",
+   "muster": "sch(?:ö|oe)nere\\s+zukunft",
+   "info": "Sitz in St. Pölten, auch in Wien tätig"
+  },
+  {
+   "key": "neues-leben",
+   "name": "Neues Leben",
+   "typ": "gemeinnützig",
+   "muster": "neues\\s+leben",
+   "fn": [
+    "94120m"
+   ]
+  },
+  {
+   "key": "gewog",
+   "name": "GEWOG",
+   "typ": "gemeinnützig",
+   "muster": "\\bgewog\\b",
+   "fn": [
+    "127936t"
+   ]
+  },
+  {
+   "key": "buwog",
+   "name": "BUWOG",
+   "typ": "gewerblich",
+   "muster": "\\bbuwog\\b",
+   "info": "seit der Privatisierung nicht mehr gemeinnützig, gehört zu Vonovia",
+   "fn": [
+    "134339h"
+   ]
+  },
+  {
+   "key": "wbv-gpa",
+   "name": "WBV-GPA",
+   "typ": "gemeinnützig",
+   "muster": "wbv-?\\s*gpa|wohnbauvereinigung f(?:ü|ue)r privatangestellte",
+   "info": "Wohnbauvereinigung für Privatangestellte",
+   "fn": [
+    "94229y"
+   ]
+  },
+  {
+   "key": "wbv-gfw",
+   "name": "WBV-GFW (ehem. WBV-GÖD)",
+   "typ": "gemeinnützig",
+   "muster": "wbv-?\\s*gfw|wohnbauvereinigung gfw|wbv-?\\s*g(?:ö|oe)d|gewerkschaft (?:ö|oe)ffentlicher dienst"
+  },
+  {
+   "key": "sozialbau",
+   "name": "SOZIALBAU",
+   "typ": "gemeinnützig",
+   "muster": "\\bsozialbau\\b",
+   "fn": [
+    "52836a"
+   ]
+  },
+  {
+   "key": "wien-sued",
+   "name": "Wien-Süd",
+   "typ": "gemeinnützig",
+   "muster": "wien-?\\s*s(?:ü|ue)d\\b",
+   "fn": [
+    "99147f"
+   ]
+  },
+  {
+   "key": "oesw",
+   "name": "Österreichisches Siedlungswerk (ÖSW)",
+   "typ": "gemeinnützig",
+   "muster": "(?:ö|oe)sterreichisches\\s+siedlungswerk|\\b(?:ö|oe)sw\\b",
+   "fn": [
+    "112897a"
+   ]
+  },
+  {
+   "key": "oevw",
+   "name": "Österreichisches Volkswohnungswerk (ÖVW)",
+   "typ": "gemeinnützig",
+   "muster": "volkswohnungswerk|\\b(?:ö|oe)vw\\b",
+   "fn": [
+    "84296s"
+   ]
+  },
+  {
+   "key": "familienwohnbau",
+   "name": "Familienwohnbau",
+   "typ": "gemeinnützig",
+   "muster": "familienwohnbau"
+  },
+  {
+   "key": "aufbau",
+   "name": "Aufbau",
+   "typ": "gemeinnützig",
+   "muster": "genossenschaft\\s*[„\"“]\\s*aufbau|[„\"“]aufbau[“\"”]",
+   "fn": [
+    "93486f"
+   ]
+  },
+  {
+   "key": "eisenhof",
+   "name": "Eisenhof",
+   "typ": "gemeinnützig",
+   "muster": "\\beisenhof\\b"
+  },
+  {
+   "key": "egw",
+   "name": "EGW Erste Gemeinnützige Wohnungsgesellschaft",
+   "typ": "gemeinnützig",
+   "muster": "\\begw\\b|erste gemeinn(?:ü|ue)tzige wohnungsgesellschaft",
+   "fn": [
+    "84481m"
+   ]
+  },
+  {
+   "key": "bauhilfe",
+   "name": "Bauhilfe",
+   "typ": "gemeinnützig",
+   "muster": "\\bbauhilfe\\b"
+  },
+  {
+   "key": "schoenes-wohnen",
+   "name": "Schönes Wohnen",
+   "typ": "gemeinnützig",
+   "muster": "sch(?:ö|oe)nes\\s+wohnen"
+  },
+  {
+   "key": "heim",
+   "name": "Heim",
+   "typ": "gemeinnützig",
+   "muster": "genossenschaft\\s*[„\"“]\\s*heim\\s*[“\"”]"
+  },
+  {
+   "key": "patria",
+   "name": "Patria",
+   "typ": "gemeinnützig",
+   "muster": "\\bpatria\\b",
+   "fn": [
+    "94828d"
+   ]
+  },
+  {
+   "key": "neusiedler",
+   "name": "Neusiedler",
+   "typ": "gemeinnützig",
+   "muster": "[„\"“]\\s*neusiedler"
+  },
+  {
+   "key": "stuwo",
+   "name": "STUWO",
+   "typ": "gemeinnützig",
+   "muster": "\\bstuwo\\b"
+  },
+  {
+   "key": "donau-city",
+   "name": "Donau-City Wohnbau",
+   "typ": "gemeinnützig",
+   "muster": "donau-?\\s*city\\s*-?\\s*wohnbau"
+  },
+  {
+   "key": "ebg",
+   "name": "EBG",
+   "typ": "gemeinnützig",
+   "muster": "\\bebg\\b|ein-\\s*und\\s*mehrfamilienh(?:ä|ae)user\\s*baugenossenschaft",
+   "fn": [
+    "94364x"
+   ],
+   "info": "Gemeinnützige Ein- und Mehrfamilienhäuser Baugenossenschaft"
+  },
+  {
+   "key": "frieden",
+   "name": "Frieden",
+   "typ": "gemeinnützig",
+   "muster": "genossenschaft\\s+[„\"“]?\\s*frieden\\b",
+   "fn": [
+    "93318h"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<title>OGH-Entscheidungen zu MRG und WGG · Wohnrecht</title>
+<meta name="theme-color" content="#f6f4ef">
+<script>try{var f=localStorage.getItem("ogh-wohnrecht:farbe");if(f==="hell"||f==="dunkel")document.documentElement.setAttribute("data-farbe",f);}catch(e){}</script>
+<style>
+:root{--bg:#f6f4ef;--card:#fff;--ink:#1d1f23;--mute:#666b73;--line:#dedad0;--acc:#8a1c1c;--onacc:#fff;--chip:#ece8dd;--warnbg:#fff4e0;--warnline:#d9a441;--okbg:#e8f2ea;color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-farbe=hell]){--bg:#16171a;--card:#1f2125;--ink:#ecebe6;--mute:#9a9da3;--line:#33363c;--acc:#e08a7c;--onacc:#16171a;--chip:#2a2d32;--warnbg:#2c2517;--warnline:#9c7a32;--okbg:#1d2a20;color-scheme:dark}}
+:root[data-farbe=dunkel]{--bg:#16171a;--card:#1f2125;--ink:#ecebe6;--mute:#9a9da3;--line:#33363c;--acc:#e08a7c;--onacc:#16171a;--chip:#2a2d32;--warnbg:#2c2517;--warnline:#9c7a32;--okbg:#1d2a20;color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Georgia,"Times New Roman",serif}
+.sans,.bar,.meta,.acts,.lead,.count,.year,footer,.panel,.neu,.hinweis,.nstatus,.toast{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:24px 16px 64px}
+h1{font-size:1.8rem;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em}
+.lead{color:var(--mute);margin:0 0 16px;font-size:.9rem}
+a{color:var(--acc)}
+.note{font-size:.86rem;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--acc);padding:10px 14px;border-radius:4px;margin-bottom:14px}
+.note summary{cursor:pointer;font-weight:600}
+.note ul{margin:8px 0 2px;padding-left:18px}
+.note li{margin:3px 0}
+.neu{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:10px 14px 6px;margin-bottom:14px}
+.neu h2{font-size:1rem;margin:0 0 6px}
+.neu h2 span{color:var(--mute);font-weight:400;font-size:.85rem}
+.neu-row{display:flex;gap:10px;align-items:baseline;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);padding:7px 0;color:var(--ink);font:inherit;font-size:.9rem;cursor:pointer}
+.neu-row:hover .nt{text-decoration:underline}
+.neu-row .nd{color:var(--mute);font-size:.8rem;white-space:nowrap}
+.neu-row .gz{white-space:nowrap}
+.neu-row .nt{flex:1;min-width:0;overflow-wrap:anywhere;-webkit-hyphens:auto;hyphens:auto}
+@media(max-width:520px){.neu-row{flex-wrap:wrap;row-gap:2px}.neu-row .nt{flex-basis:100%}}
+/* Filter: in der Rubrik fest an seinem Platz. Weiter unten in den Einträgen dockt er als Leiste oben an
+   und fährt beim Antippen oder Herunterwischen heraus wie die Benachrichtigungsleiste. */
+html{scrollbar-gutter:stable}
+.fplatz{margin:0 0 6px}
+.bar{background:var(--bg);padding:10px 0 12px;border-bottom:1px solid var(--line)}
+.bar-kopf,.bar-fuss{display:none}
+.bar.dock{position:fixed;top:0;left:0;right:0;z-index:5;margin:0;padding:0 max(16px,calc(50% - 474px));box-shadow:0 2px 12px rgba(0,0,0,.12);animation:einfahren .5s cubic-bezier(.2,.8,.2,1)}
+@keyframes einfahren{from{transform:translateY(-100%)}to{transform:translateY(0)}}
+.bar.dock .bar-kopf{display:flex;align-items:center;gap:10px;width:100%;min-height:50px;padding:8px 0;border:0;background:none;color:var(--ink);font:inherit;font-size:.95rem;text-align:left;cursor:pointer;touch-action:none;-webkit-tap-highlight-color:transparent}
+.bk-text{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bk-zahl{color:var(--mute);font-size:.8rem;white-space:nowrap}
+.bk-pfeil{display:flex;transition:transform .35s ease}
+.bar.offen .bk-pfeil{transform:rotate(180deg)}
+.bar.dock .bar-huelle{position:absolute;left:0;right:0;top:100%;overflow:hidden;pointer-events:none}
+.bar.dock .bar-inhalt{background:var(--bg);padding:8px max(16px,calc(50% - 474px)) 4px;border-bottom:1px solid var(--line);box-shadow:0 16px 30px rgba(0,0,0,.2);max-height:calc(100vh - 64px);max-height:calc(100dvh - 64px);overflow-y:auto;overscroll-behavior:contain;pointer-events:auto;transform:translateY(-100%);visibility:hidden;transition:transform .4s cubic-bezier(.2,.8,.2,1),visibility 0s linear .4s}
+.bar.dock.offen .bar-inhalt{transform:translateY(0);visibility:visible;transition:transform .4s cubic-bezier(.2,.8,.2,1),visibility 0s}
+.bar.dock.zieht .bar-inhalt{visibility:visible;transition:none}
+.bar.dock .bar-fuss{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0 6px;touch-action:none}
+.griff{width:44px;height:5px;border-radius:3px;background:var(--line);margin:0 auto}
+.bar-schleier{position:fixed;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:opacity .35s ease;z-index:4;touch-action:none}
+.bar-schleier.an{opacity:1;pointer-events:auto}
+html.filter-offen,html.filter-offen body{overflow:hidden}
+@media(prefers-reduced-motion:reduce){.bar.dock{animation:none}.bar-inhalt,.bar.offen .bar-inhalt,.bar-schleier,.bk-pfeil{transition:none!important}}
+.w-gtitel{font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:12px 0 6px}
+.w-gtitel:first-child{margin-top:2px}
+#wTraeger,#wFoerdTitel,#list{scroll-margin-top:64px}
+/* Schalter (Slider) */
+.schalter{position:relative;font-size:.85rem;display:inline-flex;gap:8px;align-items:center;cursor:pointer;-webkit-user-select:none;user-select:none}
+.schalter input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.schiene{position:relative;flex:none;width:36px;height:20px;border-radius:10px;background:var(--line);transition:background .2s}
+.schiene::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.35);transition:transform .2s}
+.schalter input:checked+.schiene{background:var(--acc)}
+.schalter input:checked+.schiene::after{transform:translateX(16px)}
+.schalter input:focus-visible+.schiene{outline:2px solid var(--acc);outline-offset:2px}
+.sprung{background:none;border:0;padding:0;color:var(--acc);font:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.kopfzeile{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.farbe{flex:none;margin-top:4px;white-space:nowrap;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.row2{margin-top:8px}
+input[type=search],select,textarea{font:inherit;font-size:.95rem;padding:9px 11px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink)}
+input[type=search]{flex:1;min-width:200px}
+select{max-width:100%}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.chip{border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:999px;padding:5px 11px;font:inherit;font-size:.82rem;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:var(--onacc)}
+.chip.merk{border-style:dashed}
+.count{font-size:.82rem;color:var(--mute);margin-top:8px}
+.year{font-size:.8rem;letter-spacing:.12em;color:var(--mute);margin:26px 0 8px;border-bottom:1px solid var(--line);padding-bottom:4px}
+.item{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin-bottom:8px;scroll-margin-top:70px}
+.item.flash{outline:3px solid var(--acc);outline-offset:1px}
+.meta{font-size:.8rem;color:var(--mute);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.gz{font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--ink);font-weight:600}
+.tag{background:var(--chip);border-radius:3px;padding:1px 7px}
+.tag.neu{background:var(--okbg);color:var(--ink)}
+.tag.art{background:transparent;border:1px solid var(--line)}
+.warn{color:var(--acc);font-weight:600}
+.t{font-size:1.06rem;margin:4px 0 3px;font-weight:600}
+.s{margin:0;color:var(--mute);font-size:.95rem}
+.normen{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.8rem;color:var(--mute);margin-top:5px;word-break:break-word}
+.normen b{color:var(--ink);font-weight:600}
+/* Einträge, zu denen das RIS nur die Paragrafen führt */
+.tag.np{background:transparent;border:1px dashed var(--mute)}
+.np-label{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;color:var(--mute);margin:7px 0 1px}
+.item.np .normen{font-size:.92rem;color:var(--ink);margin-top:0}
+.neu-row .nt.np{color:var(--mute)}
+/* Rechtssätze */
+.rs{margin:7px 0 2px}
+.rs+.rs{border-top:1px dashed var(--line);padding-top:7px}
+.rs-kopf{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.72rem;display:flex;gap:6px;align-items:center;flex-wrap:wrap;color:var(--mute)}
+.rs-label{letter-spacing:.07em;text-transform:uppercase}
+.rs-nr{color:var(--mute);text-decoration:none;font-family:ui-monospace,Menlo,Consolas,monospace}
+.rs-nr:hover{text-decoration:underline}
+.tag.rel{padding:0 6px}
+.tag.rel-s{background:var(--okbg)}
+.tag.rel-g,.tag.rel-va{background:var(--warnbg);box-shadow:inset 0 0 0 1px var(--warnline)}
+.rs-text{margin:2px 0 0;font-size:.98rem;line-height:1.45;overflow-wrap:break-word;-webkit-hyphens:auto;hyphens:auto}
+.rs-beisatz{margin:3px 0 0;font-size:.88rem;color:var(--mute);font-style:italic;overflow-wrap:break-word;-webkit-hyphens:auto;hyphens:auto}
+.linkbtn{background:none;border:0;padding:5px 0 2px;color:var(--acc);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.82rem;cursor:pointer}
+.linkbtn:hover{text-decoration:underline}
+.hinweis{margin:8px 0 2px;padding:7px 10px;background:var(--warnbg);border-left:3px solid var(--warnline);border-radius:3px;font-size:.84rem}
+.acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:6px;padding:6px 11px;font:inherit;font-size:.82rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px;line-height:1.3}
+.btn:hover{border-color:var(--mute)}
+.btn[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:var(--onacc)}
+.notiz{margin-top:8px}
+.notiz textarea{width:100%;min-height:76px;resize:vertical;font-size:.92rem}
+.nstatus{font-size:.76rem;color:var(--mute);min-height:1em;margin-top:2px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin:12px 0;font-size:.88rem}
+.panel .kopf{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.panel textarea{width:100%;min-height:120px;margin-top:8px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.78rem}
+.mehrWrap{text-align:center;margin:14px 0}
+.empty{padding:40px 0;text-align:center;color:var(--mute)}
+footer{margin-top:34px;font-size:.8rem;color:var(--mute)}
+footer p{margin:4px 0}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:6px;font-size:.85rem;opacity:0;transition:opacity .2s;pointer-events:none;z-index:9;max-width:90vw}
+.toast.on{opacity:1}
+.tabs{display:flex;gap:6px;margin:0 0 14px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.tab{flex:1;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:9px 10px;font:inherit;font-size:.92rem;font-weight:600;cursor:pointer}
+.tab[aria-pressed=true]{background:var(--acc);border-color:var(--acc);color:var(--onacc)}
+.w-intro{font-size:.86rem;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--acc);padding:10px 14px;border-radius:4px;margin-bottom:14px}
+.w-intro ul{margin:6px 0 2px;padding-left:18px}
+.w-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+.w-bar input[type=search]{flex:1;min-width:180px}
+.w-h{font-size:1.1rem;margin:22px 0 8px}
+.tr{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin-bottom:8px}
+.tr-kopf{display:flex;gap:8px;flex-wrap:wrap;align-items:baseline}
+.tr-name{font-size:1.06rem;font-weight:600}
+.tr-zahlen{font-size:.86rem;color:var(--mute);margin-top:4px}
+.tr-zahlen b{color:var(--ink)}
+.tr-det{margin-top:8px;font-size:.88rem}
+.tr-det h4{font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin:10px 0 4px}
+.zeile{border-top:1px solid var(--line);padding:6px 0;display:flex;gap:8px;flex-wrap:wrap;align-items:baseline}
+.zeile .gr{flex:1;min-width:180px}
+.betrag{font-weight:600;white-space:nowrap}
+.fz{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-bottom:6px;font-size:.9rem}
+.fz .meta{margin-bottom:3px}
+.leer{color:var(--mute);font-size:.88rem;padding:10px 0}
+.tab .kurz{display:none}
+@media(max-width:520px){.tab .lang{display:none}.tab .kurz{display:inline}}
+/* Indexrechner */
+.v-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px 14px;margin:0 0 12px}
+.v-form label{display:flex;flex-direction:column;gap:4px;font-size:.8rem;color:var(--mute)}
+.v-form .zwei{display:flex;gap:6px}
+.v-form .zwei select{flex:1;min-width:0}
+.v-form input{font:inherit;font-size:.95rem;padding:9px 11px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);width:100%}
+.v-erg{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:6px;padding:12px 14px;margin:0 0 12px}
+.v-gross{font-size:1.8rem;font-weight:700;line-height:1.2;margin:4px 0}
+.v-zeile{font-size:.92rem;margin:3px 0}
+.v-zeile b{font-variant-numeric:tabular-nums}
+.v-tab{width:100%;border-collapse:collapse;font-size:.88rem;background:var(--card);border:1px solid var(--line);font-variant-numeric:tabular-nums}
+.v-tab th,.v-tab td{padding:6px 10px;border-top:1px solid var(--line);text-align:right;white-space:nowrap}
+.v-tab th:first-child,.v-tab td:first-child{text-align:left}
+.v-tab thead th{border-top:0;color:var(--mute);font-weight:600;font-size:.76rem}
+.vorl{color:var(--mute);font-size:.76rem}
+@media(max-width:520px){.v-tab th,.v-tab td{padding:6px 7px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<div class="kopfzeile">
+<h1>OGH-Entscheidungen zu MRG und WGG</h1>
+<button class="btn farbe" type="button" id="farbe"></button>
+</div>
+<p class="lead" id="lead"></p>
+</header>
+
+<nav class="tabs" id="tabs" aria-label="Ansicht">
+<button class="tab" type="button" id="tabE" aria-pressed="true"><span class="lang">OGH-Entscheidungen</span><span class="kurz">OGH</span></button>
+<button class="tab" type="button" id="tabW" aria-pressed="false"><span class="lang">Wohnbauträger Wien</span><span class="kurz">Wien</span></button>
+<button class="tab" type="button" id="tabV" aria-pressed="false"><span class="lang">Indexrechner (VPI)</span><span class="kurz">Index</span></button>
+</nav>
+
+<div id="viewW" hidden>
+<details class="w-intro">
+<summary style="cursor:pointer;font-weight:600">Was diese Rubrik zeigt</summary>
+<ul>
+<li>Dokumente der Stadt Wien, veröffentlicht nach dem Informationsfreiheitsgesetz auf data.gv.at: Förderzusagen der MA 50 (Sanierung und Neubau), Auszüge aus Prüfberichten (§ 28 Abs 8 WGG) und Bescheinigungen nach dem Bauträgervertragsgesetz.</li>
+<li><b>Förderzusagen</b> liegen nur als PDF vor. Förderungswerber, Vertreter, Objekt, Betrag und Maßnahme liest die Seite automatisch aus; Unsicheres ist mit „prüfen“ markiert und lässt sich mit dem Schalter im Filter ausblenden. Maßgeblich ist immer das PDF.</li>
+<li><b>Förderungswerber</b> sind Bauvereinigungen und andere Unternehmen, Eigentümergemeinschaften (WEG) oder die Stadt Wien. <b>Vertreter</b> ist meist die Hausverwaltung, manchmal ein Planungsbüro. Unternehmen werden über ihre Firmenbuchnummer (FN) zusammengeführt.</li>
+<li><b>Privatpersonen und Miteigentümer</b> werden nicht namentlich genannt, die Adresse ist auf den Bezirk gekürzt. Bei manchen Zusagen sind die ersten Seiten nur als Bild veröffentlicht; dann stehen die Angaben nur im PDF.</li>
+<li><b>Gemeindebauten:</b> Förderzusagen an die Stadt Wien sind über die Adresse dem Datensatz „Gemeindebauten“ von Wiener Wohnen zugeordnet (Name, Wohnungen, Bauzeit). Die Karte „Stadt Wien – Wiener Wohnen“ zeigt dazu die Infoblätter und Berichte von Wiener Wohnen auf data.gv.at.</li>
+<li><b>Bauvereinigungen</b>, die nur mit einem Prüfbericht oder einer BTVG-Bescheinigung vorkommen, sind automatisch als gemeinnützige Bauträger aufgenommen.</li>
+<li>Alle Prüfberichte der Wiener Bauvereinigungen stellt die MA 50 auf <a href="https://www.wien.gv.at/wohnen/wohnbaufoerderung/aufsicht/" target="_blank" rel="noopener noreferrer">wien.gv.at</a> bereit; hier erscheinen nur jene, die auch auf data.gv.at stehen.</li>
+</ul>
+</details>
+<div id="wStand" class="count" style="margin:-6px 0 10px"></div>
+<div class="fplatz" id="wbarPlatz">
+<div class="bar" id="wbar">
+<button class="bar-kopf" type="button" id="wbarKopf" aria-expanded="false" aria-controls="wbarInhalt">
+<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+<span class="bk-text" id="wbarSumme">Suchen und filtern</span>
+<span class="bk-zahl" id="wbarZahl"></span>
+<span class="bk-pfeil" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+</button>
+<div class="bar-huelle">
+<div class="bar-inhalt sans" id="wbarInhalt">
+<div class="w-gtitel">Wohnbauträger</div>
+<div class="w-bar">
+<input id="wq" type="search" placeholder="Träger suchen, z. B. GESIBA, Heimbau …" aria-label="Träger suchen" autocomplete="off">
+<select id="wtyp" aria-label="Art"><option value="">Wohnbauträger</option><option value="gemeinnützig">nur gemeinnützige</option><option value="gewerblich">gewerbliche</option><option value="kommunal">Stadt Wien</option><option value="vertreter">Hausverwaltungen und andere Vertreter</option><option value="eigentuemer">weitere Eigentümer und Bauträger</option><option value="alle">alle</option></select>
+</div>
+<div class="w-gtitel">Förderzusagen</div>
+<div class="w-bar">
+<input id="fq" type="search" placeholder="Suchen: Straße, Empfänger, Vertreter …" aria-label="Förderzusagen suchen" autocomplete="off">
+<select id="fbez" aria-label="Bezirk"><option value="">Alle Bezirke</option></select>
+<select id="fmass" aria-label="Maßnahme"><option value="">Alle Maßnahmen</option></select>
+<select id="fet" aria-label="Förderungswerber"><option value="">Alle Förderungswerber</option><option value="j">Bauvereinigungen und Firmen</option><option value="w">Eigentümergemeinschaften</option><option value="s">Stadt Wien</option><option value="p">Privat und Miteigentümer</option><option value="u">nur im PDF lesbar</option></select>
+</div>
+<div class="row"><label class="schalter" id="fPrWrap" hidden title="Bei diesen Zusagen konnte die Seite Förderungswerber oder Betrag nicht sicher auslesen; maßgeblich ist das PDF."><input type="checkbox" id="fPr"><span class="schiene" aria-hidden="true"></span><span id="fPrText"></span></label></div>
+<div class="count" id="wbarAnzahl"></div>
+<div class="bar-fuss" id="wbarGriff"><span class="griff" aria-hidden="true"></span><button class="btn" type="button" id="wbarZu">Fertig</button></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bar-schleier" id="wbarSchleier"></div>
+<div id="wTraeger"></div>
+<h3 class="w-h" id="wFoerdTitel">Alle Förderzusagen der MA 50</h3>
+<div class="count" id="fCount"></div>
+<div id="wFoerd"></div>
+<div class="mehrWrap"><button class="btn" type="button" id="fMehr" hidden></button></div>
+<h3 class="w-h" id="wDokTitel" hidden>Hintergrund: Dokumente der Stadt Wien</h3>
+<div id="wDok" class="sans"></div>
+</div>
+
+<div id="viewV" hidden>
+<details class="w-intro sans">
+<summary style="cursor:pointer;font-weight:600">Was der Indexrechner rechnet – und was nicht</summary>
+<ul>
+<li>Er vergleicht zwei Monatswerte des Verbraucherpreisindex (VPI) von Statistik Austria: Veränderung in Prozent = (neuer Wert ÷ alter Wert − 1) × 100. Mit einem Betrag rechnet er Betrag × Faktor.</li>
+<li>Maßgeblich ist, was vereinbart ist: welcher Index (Basis), welcher Ausgangsmonat, ab welcher Schwelle angepasst wird und wie gerundet wird. Das prüft der Rechner nicht.</li>
+<li>Seit 1.1.2026 begrenzt das Mieten-Wertsicherungsgesetz (MieWeG) Wertsicherungen bei Wohnungsmieten. Der Rechner berücksichtigt das nicht; er rechnet nur.</li>
+<li>Vorläufige Werte kann Statistik Austria noch ändern. Zur Kontrolle eignet sich der Indexrechner von Statistik Austria (Link unten).</li>
+<li><b>Keine Rechtsberatung.</b></li>
+</ul>
+</details>
+<div id="vInhalt">
+<div class="v-form sans">
+<label>Index (Basis)<select id="vBasis" aria-label="Index"></select></label>
+<label>Ausgangsmonat<span class="zwei"><select id="vVonM" aria-label="Ausgangsmonat"></select><select id="vVonJ" aria-label="Ausgangsjahr"></select></span></label>
+<label>Vergleichsmonat<span class="zwei"><select id="vBisM" aria-label="Vergleichsmonat"></select><select id="vBisJ" aria-label="Vergleichsjahr"></select></span></label>
+<label>Betrag (freiwillig)<input id="vBetrag" type="text" inputmode="decimal" placeholder="z. B. 850,00" autocomplete="off"></label>
+<label>Schwelle in % (freiwillig)<input id="vSchwelle" type="text" inputmode="decimal" placeholder="z. B. 5" autocomplete="off"></label>
+</div>
+<div class="v-erg sans" id="vErgebnis" aria-live="polite"></div>
+<h3 class="w-h" id="vTabTitel">Letzte Werte</h3>
+<div style="overflow-x:auto"><table class="v-tab sans" id="vTabelle"></table></div>
+<div class="count" id="vStand"></div>
+</div>
+<h3 class="w-h">Zum Nachlesen</h3>
+<div id="vDok" class="sans"></div>
+</div>
+
+<div id="viewE">
+<details class="note sans">
+<summary>Was diese Liste ist – und was nicht</summary>
+<ul>
+<li><b>Umfang:</b> nur Entscheidungen zum Mietrechtsgesetz (MRG) und zum Wohnungsgemeinnützigkeitsgesetz (WGG), ab 2005. Die Karten zeigen trotzdem alle Paragrafen, die das RIS der Entscheidung zuordnet, z. B. auch ABGB § 1096 zur Mietzinsminderung.</li>
+<li><b>Quellen:</b> <span id="infoQuellen"></span></li>
+<li><b>Rechtssätze</b> sind die vom OGH formulierten Rechtsgrundsätze aus dem RIS, hier gekürzt. Sie fassen nicht den einzelnen Fall zusammen; wie er ausging, steht nur im Volltext. Die Markierung zeigt, wie die Entscheidung zum Rechtssatz steht: „erstmals hier“ (dort formuliert), „bestätigt“, „ähnlich“, „vergleichbar“, „vgl. aber“ (grenzt sich ab), „abweichend“, „nur teilweise“. <b>Beisätze</b> ergänzen den Rechtssatz für einzelne Entscheidungen.</li>
+<li><b>Überschriften und Kurztexte</b> der OGH-Auswahl stammen vom OGH bzw. sind automatisch verdichtet, Schlagworte kommen aus dem RIS. Keine amtlichen Leitsätze – vor jeder Verwendung den Volltext lesen.</li>
+<li><b>„Rechtslage seither geändert“</b> setzt die Seite automatisch nach Stichworten und Datum. Gemeint ist „bitte prüfen“, nicht „überholt“.</li>
+<li><b>„prüfen“:</b> Geschäftszahl oder Datum wirken in der Quelle unstimmig. Bitte im RIS gegenprüfen.</li>
+<li><b>„nur Paragrafen“:</b> Wo das RIS keinen Rechtssatz-Text liefert (oder er noch nicht geladen ist), zeigt der Eintrag nur die Paragrafen, die das RIS der Entscheidung zuordnet – nach Gesetz geordnet. Das sind <b>keine Gesetzesänderungen</b>, sondern Entscheidungen, in denen es um diese Paragrafen geht. „WEG 1975“ und „WEG 2002“ sind die alte und die geltende Fassung des Wohnungseigentumsgesetzes, „idF“ heißt „in der Fassung“. Was entschieden wurde, steht im Volltext (RIS ↗). Der Schalter „Einträge nur mit Paragrafen ausblenden“ blendet sie alle aus.</li>
+<li><b>Notizen</b> liegen nur in diesem Browser auf diesem Gerät. Niemand sonst sieht sie. Über „Notizen sichern / laden“ kannst du sie sichern oder auf ein anderes Gerät bringen.</li>
+<li><b>Keine Rechtsberatung.</b></li>
+</ul>
+</details>
+
+<section class="neu" id="neu" hidden>
+<h2>Neu <span id="neuInfo"></span></h2>
+<div id="neuListe"></div>
+<div class="mehrWrap" style="margin:6px 0 4px"><button class="btn" type="button" id="neuMehr" hidden></button></div>
+</section>
+
+<div class="fplatz" id="barPlatz">
+<div class="bar" id="bar">
+<button class="bar-kopf" type="button" id="barKopf" aria-expanded="false" aria-controls="barInhalt">
+<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+<span class="bk-text" id="barSumme">Suchen und filtern</span>
+<span class="bk-zahl" id="barZahl"></span>
+<span class="bk-pfeil" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+</button>
+<div class="bar-huelle">
+<div class="bar-inhalt" id="barInhalt">
+<div class="row">
+<input id="q" type="search" placeholder="Suchen: Stichwort, Geschäftszahl, RS-Nummer, z. B. Wertsicherung, 5 Ob …" aria-label="Suche" autocomplete="off">
+<select id="yr" aria-label="Jahr"><option value="">Alle Jahre</option></select>
+<select id="para" aria-label="Paragraf" hidden><option value="">Alle Paragrafen</option></select>
+<select id="so" aria-label="Sortierung"><option value="d">Neueste zuerst</option><option value="a">Älteste zuerst</option></select>
+</div>
+<div class="chips" id="chips"></div>
+<div class="row row2">
+<label class="schalter" id="opWrap" hidden title="Bei den meisten Entscheidungen aus dem RIS gibt es in den offenen Daten keinen Kurztext, nur die Paragrafen."><input type="checkbox" id="op"><span class="schiene" aria-hidden="true"></span><span id="opText"></span></label>
+<label class="schalter" id="zwWrap" hidden title="Der OGH lehnt dabei ab, ohne inhaltlich etwas Neues zu sagen."><input type="checkbox" id="zw"><span class="schiene" aria-hidden="true"></span><span id="zwText"></span></label>
+<button class="btn" type="button" id="npBtn">Notizen sichern / laden</button>
+</div>
+<div class="count" id="count"></div>
+<div class="bar-fuss" id="barGriff"><span class="griff" aria-hidden="true"></span><button class="btn" type="button" id="barZu">Fertig</button></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bar-schleier" id="barSchleier"></div>
+
+<section class="panel" id="np" hidden>
+<div class="kopf"><b>Notizen sichern und laden</b><button class="btn" type="button" id="npZu">Schließen</button></div>
+<p style="margin:8px 0 0">Notizen liegen nur in diesem Browser. <b>Exportieren</b> erzeugt einen Text mit allen Notizen; den kopierst du oder speicherst ihn als Datei. Am anderen Gerät fügst du ihn hier ein und tippst auf <b>Importieren</b>. Vorhandene Notizen bleiben erhalten, bei derselben Entscheidung gewinnt die neuere.</p>
+<textarea id="npText" spellcheck="false" placeholder="Hier erscheint der Export – oder füge einen Export zum Importieren ein."></textarea>
+<div class="acts">
+<button class="btn" type="button" id="npExport">Exportieren</button>
+<button class="btn" type="button" id="npKopie">Kopieren</button>
+<button class="btn" type="button" id="npDatei">Als Datei speichern</button>
+<button class="btn" type="button" id="npImport">Importieren</button>
+<label class="btn">Datei laden<input type="file" id="npFile" accept=".json,application/json,text/plain" hidden></label>
+</div>
+<div class="nstatus" id="npStatus"></div>
+</section>
+
+<div id="list"></div>
+<div class="mehrWrap"><button class="btn" type="button" id="mehr" hidden></button></div>
+</div>
+
+<footer id="footer"></footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script type="application/json" id="daten">/*DATEN*/</script>
+<script>
+(function () {
+"use strict";
+
+function $(id) { return document.getElementById(id); }
+function el(tag, cls, text) {
+  var e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text;
+  return e;
+}
+
+var D;
+try { D = JSON.parse($("daten").textContent); }
+catch (err) { $("list").textContent = "Die Daten dieser Seite konnten nicht gelesen werden."; return; }
+
+var E = D.eintraege || [];
+var RS = D.rs || [];   // Rechtssätze: {n: Nummer, j: Dokumentnummer, t: Text (gekürzt), b: {T-Nummer: Beisatz}}
+var NORMEN = D.normen || null;   // jede Norm einmal; die Einträge verweisen mit Nummern darauf
+var STAND = D.stand || new Date().toISOString().slice(0, 10);
+var QUELLEN = D.quellen || [];
+var NEU_TAGE = D.neuTage || 42;
+var SEITE = 50;
+var NEU_KURZ = 8;
+
+var TH = {M: "Mietrecht (MRG)", G: "Gemeinnützigkeit (WGG)"};
+var ART = {S: "Sachentscheidung", Z: "Zurückweisung mangels erheblicher Rechtsfrage", A: "Zurückweisung aus anderen Gründen", V: "Verstärkter Senat"};
+var ZURUECK = {Z: 1, A: 1};
+
+// Gesetzesänderungen, die ältere Entscheidungen betreffen können.
+// ab = Inkrafttreten; nur Entscheidungen davor bekommen den Hinweis.
+var HINWEISE = [
+  {ab: "2026-01-01", themen: "M", muster: /wertsicher|indexanpass|indexklausel|valorisier/i,
+   text: "Seit 1.1.2026 begrenzt das Mieten-Wertsicherungsgesetz (MieWeG) Mieterhöhungen über Wertsicherungsklauseln bei Wohnungsmieten.",
+   quelle: "https://www.wko.at/oe/information-consulting/immobilien-vermoegenstreuhaender/mietrecht-inflationslinderungsgesetz-wertsicherungsgesetz"},
+  {ab: "2023-07-01", themen: "K", muster: /miet|wohnung/i,
+   text: "Seit 1.7.2023 gilt bei der Vermittlung von Mietwohnungen das Bestellerprinzip: Die Provision zahlt, wer den Makler zuerst beauftragt hat.",
+   quelle: "https://wien.arbeiterkammer.at/beratung/Wohnen/makler/Maklerprovision-Bestellerprinzip-ab-1.-Juli-2023.html"},
+  {ab: "2022-07-01", themen: "WH", muster: /beschluss|mehrheit|umlauf|abstimm|willensbildung|stimm/i,
+   text: "Seit 1.7.2022 kommt ein Mehrheitsbeschluss auch mit zwei Dritteln der abgegebenen Stimmen zustande, wenn diese mindestens ein Drittel aller Anteile vertreten (WEG-Novelle 2022).",
+   quelle: "https://wien.arbeiterkammer.at/beratung/Wohnen/eigentum/gemeinschaft/Beschlussfassungt.html"},
+  {ab: "2022-01-01", themen: "W", muster: /wallbox|ladestation|ladeeinrichtung|e-auto|elektroauto|photovoltaik|solaranlage|einbruch|sicherheitst[üu]r|barrierefrei|beschattung/i,
+   text: "Seit 1.1.2022 erleichtert die WEG-Novelle 2022 bestimmte Änderungen am eigenen Objekt, etwa Ladestationen für E-Autos, Photovoltaik oder einbruchssichere Türen.",
+   quelle: "https://www.forum-media.at/news/Recht-Steuern/Wohnrecht/Die-WEG-Novelle-2022"}
+];
+
+function fmt(iso) { return iso ? iso.slice(8, 10) + "." + iso.slice(5, 7) + "." + iso.slice(0, 4) : ""; }
+function minusTage(iso, n) { var d = new Date(iso + "T00:00:00Z"); d.setUTCDate(d.getUTCDate() - n); return d.toISOString().slice(0, 10); }
+function slug(k) { return "e-" + String(k).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""); }
+function sicher(u) { return typeof u === "string" && /^https:\/\//.test(u) ? u : null; }
+function kuerze(s, n) { if (!s) return ""; return s.length > n ? s.slice(0, n - 1).replace(/\s+\S*$/, "") + " …" : s; }
+function risSuche(gz) { return "https://www.ris.bka.gv.at/Ergebnis.wxe?Abfrage=Justiz&GZ=" + encodeURIComponent(gz.replace(/\s/g, "")) + "&SucheNachRechtssatz=True&SucheNachText=True"; }
+function paraVon(norm) { var m = /^(.*?)\s*§\s*(\d+[a-z]?)/i.exec(norm || ""); return m && m[1].trim() ? m[1].trim() + " §" + m[2] : null; }
+function paraSort(a, b) {
+  var x = /§(\d+)([a-z]?)$/i.exec(a) || [0, 0, ""], y = /§(\d+)([a-z]?)$/i.exec(b) || [0, 0, ""];
+  return (+x[1] - +y[1]) || x[2].localeCompare(y[2]);
+}
+
+// ---------- Vorbereitung ----------
+var neuAb = minusTage(STAND, NEU_TAGE);
+var hatNormen = false, nZurueck = 0, nOgh = 0, nNurPara = 0, byId = {};
+E.forEach(function (e) {
+  e.n = (e.n || []).map(function (x) { return typeof x === "number" && NORMEN ? NORMEN[x] : x; }).filter(Boolean);
+  e.r = (e.r || []).filter(function (x) { return RS[x[0]]; });
+  // Ohne Überschrift, Kurztext, Schlagworte und Rechtssatz bleiben nur die Paragrafen
+  e.np = !e.t && !e.s && !e.sw && !e.r.length;
+  if (e.np) nNurPara++;
+  e.jahr = (e.d || "").slice(0, 4);
+  e.nd = e.nd || e.v || e.d || "";
+  if (/^JJT_[A-Z0-9_]+$/.test(e.u || "")) e.u = "https://ogd.ris.bka.gv.at/Dokument.wxe?Abfrage=Justiz&Dokumentnummer=" + e.u;
+  e.paras = {};
+  e.n.forEach(function (x) { var p = paraVon(x); if (p) e.paras[p] = 1; });
+  if (e.n.length) hatNormen = true;
+  if (ZURUECK[e.a]) nZurueck++;
+  if (e.o) nOgh++;
+  var text = [e.t, e.s, e.sw, e.n.join(" ")].concat(e.r.map(function (x) { return rsText(x); })).join(" ");
+  var rsNummern = e.r.map(function (x) { return RS[x[0]].n; }).join(" ");
+  e.hay = [e.gz, e.k, (e.gzw || []).join(" "), text, rsNummern, TH[e.th] || "", ART[e.a] || ""].join(" ").toLowerCase();
+  e.hinweis = null;
+  for (var i = 0; i < HINWEISE.length; i++) {
+    var h = HINWEISE[i];
+    if (e.d && e.d < h.ab && h.themen.indexOf(e.th) >= 0 && h.muster.test(text)) { e.hinweis = h; break; }
+  }
+  e.id = slug(e.k);
+  byId[e.id] = e;
+});
+var zeigeOgh = nOgh > 0 && nOgh < E.length;
+
+// ---------- Notizen (nur lokal) ----------
+var NKEY = "ogh-wohnrecht:notizen:v1";
+var notizen = (function () {
+  try {
+    var x = JSON.parse(localStorage.getItem(NKEY) || "{}");
+    return x && typeof x === "object" && !Array.isArray(x) ? x : {};
+  } catch (err) { return {}; }
+})();
+function speichern() {
+  try { localStorage.setItem(NKEY, JSON.stringify(notizen)); return true; }
+  catch (err) { return false; }
+}
+function notiz(k) { return notizen[k] || {}; }
+function hatNotiz(k) { var x = notizen[k]; return !!(x && (x.m || x.n)); }
+function setzeNotiz(k, feld, wert) {
+  var x = notizen[k] || {};
+  if (wert) x[feld] = wert; else delete x[feld];
+  x.t = Date.now();
+  if (!x.m && !x.n) delete notizen[k]; else notizen[k] = x;
+  return speichern();
+}
+function anzahlMerk() { var n = 0; E.forEach(function (e) { if (hatNotiz(e.k)) n++; }); return n; }
+
+// ---------- Ansicht ----------
+var st = {q: "", th: "", yr: "", para: "", so: "d", zw: false, op: false, merk: false};
+try {
+  var s0 = JSON.parse(localStorage.getItem("ogh-wohnrecht:ansicht") || "{}");
+  if (s0.so === "a") st.so = "a";
+  if (s0.zw) st.zw = true;
+  if (s0.op) st.op = true;
+} catch (err) {}
+function merkeAnsicht() { try { localStorage.setItem("ogh-wohnrecht:ansicht", JSON.stringify({so: st.so, zw: st.zw, op: st.op})); } catch (err) {} }
+
+var tt;
+function toast(msg) { var t = $("toast"); t.textContent = msg; t.classList.add("on"); clearTimeout(tt); tt = setTimeout(function () { t.classList.remove("on"); }, 2600); }
+function kopiere(text, ok) {
+  function ersatz() {
+    var ta = el("textarea"); ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    var gut = false; try { gut = document.execCommand("copy"); } catch (err) {}
+    ta.remove();
+    toast(gut ? ok : "Kopieren nicht möglich. Bitte manuell kopieren.");
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { toast(ok); }, ersatz);
+  else ersatz();
+}
+
+// Kopfzeile, Infos, Fußzeile
+var qtxt = [];
+if (QUELLEN.indexOf("ris") >= 0) qtxt.push("RIS");
+if (QUELLEN.indexOf("ogh") >= 0) qtxt.push("Auswahl des OGH");
+$("lead").textContent = "Stand " + fmt(STAND) + " · " + E.length + " Entscheidungen · Quelle: " + qtxt.join(" und ");
+var iq = $("infoQuellen");
+if (QUELLEN.indexOf("ris") >= 0) iq.appendChild(document.createTextNode("OGH-Entscheidungen ab 2005, die im RIS einem Rechtssatz zu den Wohnrechtsgesetzen zugeordnet sind (MRG, WEG, WGG, Bestandrecht und Nachbarrecht im ABGB u. a.). Ist kein Entscheidungstext veröffentlicht, führt „RIS-Suche“ zu den Rechtssätzen dieser Geschäftszahl. Die Entscheidungsart führt das RIS erst seit 2022 und nicht durchgehend; der Schalter „Zurückweisungen“ wirkt nur dort. "));
+iq.appendChild(document.createTextNode(zeigeOgh ? "„OGH-Auswahl“ markiert Entscheidungen, die der OGH auf ogh.gv.at selbst vorstellt; nur sie haben eine Überschrift." : "Die vom OGH auf ogh.gv.at vorgestellten Entscheidungen, nach Wohnthemen gefiltert. Das ist nicht die gesamte Rechtsprechung."));
+(function () {
+  var f = $("footer"), p = el("p");
+  p.appendChild(document.createTextNode("Quellen: "));
+  var a1 = el("a", null, "ogh.gv.at – Urteile und Beschlüsse des OGH"); a1.href = "https://www.ogh.gv.at/entscheidungen/entscheidungen-ogh/"; a1.target = "_blank"; a1.rel = "noopener noreferrer";
+  p.appendChild(a1);
+  p.appendChild(document.createTextNode(" · Volltexte: "));
+  var a2 = el("a", null, "RIS – Judikatur Justiz"); a2.href = "https://www.ris.bka.gv.at/Jus/"; a2.target = "_blank"; a2.rel = "noopener noreferrer";
+  p.appendChild(a2);
+  f.appendChild(p);
+  if (QUELLEN.indexOf("ris") >= 0) f.appendChild(el("p", null, "Daten aus dem Rechtsinformationssystem des Bundes (RIS), Lizenz CC BY 4.0."));
+  f.appendChild(el("p", null, "Stand " + fmt(STAND) + ". Keine Rechtsberatung."));
+})();
+
+// Auswahlfelder
+(function () {
+  var jahre = {};
+  E.forEach(function (e) { if (e.jahr) jahre[e.jahr] = 1; });
+  Object.keys(jahre).sort().reverse().forEach(function (y) { var o = el("option", null, y); o.value = y; $("yr").appendChild(o); });
+  if (!hatNormen) return;
+  var freq = {}, gesetz = {};
+  // Auswahl nur MRG und WGG; die Karten zeigen weiter alle Paragrafen der Entscheidung
+  E.forEach(function (e) { for (var p in e.paras) { if (!/^(MRG|WGG)\b/.test(p)) continue; freq[p] = (freq[p] || 0) + 1; var g = p.split(" §")[0]; gesetz[g] = (gesetz[g] || 0) + 1; } });
+  Object.keys(gesetz).sort(function (a, b) { return gesetz[b] - gesetz[a] || a.localeCompare(b); }).forEach(function (g) {
+    var og = document.createElement("optgroup"); og.label = g;
+    Object.keys(freq).filter(function (p) { return p.split(" §")[0] === g; }).sort(paraSort).forEach(function (p) {
+      var o = el("option", null, p + " (" + freq[p] + ")"); o.value = p; og.appendChild(o);
+    });
+    $("para").appendChild(og);
+  });
+  $("para").hidden = false;
+})();
+$("so").value = st.so;
+if (nZurueck) { $("zwWrap").hidden = false; $("zw").checked = st.zw; $("zwText").textContent = "Zurückweisungen zeigen (" + nZurueck + ")"; }
+if (nNurPara && nNurPara < E.length) { $("opWrap").hidden = false; $("op").checked = st.op; $("opText").textContent = "Einträge nur mit Paragrafen ausblenden (" + ZAHL(nNurPara) + ")"; }
+else st.op = false;
+
+// Themen-Chips
+var chips = $("chips");
+function chip(k, label) {
+  var b = el("button", "chip" + (k === "*" ? " merk" : ""), label); b.type = "button"; b.dataset.k = k;
+  b.onclick = function () {
+    if (k === "*") st.merk = !st.merk; else { st.th = k; }
+    render();
+  };
+  chips.appendChild(b);
+  return b;
+}
+var chipEls = {"": chip("", "Alle")};
+Object.keys(TH).forEach(function (k) { if (E.some(function (e) { return e.th === k; })) chipEls[k] = chip(k, TH[k]); });
+var merkChip = chip("*", "");
+function aktualisiereChips() {
+  var basis = E.filter(function (e) { return (st.zw || !ZURUECK[e.a]) && !(st.op && e.np); });
+  chipEls[""].textContent = "Alle (" + basis.length + ")";
+  Object.keys(chipEls).forEach(function (k) {
+    if (k) chipEls[k].textContent = TH[k] + " (" + basis.filter(function (e) { return e.th === k; }).length + ")";
+    chipEls[k].setAttribute("aria-pressed", st.th === k ? "true" : "false");
+  });
+  merkChip.textContent = "Gemerkt & Notizen (" + anzahlMerk() + ")";
+  merkChip.setAttribute("aria-pressed", st.merk ? "true" : "false");
+}
+
+// ---------- Filtern und Zeichnen ----------
+var woerter = [];
+function passt(e) {
+  if (!st.zw && ZURUECK[e.a]) return false;
+  if (st.op && e.np) return false;
+  if (st.merk && !hatNotiz(e.k)) return false;
+  if (st.th && e.th !== st.th) return false;
+  if (st.yr && e.jahr !== st.yr) return false;
+  if (st.para && !e.paras[st.para]) return false;
+  for (var i = 0; i < woerter.length; i++) if (e.hay.indexOf(woerter[i]) < 0) return false;
+  return true;
+}
+
+var treffer = [], gezeigt = 0, letztesJahr = "";
+function render() {
+  woerter = st.q ? st.q.toLowerCase().split(/\s+/).filter(Boolean) : [];
+  aktualisiereChips();
+  treffer = E.filter(passt).sort(function (a, b) {
+    var x = (a.d || "") + a.k, y = (b.d || "") + b.k;
+    return st.so === "d" ? y.localeCompare(x) : x.localeCompare(y);
+  });
+  $("list").textContent = "";
+  letztesJahr = "";
+  gezeigt = 0;
+  if (!treffer.length) {
+    $("list").appendChild(el("div", "empty", st.merk ? "Noch nichts gemerkt. Tippe bei einer Entscheidung auf „Merken“ oder „Notiz“." : "Keine Entscheidung passt zu diesen Filtern."));
+  }
+  zeigeBis(Math.min(SEITE, treffer.length));
+  var txt = ZAHL(treffer.length) + " von " + ZAHL(E.length) + " Entscheidungen";
+  if (nZurueck && !st.zw) txt += " · " + nZurueck + " Zurückweisungen ausgeblendet";
+  if (st.op) txt += " · " + ZAHL(E.filter(function (e) { return e.np && (st.zw || !ZURUECK[e.a]); }).length) + " nur mit Paragrafen ausgeblendet";
+  $("count").textContent = txt;
+  $("barSumme").textContent = filterSumme();
+  $("barZahl").textContent = treffer.length + " Treffer";
+  if (typeof filterE !== "undefined" && filterE.offen()) eGeaendert = true;
+}
+function filterSumme() {
+  var teile = [];
+  if (st.q) teile.push("„" + st.q + "“");
+  if (st.th) teile.push(TH[st.th]);
+  if (st.merk) teile.push("Gemerkt");
+  if (st.yr) teile.push(st.yr);
+  if (st.para) teile.push(st.para);
+  if (st.so === "a") teile.push("älteste zuerst");
+  if (st.zw && nZurueck) teile.push("mit Zurückweisungen");
+  if (st.op) teile.push("ohne Nur-Paragrafen");
+  return teile.length ? teile.join(" · ") : "Suchen und filtern";
+}
+function zeigeBis(bis) {
+  var list = $("list");
+  for (var i = gezeigt; i < bis; i++) {
+    var e = treffer[i];
+    if (e.jahr !== letztesJahr) { letztesJahr = e.jahr; list.appendChild(el("div", "year", e.jahr || "ohne Datum")); }
+    list.appendChild(karte(e));
+  }
+  gezeigt = bis;
+  var rest = treffer.length - gezeigt;
+  $("mehr").hidden = rest <= 0;
+  if (rest > 0) $("mehr").textContent = "Weitere " + Math.min(SEITE, rest) + " anzeigen (" + rest + " übrig)";
+}
+$("mehr").onclick = function () { zeigeBis(Math.min(treffer.length, gezeigt + SEITE)); };
+
+// Paragrafen nach Gesetz ordnen: "MRG §37 Abs3 Z14" -> MRG § 37 Abs 3 Z 14; allgemeinere Angaben fallen weg,
+// wenn eine genauere desselben Paragrafen dasteht (§ 18 neben § 18 Abs 1)
+function normGruppen(liste) {
+  var reihe = [], nach = {};
+  liste.forEach(function (n) {
+    var m = /^(.*?)\s*(§.*)$/.exec(String(n).trim());
+    var gesetz = (m ? m[1] : String(n)).trim(), rest = m ? m[2].trim() : "";
+    rest = rest.replace(/§\s*(\d)/g, "§ $1").replace(/\bAbs\s*(\d)/g, "Abs $1").replace(/\bZ\s*(\d)/g, "Z $1").replace(/\blit\s*([a-z])\b/g, "lit $1");
+    if (!nach[gesetz]) { nach[gesetz] = []; reihe.push(gesetz); }
+    if (rest && nach[gesetz].indexOf(rest) < 0) nach[gesetz].push(rest);
+  });
+  return reihe.map(function (g) {
+    var ps = nach[g];
+    return {g: g, p: ps.filter(function (x) { return !ps.some(function (y) { return y !== x && y.indexOf(x + " ") === 0; }); })};
+  });
+}
+function normZeile(liste) {
+  var box = el("div", "normen");
+  normGruppen(liste).forEach(function (gr, i) {
+    if (i) box.appendChild(document.createTextNode(" · "));
+    box.appendChild(el("b", null, gr.g));
+    if (gr.p.length) box.appendChild(document.createTextNode(" " + gr.p.join(", ")));
+  });
+  return box;
+}
+function normKurz(liste) {
+  return normGruppen(liste).slice(0, 2).map(function (gr) { return gr.g + (gr.p.length ? " " + gr.p.slice(0, 2).join(", ") + (gr.p.length > 2 ? " …" : "") : ""); }).join(" · ");
+}
+
+// Rechtssätze: Text, Beziehung der Entscheidung zum Rechtssatz und Beisätze
+var REL = {s: "erstmals hier", a: "bestätigt", ae: "ähnlich", v: "vergleichbar", va: "vgl. aber", g: "abweichend", n: "nur teilweise"};
+function rsBeisaetze(ref) {
+  var r = RS[ref[0]], aus = [];
+  (ref[2] || []).forEach(function (b) {
+    var t = typeof b === "number" ? (r.b || {})[b] : b;
+    if (t) aus.push(/^Nur: /.test(t) ? t : "Beisatz: " + t);
+  });
+  (ref[3] || []).forEach(function (b) { var t = (r.b || {})[b]; if (t) aus.push("Nur: " + t); });
+  return aus;
+}
+function rsText(ref) { return [RS[ref[0]].t].concat(rsBeisaetze(ref)).join(" "); }
+function rsRef(ref) {
+  var r = RS[ref[0]], box = el("div", "rs"), kopf = el("div", "rs-kopf");
+  kopf.appendChild(el("span", "rs-label", "Rechtssatz"));
+  if (ref[1] && REL[ref[1]]) kopf.appendChild(el("span", "tag rel rel-" + ref[1], REL[ref[1]]));
+  if (r.j) {
+    var a = el("a", "rs-nr", r.n + " ↗"); a.href = "https://www.ris.bka.gv.at/Dokument.wxe?Abfrage=Justiz&Dokumentnummer=" + encodeURIComponent(r.j);
+    a.target = "_blank"; a.rel = "noopener noreferrer"; a.title = "Rechtssatz mit allen Entscheidungen im RIS";
+    kopf.appendChild(a);
+  } else kopf.appendChild(el("span", "rs-nr", r.n));
+  box.appendChild(kopf);
+  box.appendChild(el("p", "rs-text", r.t));
+  rsBeisaetze(ref).forEach(function (t) { box.appendChild(el("p", "rs-beisatz", t)); });
+  return box;
+}
+function rsAufklapp(e, ab) {
+  var rest = e.r.slice(ab), wrap = el("div", "rs-mehr"), liste = null;
+  var text = ab ? "+ " + rest.length + (rest.length === 1 ? " weiterer Rechtssatz" : " weitere Rechtssätze") : "Rechtssätze (" + rest.length + ")";
+  var b = el("button", "linkbtn", text + " ▸"); b.type = "button"; b.setAttribute("aria-expanded", "false");
+  b.onclick = function () {
+    var auf = !liste;
+    if (liste) { liste.remove(); liste = null; }
+    else { liste = el("div", "rs-liste"); rest.forEach(function (ref) { liste.appendChild(rsRef(ref)); }); wrap.appendChild(liste); }
+    b.textContent = text + (auf ? " ▾" : " ▸");
+    b.setAttribute("aria-expanded", auf ? "true" : "false");
+  };
+  wrap.appendChild(b);
+  return wrap;
+}
+
+function karte(e) {
+  var it = el("article", "item"); it.id = e.id;
+  var m = el("div", "meta");
+  m.appendChild(el("span", "gz", e.gz));
+  if (e.d) m.appendChild(el("span", null, fmt(e.d)));
+  m.appendChild(el("span", "tag", TH[e.th] || TH.M));
+  if (zeigeOgh && e.o) m.appendChild(el("span", "tag", "OGH-Auswahl"));
+  if (e.a && e.a !== "S") m.appendChild(el("span", "tag art", ART[e.a] || e.a));
+  if (e.nd && e.nd >= neuAb && e.nd <= STAND) m.appendChild(el("span", "tag neu", "neu"));
+  if (e.np) m.appendChild(el("span", "tag np", "nur Paragrafen"));
+  if (e.p) m.appendChild(el("span", "warn", "prüfen: Geschäftszahl/Datum unstimmig"));
+  it.appendChild(m);
+
+  if (e.np) {
+    // Kein Kurztext im RIS: die Paragrafen nach Gesetz geordnet; der Inhalt steht im Volltext
+    it.classList.add("np");
+    if (e.n.length) {
+      it.appendChild(el("div", "np-label", "Paragrafen laut RIS"));
+      it.appendChild(normZeile(e.n));
+    }
+  } else if (e.t || e.sw) {
+    var titel = e.t || kuerze(e.sw, 140);
+    if (titel) it.appendChild(el("div", "t", titel));
+    var kurz = e.s || (e.t ? kuerze(e.sw, 300) : "");
+    if (kurz) it.appendChild(el("p", "s", kurz));
+    if (e.r.length) it.appendChild(rsAufklapp(e, 0));
+    if (e.n.length) it.appendChild(normZeile(e.n));
+  } else {
+    // Rechtssatz statt Überschrift; weitere zum Aufklappen
+    it.appendChild(rsRef(e.r[0]));
+    if (e.r.length > 1) it.appendChild(rsAufklapp(e, 1));
+    if (e.n.length) it.appendChild(normZeile(e.n));
+  }
+  if (e.hinweis) {
+    var h = el("div", "hinweis");
+    h.appendChild(el("b", null, "Rechtslage seit " + fmt(e.hinweis.ab) + " geändert. "));
+    h.appendChild(document.createTextNode(e.hinweis.text + " "));
+    var q = el("a", null, "Quelle ↗"); q.href = e.hinweis.quelle; q.target = "_blank"; q.rel = "noopener noreferrer";
+    h.appendChild(q);
+    it.appendChild(h);
+  }
+
+  var acts = el("div", "acts");
+  var nz = notiz(e.k);
+  var bM = el("button", "btn", nz.m ? "★ Gemerkt" : "☆ Merken"); bM.type = "button";
+  bM.setAttribute("aria-pressed", nz.m ? "true" : "false");
+  bM.onclick = function () {
+    var an = !notiz(e.k).m;
+    var ok = setzeNotiz(e.k, "m", an ? 1 : 0);
+    bM.textContent = an ? "★ Gemerkt" : "☆ Merken";
+    bM.setAttribute("aria-pressed", an ? "true" : "false");
+    if (!ok) toast("Nicht gespeichert: Der Browser blockiert den lokalen Speicher.");
+    aktualisiereChips();
+  };
+  var bN = el("button", "btn", nz.n ? "✎ Notiz ✓" : "✎ Notiz"); bN.type = "button";
+  var box = null;
+  bN.onclick = function () {
+    if (box) { box.remove(); box = null; return; }
+    box = notizBox(e, bN); it.appendChild(box);
+    box.querySelector("textarea").focus();
+  };
+  var bL = el("button", "btn", "Link kopieren"); bL.type = "button";
+  bL.onclick = function () { kopiere(location.href.split("#")[0] + "#" + e.id, "Link zu " + e.gz + " kopiert"); };
+  var aR = el("a", "btn", sicher(e.u) ? "RIS ↗" : "RIS-Suche ↗"); aR.href = sicher(e.u) || risSuche(e.gz);
+  if (!sicher(e.u)) aR.title = "Kein Entscheidungstext im RIS verlinkt; die Suche zeigt die Rechtssätze zu dieser Geschäftszahl"; aR.target = "_blank"; aR.rel = "noopener noreferrer";
+  acts.appendChild(bM); acts.appendChild(bN); acts.appendChild(bL); acts.appendChild(aR);
+  if (sicher(e.ou)) { var aO = el("a", "btn", "OGH-Artikel ↗"); aO.href = e.ou; aO.target = "_blank"; aO.rel = "noopener noreferrer"; acts.appendChild(aO); }
+  it.appendChild(acts);
+  if (nz.n) { box = notizBox(e, bN); it.appendChild(box); }
+  return it;
+}
+
+function notizBox(e, bN) {
+  var box = el("div", "notiz");
+  var ta = el("textarea"); ta.value = notiz(e.k).n || ""; ta.placeholder = "Deine Notiz. Sie bleibt auf diesem Gerät.";
+  ta.setAttribute("aria-label", "Notiz zu " + e.gz);
+  var status = el("div", "nstatus", "");
+  var timer = null;
+  ta.addEventListener("input", function () {
+    clearTimeout(timer); status.textContent = "…";
+    timer = setTimeout(function () {
+      var hat = !!ta.value.trim();
+      var ok = setzeNotiz(e.k, "n", hat ? ta.value : "");
+      status.textContent = ok ? "gespeichert" : "Nicht gespeichert: Der Browser blockiert den lokalen Speicher.";
+      bN.textContent = hat ? "✎ Notiz ✓" : "✎ Notiz";
+      aktualisiereChips();
+    }, 400);
+  });
+  box.appendChild(ta); box.appendChild(status);
+  return box;
+}
+
+// ---------- Neu ----------
+var neuOffen = false;
+function zeichneNeu() {
+  var alle = E.filter(function (e) { return e.nd && e.nd >= neuAb && e.nd <= STAND && !(st.op && e.np); });
+  var neu = alle.filter(function (e) { return !ZURUECK[e.a]; }).sort(function (a, b) { return (b.nd + b.k).localeCompare(a.nd + a.k); });
+  var nz = alle.length - neu.length;
+  if (!neu.length) { $("neu").hidden = true; return; }
+  $("neu").hidden = false;
+  $("neuInfo").textContent = "– seit " + fmt(neuAb) + ": " + neu.length + (neu.length === 1 ? " Entscheidung" : " Entscheidungen") + (nz ? " (dazu " + nz + " Zurückweisungen)" : "");
+  var box = $("neuListe"); box.textContent = "";
+  var zeig = neuOffen ? neu : neu.slice(0, NEU_KURZ);
+  zeig.forEach(function (e) {
+    var r = el("button", "neu-row"); r.type = "button";
+    r.appendChild(el("span", "nd", fmt(e.d)));
+    r.appendChild(el("span", "gz", e.gz));
+    r.appendChild(el("span", "nt" + (e.np ? " np" : ""), e.t || kuerze(e.sw, 120) || (e.r.length ? kuerze(RS[e.r[0][0]].t, 120) : normKurz(e.n))));
+    r.onclick = function () { springe(e); };
+    box.appendChild(r);
+  });
+  var b = $("neuMehr");
+  b.hidden = neu.length <= NEU_KURZ;
+  b.textContent = neuOffen ? "Weniger anzeigen" : "Alle " + neu.length + " neuen anzeigen";
+  b.onclick = function () { neuOffen = !neuOffen; zeichneNeu(); };
+}
+
+function springe(e) {
+  setzeFilter(false);
+  if (!passt(e)) {
+    st.q = ""; $("q").value = ""; st.th = ""; st.yr = ""; $("yr").value = ""; st.para = ""; $("para").value = ""; st.merk = false;
+    if (ZURUECK[e.a]) { st.zw = true; $("zw").checked = true; }
+    if (e.np && st.op) { st.op = false; $("op").checked = false; zeichneNeu(); }
+    render();
+  }
+  var idx = treffer.indexOf(e);
+  if (idx < 0) return;
+  if (idx >= gezeigt) zeigeBis(Math.min(treffer.length, idx + 10));
+  var node = document.getElementById(e.id);
+  if (!node) return;
+  node.scrollIntoView({block: "start"});
+  node.classList.add("flash");
+  setTimeout(function () { node.classList.remove("flash"); }, 2200);
+}
+function vonHash() {
+  var h = "";
+  try { h = decodeURIComponent(location.hash.slice(1)); } catch (err) { return; }
+  if (h === "wien") { zeigeAnsicht("w"); return; }
+  if (h === "vpi") { zeigeAnsicht("v"); return; }
+  zeigeAnsicht("e");
+  if (h && byId[h]) springe(byId[h]);
+}
+
+// ---------- Notizen sichern / laden ----------
+function npStatus(t) { $("npStatus").textContent = t; }
+$("npBtn").onclick = function () { var p = $("np"); p.hidden = !p.hidden; if (!p.hidden) { npStatus(""); p.scrollIntoView({block: "nearest"}); } };
+$("npZu").onclick = function () { $("np").hidden = true; };
+function exportText() {
+  return JSON.stringify({format: "ogh-wohnrecht-notizen", version: 1, exportiert: new Date().toISOString(), notizen: notizen}, null, 1);
+}
+$("npExport").onclick = function () { $("npText").value = exportText(); npStatus(Object.keys(notizen).length + " Einträge exportiert. Jetzt kopieren oder als Datei speichern."); };
+$("npKopie").onclick = function () { if (!$("npText").value) $("npText").value = exportText(); kopiere($("npText").value, "Notizen kopiert"); };
+$("npDatei").onclick = function () {
+  var text = exportText();
+  try {
+    var blob = new Blob([text], {type: "application/json"});
+    var url = URL.createObjectURL(blob);
+    var a = el("a"); a.href = url; a.download = "ogh-notizen-" + new Date().toISOString().slice(0, 10) + ".json";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+    npStatus("Datei wird gespeichert. Falls nichts passiert: Exportieren und Kopieren nutzen.");
+  } catch (err) { npStatus("Speichern als Datei ist hier nicht möglich. Bitte Exportieren und Kopieren nutzen."); }
+};
+function importiere(text) {
+  var x;
+  try { x = JSON.parse(text); } catch (err) { npStatus("Das ist kein gültiger Notizen-Export."); return; }
+  var quelle = x && x.notizen && typeof x.notizen === "object" ? x.notizen : x;
+  if (!quelle || typeof quelle !== "object" || Array.isArray(quelle)) { npStatus("Das ist kein gültiger Notizen-Export."); return; }
+  var neu = 0, gleich = 0;
+  Object.keys(quelle).forEach(function (k) {
+    var v = quelle[k];
+    if (!v || typeof v !== "object") return;
+    var sauber = {};
+    if (v.m) sauber.m = 1;
+    if (typeof v.n === "string" && v.n.trim()) sauber.n = v.n;
+    sauber.t = typeof v.t === "number" ? v.t : 0;
+    if (!sauber.m && !sauber.n) return;
+    var alt = notizen[k];
+    if (!alt || (sauber.t > (alt.t || 0))) { notizen[k] = sauber; neu++; } else gleich++;
+  });
+  var ok = speichern();
+  npStatus(ok ? neu + " Notizen übernommen, " + gleich + " waren schon aktuell." : "Nicht gespeichert: Der Browser blockiert den lokalen Speicher.");
+  render();
+}
+$("npImport").onclick = function () { var t = $("npText").value.trim(); if (!t) { npStatus("Bitte zuerst einen Export einfügen."); return; } importiere(t); };
+$("npFile").onchange = function () {
+  var f = this.files && this.files[0]; if (!f) return;
+  var r = new FileReader();
+  r.onload = function () { $("npText").value = String(r.result || ""); importiere($("npText").value); };
+  r.readAsText(f);
+  this.value = "";
+};
+
+// ---------- Bedienung ----------
+var qTimer;
+$("q").addEventListener("input", function () { clearTimeout(qTimer); var v = this.value; qTimer = setTimeout(function () { st.q = v.trim(); render(); }, 150); });
+$("yr").onchange = function () { st.yr = this.value; render(); };
+$("para").onchange = function () { st.para = this.value; render(); };
+$("so").onchange = function () { st.so = this.value; merkeAnsicht(); render(); };
+$("zw").onchange = function () { st.zw = this.checked; merkeAnsicht(); render(); };
+$("op").onchange = function () { st.op = this.checked; merkeAnsicht(); render(); zeichneNeu(); };
+
+// ---------- Filter: am Platz in der Rubrik; weiter unten als Leiste oben, die wie die Benachrichtigungsleiste herausfährt ----------
+// Ein Baustein für beide Ansichten: Entscheidungen (#bar) und Wohnbauträger Wien (#wbar).
+var leisten = [];
+function Leiste(id, beimSchliessen) {
+  var bar = $(id), platz = $(id + "Platz"), kopf = $(id + "Kopf"), inhalt = $(id + "Inhalt"), schleier = $(id + "Schleier");
+  var gezogen = false, zug = null, gedockt = false;
+  function offen() { return bar.classList.contains("offen"); }
+  function setze(auf) {
+    var war = offen();
+    auf = !!auf && gedockt;
+    bar.classList.toggle("offen", auf);
+    schleier.classList.toggle("an", auf);
+    kopf.setAttribute("aria-expanded", auf ? "true" : "false");
+    document.documentElement.classList.toggle("filter-offen", leisten.some(function (l) { return l !== self && l.offen(); }) || auf);
+    if (war && !auf && beimSchliessen) beimSchliessen();
+  }
+  // Andocken, sobald der Filterblock ganz aus dem Bild ist; zurück an den Platz erst, wenn mehr von ihm
+  // zu sehen wäre als die Leiste verdeckt (so flackert nichts). Der Platzhalter behält die Höhe, damit die Seite nicht springt.
+  function dock(an) {
+    if (an === gedockt) return;
+    if (an) {
+      platz.style.height = platz.offsetHeight + "px";
+      bar.classList.add("dock");
+    } else {
+      setze(false);
+      bar.classList.remove("dock");
+      platz.style.height = "";
+    }
+    gedockt = an;
+  }
+  function pruefe() {
+    if (!platz.offsetParent) { dock(false); return; }   // Ansicht ist verborgen
+    if (offen()) return;
+    var unten = platz.getBoundingClientRect().bottom;
+    if (!gedockt && unten < -40) dock(true);
+    else if (gedockt && unten > 70) dock(false);
+  }
+  kopf.onclick = function () { if (!gezogen) setze(!offen()); };
+  schleier.onclick = function () { setze(false); };
+  schleier.addEventListener("touchmove", function (ev) { ev.preventDefault(); }, {passive: false});
+  $(id + "Zu").onclick = function () { setze(false); };
+  // Wischen: an der Leiste nach unten öffnet, am Griff oder an der Leiste nach oben schließt; der Filter folgt dem Finger
+  function start(ev) {
+    if (!gedockt || ev.touches.length !== 1) return;
+    zug = {y0: ev.touches[0].clientY, dy: 0, offen: offen(), h: inhalt.offsetHeight || 1, aktiv: false};
+  }
+  function bewegung(ev) {
+    if (!zug) return;
+    var dy = ev.touches[0].clientY - zug.y0;
+    if (!zug.aktiv) {
+      if (Math.abs(dy) < 6) return;
+      if (zug.offen ? dy > 0 : dy < 0) { zug = null; return; }
+      zug.aktiv = true;
+      bar.classList.add("zieht");
+      schleier.classList.add("an");
+      schleier.style.transition = "none";
+    }
+    ev.preventDefault();
+    zug.dy = dy;
+    var weg = zug.offen ? Math.max(-zug.h, Math.min(0, dy)) : Math.min(0, Math.max(dy, 0) - zug.h);
+    inhalt.style.transform = "translateY(" + weg + "px)";
+    schleier.style.opacity = String((zug.h + weg) / zug.h);
+  }
+  function ende() {
+    if (!zug) return;
+    var z = zug;
+    zug = null;
+    if (!z.aktiv) return;
+    gezogen = true;
+    setTimeout(function () { gezogen = false; }, 350);
+    bar.classList.remove("zieht");
+    inhalt.style.transform = "";
+    schleier.style.opacity = "";
+    schleier.style.transition = "";
+    setze(z.offen ? z.dy > -50 : z.dy > 50);
+  }
+  [kopf, $(id + "Griff")].forEach(function (x) {
+    x.addEventListener("touchstart", start, {passive: true});
+    x.addEventListener("touchmove", bewegung, {passive: false});
+    x.addEventListener("touchend", ende);
+    x.addEventListener("touchcancel", ende);
+  });
+  var self = {offen: offen, setze: setze, kopf: kopf, pruefe: pruefe, gedockt: function () { return gedockt; }};
+  leisten.push(self);
+  return self;
+}
+// Nach dem Schließen zum Anfang der Trefferliste, wenn sich im Filter etwas geändert hat
+var eGeaendert = false;
+function eZeigeListe() { if (eGeaendert) { eGeaendert = false; $("list").scrollIntoView({block: "start"}); } }
+var filterE = Leiste("bar", eZeigeListe), filterW = Leiste("wbar", function () { wZeigeZuletzt(); });
+function setzeFilter(auf) { filterE.setze(auf); }
+var pruefPlan = false;
+function pruefeLeisten() {
+  if (pruefPlan) return;
+  pruefPlan = true;
+  requestAnimationFrame(function () { pruefPlan = false; leisten.forEach(function (l) { l.pruefe(); }); });
+}
+window.addEventListener("scroll", pruefeLeisten, {passive: true});
+window.addEventListener("resize", pruefeLeisten);
+document.addEventListener("keydown", function (ev) {
+  if (ev.key !== "Escape") return;
+  leisten.forEach(function (l) { if (l.offen()) { l.setze(false); l.kopf.focus(); } });
+});
+$("q").addEventListener("keydown", function (ev) {  // „Suchen“ auf der Tastatur: in der Leiste Ergebnis zeigen
+  if (ev.key === "Enter" && filterE.offen()) { clearTimeout(qTimer); st.q = this.value.trim(); render(); this.blur(); setzeFilter(false); }
+});
+
+// Darstellung: Automatisch (wie das Gerät), Hell oder Dunkel; der Browser merkt sich die Wahl
+var FARBEN = {auto: "◐ Auto", hell: "☀ Hell", dunkel: "☾ Dunkel"}, FOLGE = {auto: "hell", hell: "dunkel", dunkel: "auto"};
+var FARBNAME = {auto: "Automatisch wie das Gerät", hell: "Hell", dunkel: "Dunkel"};
+function farbeJetzt() { var f = document.documentElement.getAttribute("data-farbe"); return FARBEN[f] ? f : "auto"; }
+function zeigeFarbe() {
+  var f = farbeJetzt();
+  $("farbe").textContent = FARBEN[f];
+  $("farbe").setAttribute("aria-label", "Darstellung: " + FARBNAME[f] + ". Tippen zum Wechseln");
+  $("farbe").title = "Darstellung: " + FARBNAME[f] + " – tippen zum Wechseln";
+  var meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.setAttribute("content", getComputedStyle(document.documentElement).getPropertyValue("--bg").trim() || "#f6f4ef");
+}
+$("farbe").onclick = function () {
+  var f = FOLGE[farbeJetzt()];
+  if (f === "auto") document.documentElement.removeAttribute("data-farbe"); else document.documentElement.setAttribute("data-farbe", f);
+  try { if (f === "auto") localStorage.removeItem("ogh-wohnrecht:farbe"); else localStorage.setItem("ogh-wohnrecht:farbe", f); } catch (err) {}
+  zeigeFarbe();
+};
+try { window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", zeigeFarbe); } catch (err) {}
+zeigeFarbe();
+
+// ---------- Rubrik „Wohnbauträger Wien“ ----------
+var W = D.wien || null;
+var FZ = {}, wInit = false, fTreffer = [], fGezeigt = 0, F_SEITE = 30;
+function EUR(x) {
+  try { return new Intl.NumberFormat("de-AT", {style: "currency", currency: "EUR", maximumFractionDigits: 0}).format(x); }
+  catch (err) { return Math.round(x) + " €"; }
+}
+// Ansichten: e = Entscheidungen, w = Wohnbauträger Wien, v = Indexrechner
+function zeigeAnsicht(a) {
+  $("viewE").hidden = a !== "e"; $("viewW").hidden = a !== "w"; $("viewV").hidden = a !== "v";
+  $("tabE").setAttribute("aria-pressed", a === "e" ? "true" : "false");
+  $("tabW").setAttribute("aria-pressed", a === "w" ? "true" : "false");
+  $("tabV").setAttribute("aria-pressed", a === "v" ? "true" : "false");
+  leisten.forEach(function (l) { l.setze(false); l.pruefe(); });
+  if (a === "w") zeichneWien();
+  if (a === "v") zeichneVpi();
+}
+$("tabW").onclick = function () { if (location.hash !== "#wien") location.hash = "wien"; else zeigeAnsicht("w"); };
+$("tabV").onclick = function () { if (location.hash !== "#vpi") location.hash = "vpi"; else zeigeAnsicht("v"); };
+$("tabE").onclick = function () { if (location.hash === "#wien" || location.hash === "#vpi") location.hash = ""; zeigeAnsicht("e"); };
+
+var wZuletzt = null, wAnzahlT = null, wAnzahlF = null;
+// Förderzusagen mit „prüfen“ ausblenden; die Wahl bleibt im Browser
+var wOhnePr = false;
+try { wOhnePr = !!JSON.parse(localStorage.getItem("ogh-wohnrecht:wien") || "{}").pr; } catch (err) {}
+function wSumme() {
+  var t = [], q = $("wq").value.trim(), fq = $("fq").value.trim();
+  if (q) t.push("„" + q + "“");
+  if ($("wtyp").value) t.push($("wtyp").options[$("wtyp").selectedIndex].text);
+  if (fq) t.push("„" + fq + "“");
+  ["fbez", "fmass", "fet"].forEach(function (id) { var x = $(id); if (x.value) t.push(x.options[x.selectedIndex].text); });
+  if (wOhnePr) t.push("ohne „prüfen“");
+  $("wbarSumme").textContent = t.length ? t.join(" · ") : "Suchen und filtern";
+  $("wbarZahl").textContent = wAnzahlT === null || wAnzahlF === null ? "" : wAnzahlT + " Träger · " + wAnzahlF + (wAnzahlF === 1 ? " Zusage" : " Zusagen");
+  // Zahlen im Filter mit Sprung zur jeweiligen Liste
+  var z = $("wbarAnzahl"); z.textContent = "";
+  if (wAnzahlT === null || wAnzahlF === null) return;
+  [[wAnzahlT + " Träger", "wTraeger"], [wAnzahlF + (wAnzahlF === 1 ? " Förderzusage" : " Förderzusagen"), "wFoerdTitel"]].forEach(function (x, i) {
+    if (i) z.appendChild(document.createTextNode(" · "));
+    var b = el("button", "sprung", x[0] + " ↓"); b.type = "button";
+    b.onclick = function () { wZuletzt = null; filterW.setze(false); $(x[1]).scrollIntoView({block: "start"}); };
+    z.appendChild(b);
+  });
+}
+// Nach dem Schließen dorthin springen, wo sich durch den Filter etwas geändert hat
+function wZeigeZuletzt() {
+  var ziel = wZuletzt === "f" ? $("wFoerdTitel") : wZuletzt === "t" ? $("wTraeger") : null;
+  wZuletzt = null;
+  if (ziel) ziel.scrollIntoView({block: "start"});
+}
+["wq", "fq"].forEach(function (id) {
+  $(id).addEventListener("keydown", function (ev) { if (ev.key === "Enter" && filterW.offen()) { this.blur(); filterW.setze(false); } });
+});
+
+function linkBtn(text, url) {
+  var a = el("a", "btn", text); a.href = url; a.target = "_blank"; a.rel = "noopener noreferrer"; return a;
+}
+// Zahlen mit Tausenderpunkt wie bei den Euro-Beträgen (1.234,5)
+function ZAHL(x, nk) {
+  var n = nk == null ? 0 : nk;
+  try { return Number(x).toLocaleString("de-DE", {minimumFractionDigits: n, maximumFractionDigits: n}); }
+  catch (err) { return Number(x).toFixed(n).replace(".", ","); }
+}
+// Hintergrunddokumente (data/dokumente.json): ort "wien" in der Rubrik Wien, "vpi" beim Indexrechner
+var DOK = D.dok || [];
+function hintergrundZeile(d) {
+  var r = el("div", "zeile");
+  if (d.d) r.appendChild(el("span", "nd", fmt(d.d)));
+  r.appendChild(el("span", "gr", d.t));
+  if (sicher(d.s)) r.appendChild(linkBtn((d.a || "Dokument") + " ↗", d.s));
+  if (sicher(d.u)) r.appendChild(linkBtn(/data\.gv\.at/.test(d.u) ? "data.gv.at ↗" : "Quelle ↗", d.u));
+  return r;
+}
+(function () {
+  var w = DOK.filter(function (d) { return d.o === "wien"; });
+  w.forEach(function (d) { $("wDok").appendChild(hintergrundZeile(d)); });
+  $("wDokTitel").hidden = !w.length;
+})();
+function hatDok(t) { return t.f.length || t.v.length || t.wgg.length || t.btvg.length || t.sonst.length; }
+var WTRAEGER = {"gemeinnützig": 1, "gewerblich": 1, "kommunal": 1};
+var ETNAME = {j: "Unternehmen", w: "Eigentümergemeinschaft", s: "Stadt Wien", m: "Miteigentümer", p: "Privatperson", u: "nur im PDF lesbar"};
+function fnText(fn) { return fn ? "FN " + fn.replace(/^(\d+)([a-z])$/, "$1 $2") : ""; }
+
+function zeichneWien() {
+  if (!W) {
+    if (!wInit) {
+      $("wTraeger").appendChild(el("div", "leer", "Noch keine Daten. Sie erscheinen nach dem ersten Lauf des wöchentlichen Abrufs."));
+      wInit = true;
+    }
+    return;
+  }
+  if (!wInit) {
+    W.foerd.forEach(function (f) {
+      FZ[f.id] = f;
+      f.hay = [f.gz, f.emp, f.ver, f.adr, f.kg, f.efn, f.vfn, f.bez ? f.bez + ". bezirk" : "", (f.m || []).join(" "),
+               (f.gb || []).map(function (g) { return "gemeindebau " + g.n; }).join(" ")].join(" ").toLowerCase();
+    });
+    var nT = W.traeger.filter(function (t) { return WTRAEGER[t.typ]; }).length;
+    $("wStand").textContent = "Stand " + fmt(W.stand) + " · " + W.foerd.length + " Förderzusagen · " + nT + " Wohnbauträger · " + (W.traeger.length - nT) + " weitere Unternehmen";
+    var bez = {}, ms = {};
+    W.foerd.forEach(function (f) { if (f.bez) bez[f.bez] = 1; (f.m || []).forEach(function (m) { ms[m] = 1; }); });
+    Object.keys(bez).map(Number).sort(function (a, b) { return a - b; }).forEach(function (b) { var o = el("option", null, b + ". Bezirk"); o.value = String(b); $("fbez").appendChild(o); });
+    Object.keys(ms).sort().forEach(function (m) { var o = el("option", null, m); o.value = m; $("fmass").appendChild(o); });
+    $("wq").addEventListener("input", function () { wZuletzt = "t"; renderTraeger(); });
+    $("wtyp").onchange = function () { wZuletzt = "t"; renderTraeger(); };
+    $("fq").addEventListener("input", function () { wZuletzt = "f"; renderFoerd(); });
+    $("fbez").onchange = $("fmass").onchange = $("fet").onchange = function () { wZuletzt = "f"; renderFoerd(); };
+    $("fMehr").onclick = function () { zeigeFoerd(Math.min(fTreffer.length, fGezeigt + F_SEITE)); };
+    var nPr = W.foerd.filter(function (f) { return f.pr && f.pr.length; }).length;
+    if (nPr) {
+      $("fPrWrap").hidden = false;
+      $("fPr").checked = wOhnePr;
+      $("fPrText").textContent = "Förderzusagen mit „prüfen“ ausblenden (" + nPr + ")";
+      $("fPr").onchange = function () {
+        wOhnePr = this.checked; wZuletzt = "f";
+        try { localStorage.setItem("ogh-wohnrecht:wien", JSON.stringify({pr: wOhnePr})); } catch (err) {}
+        renderFoerd();
+      };
+    } else wOhnePr = false;
+    wInit = true;
+  }
+  renderTraeger();
+  renderFoerd();
+}
+
+function renderTraeger() {
+  var q = $("wq").value.trim().toLowerCase(), typ = $("wtyp").value;
+  var liste = W.traeger.filter(function (t) {
+    var passt = typ === "" ? WTRAEGER[t.typ] : typ === "vertreter" ? t.v.length > 0 : typ === "eigentuemer" ? (t.typ === "weitere" && t.f.length > 0) : (typ === "alle" || t.typ === typ);
+    if (!passt) return false;
+    return !q || (t.n + " " + (t.info || "") + " " + (t.fn || "")).toLowerCase().indexOf(q) >= 0;
+  }).sort(function (a, b) {
+    if (typ === "vertreter") return (b.v.length - a.v.length) || a.n.localeCompare(b.n);
+    return ((hatDok(b) ? 1 : 0) - (hatDok(a) ? 1 : 0)) || (b.snr + b.sdl - a.snr - a.sdl) || (b.f.length + b.v.length - a.f.length - a.v.length) || a.n.localeCompare(b.n);
+  });
+  wAnzahlT = liste.length;
+  wSumme();
+  var box = $("wTraeger"); box.textContent = "";
+  if (!liste.length) { box.appendChild(el("div", "leer", "Kein Eintrag passt.")); return; }
+  liste.forEach(function (t) { box.appendChild(traegerKarte(t)); });
+}
+
+function traegerKarte(t) {
+  var c = el("article", "tr");
+  var k = el("div", "tr-kopf");
+  k.appendChild(el("span", "tr-name", t.n));
+  k.appendChild(el("span", "tag sans", t.typ === "weitere" ? (t.f.length ? "Unternehmen" : "Vertreter") : (t.typ === "kommunal" ? "Stadt Wien" : t.typ)));
+  c.appendChild(k);
+  var info = [t.info, fnText(t.fn)].filter(Boolean).join(" · ");
+  if (info) c.appendChild(el("div", "tr-zahlen sans", info));
+  if (t.k === "wiener-wohnen" && W.gbs && W.gbs.anzahl) {
+    c.appendChild(el("div", "tr-zahlen sans", ZAHL(W.gbs.anzahl) + " Gemeindebauten mit " + ZAHL(W.gbs.wohnungen) + " Wohnungen laut Wiener Wohnen" + (W.gbs.stand ? " (Stand " + fmt(W.gbs.stand) + ")" : "") +
+      (W.gbs.stadt ? " · " + W.gbs.zugeordnet + " von " + W.gbs.stadt + " Förderzusagen der Stadt Wien einem Gemeindebau zugeordnet" : "")));
+  }
+  if (!hatDok(t)) {
+    c.appendChild(el("div", "tr-zahlen sans", "Auf data.gv.at bisher keine Dokumente gefunden."));
+    return c;
+  }
+  var teile = [];
+  if (t.f.length) teile.push(t.f.length + (t.f.length === 1 ? " Förderzusage" : " Förderzusagen") + (t.snr ? " · " + EUR(t.snr) + " nicht rückzahlbar" : "") + (t.sdl ? " · " + EUR(t.sdl) + " Darlehen" : ""));
+  if (t.v.length) teile.push("Vertreter in " + t.v.length + (t.v.length === 1 ? " Förderzusage" : " Förderzusagen"));
+  if (t.wgg.length) teile.push("Prüfbericht " + (t.wgg[0].gj ? "Geschäftsjahr " + t.wgg[0].gj : fmt(t.wgg[0].d)));
+  if (t.btvg.length) teile.push("BTVG-Bescheinigung");
+  if (t.sonst.length) teile.push(t.sonst.length + " weitere Dokumente");
+  c.appendChild(el("div", "tr-zahlen sans", teile.join(" · ")));
+  var acts = el("div", "acts"), b = el("button", "btn", "Details"), det = null;
+  b.type = "button";
+  b.onclick = function () {
+    if (det) { det.remove(); det = null; b.textContent = "Details"; return; }
+    det = traegerDetails(t); c.appendChild(det); b.textContent = "Details ausblenden";
+  };
+  acts.appendChild(b); c.appendChild(acts);
+  return c;
+}
+
+function dokZeile(d, label) {
+  var r = el("div", "zeile sans");
+  if (d.d) r.appendChild(el("span", "nd", fmt(d.d)));
+  r.appendChild(el("span", "gr", (label ? label + " · " : "") + (d.t || "")));
+  if (sicher(d.s)) r.appendChild(linkBtn("PDF ↗", d.s));
+  if (sicher(d.u)) r.appendChild(linkBtn("data.gv.at ↗", d.u));
+  return r;
+}
+
+function traegerDetails(t) {
+  var det = el("div", "tr-det");
+  function gruppe(titel, ids, ohne) {
+    if (!ids.length) return;
+    det.appendChild(el("h4", null, titel));
+    ids.map(function (id) { return FZ[id]; }).filter(Boolean)
+      .sort(function (a, b) { return (b.d || "").localeCompare(a.d || ""); })
+      .forEach(function (f) { det.appendChild(fzKarte(f, ohne)); });
+  }
+  gruppe("Förderzusagen als Förderungswerber", t.f, "emp");
+  gruppe("Als Vertreter genannt", t.v, "ver");
+  if (t.wgg.length) { det.appendChild(el("h4", null, "Prüfberichte (§ 28 Abs 8 WGG)")); t.wgg.forEach(function (d) { det.appendChild(dokZeile(d, d.gj ? "Geschäftsjahr " + d.gj : "")); }); }
+  if (t.btvg.length) { det.appendChild(el("h4", null, "Bescheinigungen nach dem BTVG")); t.btvg.forEach(function (d) { det.appendChild(dokZeile(d)); }); }
+  if (t.sonst.length) { det.appendChild(el("h4", null, "Weitere Dokumente")); t.sonst.forEach(function (d) { det.appendChild(dokZeile(d)); }); }
+  return det;
+}
+
+function fzKarte(f, ohne) {
+  var c = el("div", "fz");
+  var m = el("div", "meta");
+  if (f.d) m.appendChild(el("span", null, fmt(f.d)));
+  if (f.bez) m.appendChild(el("span", "tag", f.bez + ". Bezirk"));
+  (f.m || []).forEach(function (x) { m.appendChild(el("span", "tag art", x)); });
+  if (f.wo) m.appendChild(el("span", "tag", f.wo + " Wohnungen"));
+  if (f.pr && f.pr.length) m.appendChild(el("span", "warn", "prüfen: " + f.pr.join(", ")));
+  c.appendChild(m);
+  var wer = f.emp ? f.emp : (ETNAME[f.et] || "Förderungswerber nicht erkannt");
+  var zeile = el("div", "zeile"); zeile.style.borderTop = "0";
+  var gr = el("span", "gr"), teile = [];
+  if (ohne !== "emp") {
+    gr.appendChild(el("b", null, wer));
+    if (f.et === "w" && f.emp) gr.appendChild(document.createTextNode(" (Eigentümergemeinschaft)"));
+  }
+  if (f.adr) teile.push(f.adr + (f.bez ? ", " + f.bez + ". Bezirk" : ""));
+  if (f.ver && ohne !== "ver") teile.push("vertreten durch " + f.ver);
+  if (teile.length) gr.appendChild(document.createTextNode((ohne !== "emp" ? " · " : "") + teile.join(" · ")));
+  if (ohne === "emp" && !teile.length) gr.appendChild(document.createTextNode(f.bez ? f.bez + ". Bezirk" : ""));
+  zeile.appendChild(gr);
+  var betrag = f.nr ? EUR(f.nr) + " nicht rückzahlbar" : "";
+  if (f.dl) betrag += (betrag ? " + " : "") + EUR(f.dl) + " Darlehen";
+  zeile.appendChild(el("span", "betrag", betrag || "Betrag siehe PDF"));
+  c.appendChild(zeile);
+  if (f.gb && f.gb.length) {
+    c.appendChild(el("div", "tr-zahlen sans", "Gemeindebau: " + f.gb.map(function (g) {
+      return g.n + (g.wo ? " · " + ZAHL(g.wo) + " Wohnungen" : "") +
+        (g.bz && g.bz.length ? " · erbaut " + g.bz.map(function (z) { return z[0] === z[1] ? String(z[0]) : z[0] + "–" + z[1]; }).join(", ") : "");
+    }).join("; ")));
+  }
+  var acts = el("div", "acts");
+  if (sicher(f.s)) acts.appendChild(linkBtn("PDF ↗", f.s));
+  if (sicher(f.u)) acts.appendChild(linkBtn("data.gv.at ↗", f.u));
+  if (f.gz) acts.appendChild(el("span", "count", "GZ " + f.gz));
+  c.appendChild(acts);
+  return c;
+}
+
+function renderFoerd() {
+  var q = $("fq").value.trim().toLowerCase().split(/\s+/).filter(Boolean), bez = $("fbez").value, mass = $("fmass").value, et = $("fet").value;
+  fTreffer = W.foerd.filter(function (f) {
+    if (bez && String(f.bez) !== bez) return false;
+    if (mass && (f.m || []).indexOf(mass) < 0) return false;
+    if (et && !(f.et === et || (et === "p" && f.et === "m"))) return false;
+    if (wOhnePr && f.pr && f.pr.length) return false;
+    for (var i = 0; i < q.length; i++) if (f.hay.indexOf(q[i]) < 0) return false;
+    return true;
+  });
+  wAnzahlF = fTreffer.length;
+  wSumme();
+  var summe = fTreffer.reduce(function (s, f) { return s + (f.nr || 0); }, 0);
+  var nAus = wOhnePr ? W.foerd.filter(function (f) { return f.pr && f.pr.length; }).length : 0;
+  $("fCount").textContent = fTreffer.length + " von " + W.foerd.length + " Förderzusagen · " + EUR(summe) + " nicht rückzahlbar (soweit erkannt)" +
+    (nAus ? " · " + nAus + " mit „prüfen“ ausgeblendet" : "");
+  $("wFoerd").textContent = ""; fGezeigt = 0;
+  if (!fTreffer.length) $("wFoerd").appendChild(el("div", "leer", "Keine Förderzusage passt zu diesen Filtern."));
+  zeigeFoerd(Math.min(F_SEITE, fTreffer.length));
+}
+function zeigeFoerd(bis) {
+  for (var i = fGezeigt; i < bis; i++) $("wFoerd").appendChild(fzKarte(fTreffer[i]));
+  fGezeigt = bis;
+  var rest = fTreffer.length - fGezeigt;
+  $("fMehr").hidden = rest <= 0;
+  if (rest > 0) $("fMehr").textContent = "Weitere " + Math.min(F_SEITE, rest) + " anzeigen (" + rest + " übrig)";
+}
+// ---------- Indexrechner (VPI) ----------
+var V = D.vpi || null, vInit = false;
+var MONATE = ["Jänner", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+function mText(ym) { return MONATE[+ym.slice(5, 7) - 1] + " " + ym.slice(0, 4); }
+function mPlus(ym, n) {
+  var j = +ym.slice(0, 4), m = +ym.slice(5, 7) - 1 + n;
+  j += Math.floor(m / 12); m = ((m % 12) + 12) % 12;
+  return j + "-" + (m < 9 ? "0" : "") + (m + 1);
+}
+function mDiff(a, b) { return (+b.slice(0, 4) - +a.slice(0, 4)) * 12 + (+b.slice(5, 7) - +a.slice(5, 7)); }
+function vReihe() { var k = $("vBasis").value; return V.r.filter(function (r) { return r.k === k; })[0] || V.r[0]; }
+function vWert(r, ym) { var i = mDiff(r.von, ym); return i >= 0 && i < r.w.length ? r.w[i] : null; }
+function vEnde(r) { var i = r.w.length - 1; while (i > 0 && r.w[i] == null) i--; return mPlus(r.von, i); }
+function vorl(ym) { return V.vorl.indexOf(ym) >= 0; }
+function iw(x) { return ZAHL(x, Math.round(x * 10) === x * 10 ? 1 : 3); }
+function proz(x) { return (x > 0 ? "+" : x < 0 ? "−" : "±") + ZAHL(Math.abs(x), 2) + " %"; }
+function zahlKurz(x) {
+  try { return Number(x).toLocaleString("de-DE", {maximumFractionDigits: 2}); } catch (err) { return String(x).replace(".", ","); }
+}
+function leseZahl(s) {
+  s = String(s || "").replace(/[\s€%]/g, "");
+  if (!s) return null;
+  if (s.indexOf(",") >= 0) s = s.replace(/\./g, "").replace(",", ".");
+  var x = parseFloat(s);
+  return isFinite(x) ? x : null;
+}
+function vMonat(idM, idJ) { return $(idJ).value + "-" + $(idM).value; }
+function setzeMonat(idM, idJ, ym) { $(idJ).value = ym.slice(0, 4); $(idM).value = ym.slice(5, 7); }
+function vJahre(r) {
+  var von = +r.von.slice(0, 4), bis = +vEnde(r).slice(0, 4);
+  ["vVonJ", "vBisJ"].forEach(function (id) {
+    var alt = $(id).value; $(id).textContent = "";
+    for (var j = bis; j >= von; j--) { var o = el("option", null, String(j)); o.value = String(j); $(id).appendChild(o); }
+    if (alt && +alt >= von && +alt <= bis) $(id).value = alt;
+  });
+}
+function zeichneVpi() {
+  if (vInit) return;
+  vInit = true;
+  var dok = DOK.filter(function (d) { return d.o === "vpi"; });
+  [{t: "Indexrechner von Statistik Austria (zur Kontrolle der Berechnung)", s: "https://www.statistik.at/Indexrechner", a: "Website"},
+   {t: "Mieten-Wertsicherungsgesetz (MieWeG) im RIS, geltende Fassung", s: "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=20013068", a: "RIS"}]
+    .concat(dok).forEach(function (d) { $("vDok").appendChild(hintergrundZeile(d)); });
+  if (!V || !V.r || !V.r.length) {
+    $("vInhalt").textContent = "";
+    $("vInhalt").appendChild(el("div", "leer", "Noch keine Indexwerte. Sie erscheinen nach dem nächsten Lauf des wöchentlichen Abrufs."));
+    return;
+  }
+  V.r.forEach(function (r) { var o = el("option", null, r.n + " (ab " + r.von.slice(5, 7) + "/" + r.von.slice(0, 4) + ")"); o.value = r.k; $("vBasis").appendChild(o); });
+  if (V.r.some(function (r) { return r.k === "2020"; })) $("vBasis").value = "2020";
+  ["vVonM", "vBisM"].forEach(function (id) {
+    MONATE.forEach(function (m, i) { var o = el("option", null, m); o.value = (i < 9 ? "0" : "") + (i + 1); $(id).appendChild(o); });
+  });
+  var r = vReihe(), ende = vEnde(r);
+  vJahre(r);
+  setzeMonat("vBisM", "vBisJ", ende);
+  setzeMonat("vVonM", "vVonJ", mDiff(r.von, mPlus(ende, -12)) >= 0 ? mPlus(ende, -12) : r.von);
+  $("vBasis").onchange = function () {
+    var r = vReihe(), ende = vEnde(r);
+    vJahre(r);
+    ["vVonM", "vBisM"].forEach(function (idM) {
+      var idJ = idM === "vVonM" ? "vVonJ" : "vBisJ", ym = vMonat(idM, idJ);
+      if (mDiff(r.von, ym) < 0) setzeMonat(idM, idJ, r.von);
+      if (mDiff(ym, ende) < 0) setzeMonat(idM, idJ, ende);
+    });
+    rechneVpi();
+  };
+  ["vVonM", "vVonJ", "vBisM", "vBisJ"].forEach(function (id) { $(id).onchange = rechneVpi; });
+  ["vBetrag", "vSchwelle"].forEach(function (id) { $(id).addEventListener("input", rechneVpi); });
+  $("vStand").textContent = "Veränderung zum Vormonat und zum Vorjahresmonat aus den gerundeten Indexwerten berechnet; „vorl.“ = vorläufig. Stand der Indexwerte " + fmt(V.stand) + " · Quelle: Statistik Austria, Lizenz CC BY 4.0";
+  rechneVpi();
+}
+function rechneVpi() {
+  var r = vReihe(), von = vMonat("vVonM", "vVonJ"), bis = vMonat("vBisM", "vBisJ");
+  var a = vWert(r, von), b = vWert(r, bis), box = $("vErgebnis");
+  box.textContent = "";
+  vTabelle(r);
+  if (a == null || b == null) {
+    box.appendChild(el("div", "v-zeile", "Für " + mText(a == null ? von : bis) + " gibt es im " + r.n + " keinen Wert. Verfügbar: " + mText(r.von) + " bis " + mText(vEnde(r)) + "."));
+    return;
+  }
+  var faktor = b / a, p = (faktor - 1) * 100;
+  var z1 = el("div", "v-zeile");
+  z1.appendChild(document.createTextNode(r.n + ": " + mText(von) + " "));
+  z1.appendChild(el("b", null, iw(a))); if (vorl(von)) z1.appendChild(el("span", "vorl", " vorläufig"));
+  z1.appendChild(document.createTextNode(" → " + mText(bis) + " "));
+  z1.appendChild(el("b", null, iw(b))); if (vorl(bis)) z1.appendChild(el("span", "vorl", " vorläufig"));
+  box.appendChild(z1);
+  box.appendChild(el("div", "v-gross", proz(p)));
+  box.appendChild(el("div", "v-zeile", "Faktor " + ZAHL(faktor, 6)));
+  var betrag = leseZahl($("vBetrag").value);
+  if (betrag != null) box.appendChild(el("div", "v-zeile", "Betrag: " + ZAHL(betrag, 2) + " × " + ZAHL(faktor, 6) + " = " + ZAHL(Math.round(betrag * faktor * 100) / 100, 2)));
+  var schwelle = leseZahl($("vSchwelle").value);
+  if (schwelle != null && schwelle > 0) {
+    var ende = vEnde(r), m = mPlus(von, 1), gef = null, wGef = null, letzte = null;
+    for (; mDiff(m, ende) >= 0; m = mPlus(m, 1)) {
+      var w = vWert(r, m); if (w == null) continue;
+      letzte = (w / a - 1) * 100;
+      if (Math.abs(letzte) > schwelle) { gef = m; wGef = w; break; }
+    }
+    box.appendChild(el("div", "v-zeile", gef
+      ? "Schwelle " + zahlKurz(schwelle) + " %: erstmals überschritten im " + mText(gef) + " (" + iw(wGef) + ", " + proz((wGef / a - 1) * 100) + (vorl(gef) ? ", vorläufig" : "") + ")"
+      : "Schwelle " + zahlKurz(schwelle) + " %: bis " + mText(ende) + " nicht überschritten" + (letzte != null ? " (zuletzt " + proz(letzte) + ")" : "")));
+  }
+  if (vorl(von) || vorl(bis)) box.appendChild(el("div", "hinweis", "Vorläufiger Wert: Statistik Austria kann ihn mit der endgültigen Veröffentlichung noch ändern."));
+}
+function vTabelle(r) {
+  var t = $("vTabelle"); t.textContent = "";
+  var kopf = el("thead"), zk = el("tr");
+  ["Monat", "Index", "Vormonat", "Vorjahresmonat"].forEach(function (x) { zk.appendChild(el("th", null, x)); });
+  kopf.appendChild(zk); t.appendChild(kopf);
+  var tb = el("tbody"), ende = vEnde(r);
+  for (var i = 0; i < 13; i++) {
+    var m = mPlus(ende, -i), w = vWert(r, m);
+    if (w == null) break;
+    var vm = vWert(r, mPlus(m, -1)), vj = vWert(r, mPlus(m, -12)), z = el("tr");
+    var c1 = el("td", null, mText(m)); if (vorl(m)) c1.appendChild(el("span", "vorl", " vorl."));
+    z.appendChild(c1);
+    z.appendChild(el("td", null, iw(w)));
+    z.appendChild(el("td", null, vm != null ? proz((w / vm - 1) * 100) : "–"));
+    z.appendChild(el("td", null, vj != null ? proz((w / vj - 1) * 100) : "–"));
+    tb.appendChild(z);
+  }
+  t.appendChild(tb);
+  $("vTabTitel").textContent = "Letzte Werte im " + r.n;
+}
+
+if (W) $("footer").appendChild(el("p", null, "Wohnbauträger Wien: Veröffentlichungen der Stadt Wien auf data.gv.at, Stand " + fmt(W.stand) + "."));
+if (W && W.gbs) $("footer").appendChild(el("p", null, "Gemeindebauten: Stadt Wien – Wiener Wohnen, Datensatz „Gemeindebauten“, Lizenz CC BY 3.0 AT."));
+if (V) $("footer").appendChild(el("p", null, "Verbraucherpreisindex: Statistik Austria, Lizenz CC BY 4.0, Stand " + fmt(V.stand) + "."));
+
+render();
+zeichneNeu();
+vonHash();
+window.addEventListener("hashchange", vonHash);
+})();
+</script>
+</body>
+</html>

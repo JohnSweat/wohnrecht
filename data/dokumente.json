@@ -1,0 +1,45 @@
+{
+ "_hinweis": "Von Hand gepflegte Links zu Hintergrunddokumenten (alle über data.gv.at gefunden). ort: vpi = beim Indexrechner, wien = Rubrik Wohnbauträger Wien. Links werden nicht automatisch geprüft; den Stand bei Gelegenheit kontrollieren.",
+ "dokumente": [
+  {
+   "ort": "vpi",
+   "titel": "Stellungnahme der Stadt Wien zum Entwurf des Mieten-Wertsicherungsgesetzes (MieWeG)",
+   "datum": "2025-11-27",
+   "datensatz": "https://www.data.gv.at/datasets/5545df0a-1137-4bf3-9b9c-4de445d3b662?locale=de",
+   "datei": "https://dms.wien.gv.at/share/ifg/OGEwZjEwZmEtOGU2NS00YzQ0LWE4ODMtNzAxODUxNWJlOGJlLWU1ZjMyYjg5LWM3ZjgtNDk1ZC04MDM0LTA5ZDMzMTZjYmQ4NQ",
+   "art": "PDF"
+  },
+  {
+   "ort": "wien",
+   "titel": "Rechtsgutachten zur Verrechnung von Wärme- und Kälteversorgungskosten aus nicht-fossilen Anlagen (Niederhuber & Partner, für die Stadt Wien)",
+   "datum": "2025-11-20",
+   "datensatz": "https://www.data.gv.at/datasets/0a5fc8c8-e207-4e22-868b-20d72e093bc6?locale=de",
+   "datei": "https://www.wien.gv.at/spezial/studien/ma20/nhprechtsgutachten2025.pdf",
+   "art": "PDF"
+  },
+  {
+   "ort": "wien",
+   "titel": "Leitfaden zum Gutachten „Wärme- und Kältekosten verrechnen“",
+   "datum": "2025-11-26",
+   "datensatz": "https://www.data.gv.at/datasets/c3375ed0-e4b5-45d9-8707-ed8fe8ac56f4?locale=de",
+   "datei": "https://dms.wien.gv.at/share/ifg/ODQ4YjFkYWItNGJkZi00MTRiLWI0MmUtOWYyMjlhNTFhNzE1LTc4N2FkM2RhLWQxNDgtNDdkMy04MTE5LTg2Mjk3Y2I4Y2ZkZQ",
+   "art": "PDF"
+  },
+  {
+   "ort": "wien",
+   "titel": "Berichtsstandard Wohnbauförderung 2023 (Stadt Wien, MA 50)",
+   "datum": "2025-11-20",
+   "datensatz": "https://www.data.gv.at/datasets/405762d0-8a7f-4aed-be2a-0cce89c5701f?locale=de",
+   "datei": "https://www.wien.gv.at/spezial/studien/ma50/berichtsstandardwohnbaufoerderung2023.pdf",
+   "art": "PDF"
+  },
+  {
+   "ort": "wien",
+   "titel": "Berichte des Stadtrechnungshofs Wien seit 2016 (Suche z. B. nach „Wiener Wohnen“ oder „Wohnbauförderung“)",
+   "datum": null,
+   "datensatz": "https://www.data.gv.at/datasets/3864245f-e10d-412d-9901-e0b31b9e5327?locale=de",
+   "datei": "https://stadtrechnungshof.wien.gv.at/",
+   "art": "Website"
+  }
+ ]
+}

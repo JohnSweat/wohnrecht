@@ -1,0 +1,141 @@
+name: Aktualisieren
+
+on:
+  schedule:
+    # Täglicher Anstoß um 05:17 UTC; ob wirklich aktualisiert wird, entscheidet der Job "faellig" (unten).
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+    inputs:
+      voll:
+        description: "RIS-Bestand komplett neu laden (ab 2005)"
+        type: boolean
+        default: false
+      debug:
+        description: "Für so viele Förderzusagen die ausgelesenen Felder ins Protokoll schreiben"
+        type: string
+        default: "0"
+      nachladen:
+        description: "Einmalig: Entscheidungsart aus allen Entscheidungstexten ab 2005 nachladen (ca. 15 Minuten)"
+        type: boolean
+        default: false
+      diagnose:
+        description: "Nur RIS-Feldstatistik ins Protokoll (ändert nichts)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: aktualisieren
+  cancel-in-progress: false
+
+jobs:
+  # GitHub startet Zeitpläne nur nach bestem Bemühen: Läufe kommen verspätet oder fallen ganz aus, besonders bei
+  # neuen Repositories (der erste Montagslauf am 23.11.2026 kam nie). Deshalb stößt der Zeitplan täglich an,
+  # gerechnet wird aber nur montags oder wenn die letzte erfolgreiche RIS-Abfrage 7 oder mehr Tage zurückliegt.
+  # So holt der nächste Tag einen ausgefallenen Montag nach, und ein gescheiterter RIS-Abruf wird täglich wiederholt.
+  # Von Hand gestartet läuft der Ablauf immer.
+  faellig:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      ja: ${{ steps.pruefen.outputs.ja }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - id: pruefen
+        env:
+          ANLASS: ${{ github.event_name }}
+        run: |
+          python3 - >> "$GITHUB_OUTPUT" <<'EOF'
+          import datetime, json, os, sys
+          heute = datetime.datetime.now(datetime.timezone.utc).date()
+          try:
+              stand = datetime.date.fromisoformat(json.load(open("data/ris.json", encoding="utf-8"))["stand"][:10])
+              tage = (heute - stand).days
+          except (OSError, ValueError, KeyError, TypeError):
+              stand, tage = None, 999
+          ja = os.environ["ANLASS"] != "schedule" or heute.isoweekday() == 1 or tage >= 7
+          print(f"Anlass {os.environ['ANLASS']}, letzte RIS-Abfrage {stand} (vor {tage} Tagen) -> "
+                f"{'aktualisieren' if ja else 'noch nicht fällig'}", file=sys.stderr)
+          print("ja=" + ("true" if ja else "false"))
+          EOF
+
+  aktualisieren:
+    needs: faellig
+    if: needs.faellig.outputs.ja == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: RIS-Diagnose
+        if: inputs.diagnose
+        run: python scripts/abruf.py --diagnose
+
+      - name: Werkzeug zum Auslesen von PDFs
+        if: ${{ !inputs.diagnose }}
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+
+      - name: OGH-Entscheidungen (RIS und ogh.gv.at)
+        id: ris
+        if: ${{ !inputs.diagnose }}
+        continue-on-error: true
+        run: python scripts/abruf.py ${{ inputs.voll && '--voll' || '' }} ${{ inputs.nachladen && '--nachladen' || '' }}
+
+      # Die Texte der Förderzusagen (PDF) liegen nicht im Repo, sondern im Zwischenspeicher von GitHub Actions.
+      # Fehlt er, lädt wien.py die PDFs neu.
+      - name: Zwischenspeicher PDF-Texte laden
+        if: ${{ !inputs.diagnose }}
+        uses: actions/cache@v6
+        with:
+          path: data/cache/wien_texte
+          key: wien-texte-${{ github.run_id }}
+          restore-keys: wien-texte-
+
+      - name: Wohnbauträger Wien (data.gv.at)
+        id: wien
+        if: ${{ !inputs.diagnose }}
+        continue-on-error: true
+        run: python scripts/wien.py --debug "${{ inputs.debug || '0' }}"
+
+      - name: Verbraucherpreisindex (Statistik Austria)
+        id: vpi
+        if: ${{ !inputs.diagnose }}
+        continue-on-error: true
+        run: python scripts/vpi.py
+
+      - name: Seite bauen
+        if: ${{ !inputs.diagnose }}
+        run: python scripts/seite_bauen.py
+
+      - name: Änderungen speichern
+        if: ${{ !inputs.diagnose }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data dist docs
+          if git diff --cached --quiet; then
+            echo "Keine Änderungen."
+          else
+            git commit -q -m "Daten aktualisiert $(date -u +%F)"
+            git push
+          fi
+
+      - name: Benachrichtigung bei neuen Entscheidungen
+        if: hashFiles('neu.md') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue create --title "Neue OGH-Entscheidungen zum Wohnrecht – $(date -u +%d.%m.%Y)" --body-file neu.md
+
+      - name: Fehler melden
+        if: steps.ris.outcome == 'failure' || steps.wien.outcome == 'failure' || steps.vpi.outcome == 'failure'
+        run: |
+          echo "Ein Abruf ist fehlgeschlagen (RIS: ${{ steps.ris.outcome }}, Wien: ${{ steps.wien.outcome }}, VPI: ${{ steps.vpi.outcome }}). Details oben im Protokoll."
+          exit 1

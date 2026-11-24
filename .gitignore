@@ -1,0 +1,6 @@
+neu.md
+__pycache__/
+*.tmp
+.DS_Store
+# Texte der Förderzusagen: nur im Zwischenspeicher von GitHub Actions (enthalten u. U. Namen)
+data/cache/wien_texte/
