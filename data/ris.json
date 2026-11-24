@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-23",
+ "stand": "2026-11-24",
  "quelle": "Rechtsinformationssystem des Bundes (RIS), CC BY 4.0",
  "aufbau": "Entscheidungen aus den Ketten der Rechtssätze",
  "normen": [
@@ -10677,8 +10677,8 @@
    ],
    "rs": [
     "RS0027764",
-    "RS0122970",
     "RS0122971",
+    "RS0122970",
     "RS0069990"
    ],
    "schlagworte": null,
@@ -10687,8 +10687,8 @@
     "RS0069990": "Auch; Beisatz: Ist eine „erhaltende\" Sanierung ausgeschlossen und sind praktisch einem Neubau gleichkommende Maßnahmen erforderlich, was zum „rechtlichen Untergang\" des Mietobjekts im Sinn des § 29 Abs 1 Z 2 MRG iVm § 1112 ABGB führt, dann kann sich der Bestandnehmer infolge Beendigung des Bestandverhältnisses nicht mehr erfolgreich auf § 3 Abs 3 Z 2 MRG berufen. (T2)"
    },
    "rss": [
-    "RS0122970",
-    "RS0122971"
+    "RS0122971",
+    "RS0122970"
    ],
    "neu_ab": "2008-01-08",
    "veroeffentlicht": "2008-02-07"
@@ -21552,8 +21552,8 @@
     "RS0121431",
     "RS0069807",
     "RS0069698",
-    "RS0070742",
-    "RS0070703"
+    "RS0070703",
+    "RS0070742"
    ],
    "schlagworte": null,
    "rsa": {
@@ -21566,8 +21566,8 @@
     "RS0121431": "Vgl; Bem: Hier: Mietvertragsklausel, bei welcher insbesondere durch die zweimalige Verwendung des Wortes „etc\" unklar bleibt, welche Aufwendungen „Bewirtschaftskosten\" darstellen. (T1)",
     "RS0069807": "Auch; Bem: Hier: Zulässigkeit von Mietvertragsklauseln. (T2)",
     "RS0069698": "Auch; Bem: Hier: Zulässigkeit von Mietvertragsklauseln. (T4)",
-    "RS0070742": "Vgl auch; Bem: Hier: Zulässigkeit von Mietvertragsklauseln. (T1)",
-    "RS0070703": "Vgl auch; Bem: Hier: Zulässigkeit von Mietvertragsklauseln. (T1)"
+    "RS0070703": "Vgl auch; Bem: Hier: Zulässigkeit von Mietvertragsklauseln. (T1)",
+    "RS0070742": "Vgl auch; Bem: Hier: Zulässigkeit von Mietvertragsklauseln. (T1)"
    },
    "rss": [
     "RS0125597"
@@ -23002,8 +23002,8 @@
    "rs": [
     "RS0125842",
     "RS0116236",
-    "RS0125841",
-    "RS0125840"
+    "RS0125840",
+    "RS0125841"
    ],
    "schlagworte": null,
    "rsa": {
@@ -23012,8 +23012,8 @@
    },
    "rss": [
     "RS0125842",
-    "RS0125841",
-    "RS0125840"
+    "RS0125840",
+    "RS0125841"
    ],
    "neu_ab": "2010-03-25",
    "veroeffentlicht": "2010-06-10"
@@ -23094,9 +23094,9 @@
     "MRG §16 Abs2",
     "MRG §13 Abs3 Satz2",
     "MRG §46 Abs2",
+    "MRG §18 Abs1",
     "MRG §15a",
     "MRG §20 Abs1 Z1 litc",
-    "MRG §18 Abs1",
     "MRG §18 ff",
     "MRG §37 Abs3 Z3",
     "WEG 2002 §32"
@@ -23108,9 +23108,9 @@
     "RS0070204",
     "RS0069757",
     "RS0069638",
-    "RS0125899",
-    "RS0125901",
     "RS0125900",
+    "RS0125901",
+    "RS0125899",
     "RS0070018",
     "RS0070031"
    ],
@@ -23126,9 +23126,9 @@
     "RS0070031": "Vgl; Beis ähnlich wie T1"
    },
    "rss": [
-    "RS0125899",
+    "RS0125900",
     "RS0125901",
-    "RS0125900"
+    "RS0125899"
    ],
    "neu_ab": "2010-03-25",
    "veroeffentlicht": "2010-06-13"
@@ -23543,8 +23543,8 @@
     "RS0069855",
     "RS0042216",
     "RS0122133",
-    "RS0126484",
     "RS0126483",
+    "RS0126484",
     "RS0042145",
     "RS0042218"
    ],
@@ -23553,14 +23553,14 @@
     "RS0069855": "Auch; Beis wie T1; Bem: Hier: Verfahren nach § 37 Abs 1 Z 9, 12 MRG auf Feststellung des Verteilungsschlüssels, der Höhe einzelner Betriebskostenposten und der Qualifikation als solche. (T10)",
     "RS0042216": "Vgl auch",
     "RS0122133": "Auch; Veröff: SZ 2010/153",
-    "RS0126484": "Veröff: SZ 2010/153",
     "RS0126483": "Veröff: SZ 2010/153",
+    "RS0126484": "Veröff: SZ 2010/153",
     "RS0042145": "Beisatz: Die neue, durch das AußStrG 2005 geschaffene Rechtslage steht der Aufrechterhaltung der bisherigen Judikatur des erkennenden Senats, die die in der Nichtbeteiligung eines Hauptmieters gelegene Verletzung des Parteiengehörs dann als saniert ansieht, wenn er nach Zustellung der Sachentscheidung kein zulässiges Rechtsmittel erhebt (5 Ob 53/90; 5 Ob 23/01w), oder wenn alle übergangenen Hauptmieter ausdrücklich den Stand des Verfahrens genehmigen und erklären, sich durch den Ausschluss von einem Vorbringen in erster Instanz nicht beschwert zu halten (5 Ob 70/89), nicht entgegen. Schließlich ist mit Rücksicht auf § 58 Abs 2 AußStrG davon auszugehen, dass auch eine Beteiligung am Rechtsmittelverfahren ohne Geltendmachung der Gehörverletzung deren Heilung bedeutet. (T2)",
     "RS0042218": "Vgl; Beisatz: Die neue, durch das AußStrG 2005 geschaffene Rechtslage steht der Aufrechterhaltung der bisherigen Judikatur des erkennenden Senats, die die in der Nichtbeteiligung eines Hauptmieters gelegene Verletzung des Parteiengehörs dann als saniert ansieht, wenn er nach Zustellung der Sachentscheidung kein zulässiges Rechtsmittel erhebt (5 Ob 53/90; 5 Ob 23/01w), oder wenn alle übergangenen Hauptmieter ausdrücklich den Stand des Verfahrens genehmigen und erklären, sich durch den Ausschluss von einem Vorbringen in erster Instanz nicht beschwert zu halten (5 Ob 70/89), nicht entgegen. Schließlich ist mit Rücksicht auf § 58 Abs 2 AußStrG davon auszugehen, dass auch eine Beteiligung am Rechtsmittelverfahren ohne Geltendmachung der Gehörverletzung deren Heilung bedeutet. (T1)"
    },
    "rss": [
-    "RS0126484",
-    "RS0126483"
+    "RS0126483",
+    "RS0126484"
    ],
    "neu_ab": "2010-04-20",
    "veroeffentlicht": "2011-01-28"
@@ -25231,15 +25231,15 @@
     "MRG §9",
     "WEG §16 Abs2 Z2",
     "MRG §39",
-    "AußStrG 2005 §36",
-    "MRG §37 Abs1 Z6",
     "AußStrG 2005 §36 Abs3",
     "AußStrG 2005 §36 Abs4",
     "AußStrG 2005 §57 Z4",
     "AußStrG 2005 §66 Abs1 Z2 AIIA2",
     "MRG §37",
     "WEG 2002 §52",
-    "WGG 1979 §22"
+    "WGG 1979 §22",
+    "AußStrG 2005 §36",
+    "MRG §37 Abs1 Z6"
    ],
    "rs": [
     "RS0113606",
@@ -25250,8 +25250,8 @@
     "RS0126244",
     "RS0070401",
     "RS0069704",
-    "RS0126245",
     "RS0126243",
+    "RS0126245",
     "RS0069771"
    ],
    "schlagworte": null,
@@ -25268,8 +25268,8 @@
    },
    "rss": [
     "RS0126244",
-    "RS0126245",
-    "RS0126243"
+    "RS0126243",
+    "RS0126245"
    ],
    "neu_ab": "2010-09-23",
    "veroeffentlicht": "2010-11-26"
@@ -25547,17 +25547,17 @@
    "art": null,
    "url": "https://ogd.ris.bka.gv.at/Dokument.wxe?Abfrage=Justiz&Dokumentnummer=JJT_20101021_OGH0002_0020OB00050_10G0000_000",
    "normen": [
-    "ABGB §936 III",
-    "MRG §16 Abs8"
+    "MRG §16 Abs8",
+    "ABGB §936 III"
    ],
    "rs": [
-    "RS0126358",
-    "RS0126359"
+    "RS0126359",
+    "RS0126358"
    ],
    "schlagworte": null,
    "rss": [
-    "RS0126358",
-    "RS0126359"
+    "RS0126359",
+    "RS0126358"
    ],
    "neu_ab": "2010-10-21",
    "veroeffentlicht": "2010-06-25"
@@ -26127,7 +26127,6 @@
     "MRG §9 Abs1 Z5",
     "MRG §9 Abs1 Z6",
     "MRG §9 Abs2 Z5",
-    "MRG §9 Abs1",
     "EG Amsterdam Art28",
     "EG Amsterdam Art49",
     "EGV Maastricht Art30",
@@ -26135,19 +26134,20 @@
     "MRG §9",
     "MRK Art10 II4",
     "MRG allg",
-    "GRC Art11"
+    "GRC Art11",
+    "MRG §9 Abs1"
    ],
    "rs": [
     "RS0113606",
     "RS0069725",
-    "RS0118671",
     "RS0118670",
+    "RS0118671",
     "RS0109368"
    ],
    "schlagworte": null,
    "rsa": {
-    "RS0118671": "Beisatz: Die Rechtsprechung (5 Ob 199/03f) anerkennt das Grundrecht auf Informationsfreiheit ganz allgemein, sodass nicht nur „Zuwanderern“ oder Personen, die sich eine für den Beruf angeeignete besondere Bildung nach ihrer Pensionierung erhalten wollen, ein gegenüber dem Hauseigentümer durchsetzbares Recht auf Nutzung der Empfangsmöglichkeiten einer Parabolantenne zu gewähren ist. (T1); Beisatz: Ob die Voraussetzungen für die Duldungspflicht des Vermieters gegeben sind, hängt von den besonderen Umständen des Einzelfalls ab. (T2)",
     "RS0118670": "Vgl; Beisatz: Die Rechtsprechung (5 Ob 199/03f) anerkennt das Grundrecht auf Informationsfreiheit ganz allgemein, sodass nicht nur „Zuwanderern“ oder Personen, die sich eine für den Beruf angeeignete besondere Bildung nach ihrer Pensionierung erhalten wollen, ein gegenüber dem Hauseigentümer durchsetzbares Recht auf Nutzung der Empfangsmöglichkeiten einer Parabolantenne zu gewähren ist. (T1); Beisatz: Ob die Voraussetzungen für die Duldungspflicht des Vermieters gegeben sind, hängt von den besonderen Umständen des Einzelfalls ab. (T2)",
+    "RS0118671": "Beisatz: Die Rechtsprechung (5 Ob 199/03f) anerkennt das Grundrecht auf Informationsfreiheit ganz allgemein, sodass nicht nur „Zuwanderern“ oder Personen, die sich eine für den Beruf angeeignete besondere Bildung nach ihrer Pensionierung erhalten wollen, ein gegenüber dem Hauseigentümer durchsetzbares Recht auf Nutzung der Empfangsmöglichkeiten einer Parabolantenne zu gewähren ist. (T1); Beisatz: Ob die Voraussetzungen für die Duldungspflicht des Vermieters gegeben sind, hängt von den besonderen Umständen des Einzelfalls ab. (T2)",
     "RS0109368": "Beis wie T3 nur: Die Errichtung einer Satellitenempfangsanlage kann einem Mieter nicht allein mit dem Argument verwehrt werden, ihm stehe ohnehin die Möglichkeit des Anschlusses an ein im Haus bereits vorhandenes Telekabel offen. (T4); Beisatz: Die Rechtsprechung (5 Ob 199/03f) anerkennt das Grundrecht auf Informationsfreiheit ganz allgemein, sodass nicht nur „Zuwanderern“ oder Personen, die sich eine für den Beruf angeeignete besondere Bildung nach ihrer Pensionierung erhalten wollen, ein gegenüber dem Hauseigentümer durchsetzbares Recht auf Nutzung der Empfangsmöglichkeiten einer Parabolantenne zu gewähren ist. (T5); Beisatz: Ob die Voraussetzungen für die Duldungspflicht des Vermieters gegeben sind, hängt von den besonderen Umständen des Einzelfalls ab. (T6)"
    },
    "neu_ab": "2010-11-16",
@@ -27115,23 +27115,23 @@
     "WEG 2002 §52 Abs2",
     "WGG 1979 §22 Abs4",
     "ZPO §52 Abs1",
-    "MRG §17 Abs2",
-    "MRG §17"
+    "MRG §17",
+    "MRG §17 Abs2"
    ],
    "rs": [
     "RS0123011",
-    "RS0126601",
-    "RS0126602"
+    "RS0126602",
+    "RS0126601"
    ],
    "schlagworte": null,
    "rsa": {
     "RS0123011": "Vgl; Beis wie T1; Veröff: SZ 2011/15",
-    "RS0126601": "Veröff: SZ 2011/15",
-    "RS0126602": "Veröff: SZ 2011/15"
+    "RS0126602": "Veröff: SZ 2011/15",
+    "RS0126601": "Veröff: SZ 2011/15"
    },
    "rss": [
-    "RS0126601",
-    "RS0126602"
+    "RS0126602",
+    "RS0126601"
    ],
    "neu_ab": "2011-02-09",
    "veroeffentlicht": "2011-03-07"
@@ -27216,8 +27216,8 @@
     "RS0124474",
     "RS0070470",
     "RS0110522",
-    "RS0126630",
-    "RS0126629"
+    "RS0126629",
+    "RS0126630"
    ],
    "schlagworte": null,
    "rsa": {
@@ -27226,12 +27226,12 @@
     "RS0124474": "nur T2; Veröff: SZ 2011/20",
     "RS0070470": "Auch; nur T7; Veröff: SZ 2011/20",
     "RS0110522": "Auch; Beis wie T4 nur: Bei der angemessenen Berücksichtigung des Verbesserungsaufwandes ist dem Gericht ein weiter Beurteilungsspielraum gegeben. (T6); Veröff: SZ 2011/20",
-    "RS0126630": "Veröff: SZ 2011/20",
-    "RS0126629": "Veröff: SZ 2011/20"
+    "RS0126629": "Veröff: SZ 2011/20",
+    "RS0126630": "Veröff: SZ 2011/20"
    },
    "rss": [
-    "RS0126630",
-    "RS0126629"
+    "RS0126629",
+    "RS0126630"
    ],
    "neu_ab": "2011-02-22",
    "veroeffentlicht": "2011-03-24"
@@ -32130,15 +32130,15 @@
     "MRG §35 Abs1",
     "ABGB §1041 CIII",
     "ABGB §879 BIIg",
+    "ABGB §1098 IId",
+    "MRG §9",
     "KSchG §9",
-    "ABGB §1098 IIb",
     "ABGB §1096 Abs1 Satz2 A2",
     "ABGB §1096 Abs1 Satz2 C",
     "ABGB §1096 Abs1 Satz3 A2",
     "ABGB §1096 Abs1 Satz3 C",
     "KSchG §28 Abs1",
-    "ABGB §1098 IId",
-    "MRG §9",
+    "ABGB §1098 IIb",
     "WEG 1975 §14 Abs1 Z1"
    ],
    "rs": [
@@ -32158,10 +32158,10 @@
     "RS0127703",
     "RS0030286",
     "RS0122542",
-    "RS0127698",
-    "RS0127700",
-    "RS0127697",
     "RS0127699",
+    "RS0127698",
+    "RS0127697",
+    "RS0127700",
     "RS0116140"
    ],
    "schlagworte": null,
@@ -32182,19 +32182,19 @@
     "RS0127703": "Veröff: SZ 2012/20",
     "RS0030286": "Vgl; Beisatz: Kommt die Fiktion gemäß § 34 Abs 2, § 35 Abs 1 MRG zum Tragen, hat der Vermieter für deren Dauer weiterhin Anspruch auf den vertraglichen Mietzins, für die Zeit einer allfälligen weiteren titellosen Benützung auf Zahlung eines auf § 1041 ABGB gestützten Benützungsentgelts. (T2); Auch Beis wie T1<br/>Veröff: SZ 2012/20",
     "RS0122542": "Vgl aber; Vgl Beis wie T2<br/>Veröff: SZ 2012/20",
-    "RS0127698": "Veröff: SZ 2012/20",
-    "RS0127700": "Veröff: SZ 2012/20",
-    "RS0127697": "Beisatz: Da die Klausel ‑ bei „kundenfeindlichster“ Auslegung - auch eine Einschränkung der Erhaltungspflicht des Vermieters im Vollanwendungsbereich enthält, verstößt sie zusätzlich gegen § 3 Abs 2 Z 1 MRG. (T1)<br/>Bem: Klausel 18. (T2)<br/>Veröff: SZ 2012/20",
     "RS0127699": "Veröff: SZ 2012/20",
+    "RS0127698": "Veröff: SZ 2012/20",
+    "RS0127697": "Beisatz: Da die Klausel ‑ bei „kundenfeindlichster“ Auslegung - auch eine Einschränkung der Erhaltungspflicht des Vermieters im Vollanwendungsbereich enthält, verstößt sie zusätzlich gegen § 3 Abs 2 Z 1 MRG. (T1)<br/>Bem: Klausel 18. (T2)<br/>Veröff: SZ 2012/20",
+    "RS0127700": "Veröff: SZ 2012/20",
     "RS0116140": "Auch<br/>Veröff: SZ 2012/20"
    },
    "rss": [
     "RS0127701",
     "RS0127703",
+    "RS0127699",
     "RS0127698",
-    "RS0127700",
     "RS0127697",
-    "RS0127699"
+    "RS0127700"
    ],
    "neu_ab": "2012-02-27",
    "veroeffentlicht": "2026-06-17"
@@ -43058,8 +43058,8 @@
     "RS0070485",
     "RS0116912",
     "RS0116942",
-    "RS0117376",
-    "RS0117374"
+    "RS0117374",
+    "RS0117376"
    ],
    "schlagworte": null,
    "rsa": {
@@ -45019,13 +45019,13 @@
    ],
    "rs": [
     "RS0069690",
-    "RS0117532",
-    "RS0117533"
+    "RS0117533",
+    "RS0117532"
    ],
    "schlagworte": null,
    "rsa": {
-    "RS0117532": "Auch; Beisatz: Reinigung der Dachrinne von Laub, Schutt und Taubenkot. (T1)",
-    "RS0117533": "Auch; Beisatz: Reinigung der Dachrinne von Laub, Schutt und Taubenkot. (T1)<br/>"
+    "RS0117533": "Auch; Beisatz: Reinigung der Dachrinne von Laub, Schutt und Taubenkot. (T1)<br/>",
+    "RS0117532": "Auch; Beisatz: Reinigung der Dachrinne von Laub, Schutt und Taubenkot. (T1)"
    },
    "neu_ab": "2015-02-24",
    "veroeffentlicht": "2015-05-16"
@@ -48262,25 +48262,25 @@
     "MRG §18a",
     "MRG §19 Abs3",
     "MRG §18",
-    "MRG §18b",
     "MRG §37 Abs1 Z10",
-    "MRG §18a Abs2"
+    "MRG §18a Abs2",
+    "MRG §18b"
    ],
    "rs": [
     "RS0070476",
     "RS0070224",
-    "RS0130414",
     "RS0130413",
-    "RS0130415"
+    "RS0130415",
+    "RS0130414"
    ],
    "schlagworte": null,
    "rsa": {
     "RS0070476": "Auch; Beis wie T13"
    },
    "rss": [
-    "RS0130414",
     "RS0130413",
-    "RS0130415"
+    "RS0130415",
+    "RS0130414"
    ],
    "neu_ab": "2015-10-30",
    "veroeffentlicht": "2015-12-19"
@@ -48303,20 +48303,20 @@
     "RS0111820",
     "RS0111201",
     "RS0114796",
-    "RS0130401",
-    "RS0130402"
+    "RS0130402",
+    "RS0130401"
    ],
    "schlagworte": null,
    "rsa": {
     "RS0111820": "Auch; Beis wie T2; Veröff: SZ 2015/122",
     "RS0111201": "Auch; Veröff: SZ 2015/122",
     "RS0114796": "Veröff: SZ 2015/122",
-    "RS0130401": "Veröff: SZ 2015/122",
-    "RS0130402": "Veröff: SZ 2015/122"
+    "RS0130402": "Veröff: SZ 2015/122",
+    "RS0130401": "Veröff: SZ 2015/122"
    },
    "rss": [
-    "RS0130401",
-    "RS0130402"
+    "RS0130402",
+    "RS0130401"
    ],
    "neu_ab": "2015-10-30",
    "veroeffentlicht": "2015-12-01"
@@ -56873,8 +56873,8 @@
     "RS0070593",
     "RS0068242",
     "RS0131980",
-    "RS0131982",
     "RS0131981",
+    "RS0131982",
     "RS0070671",
     "RS0070452"
    ],
@@ -56884,15 +56884,15 @@
     "RS0070593": "Beisatz: Hier: 2 getrennte Untermietverträge  (T8)<br/>Veröff: SZ 2018/14",
     "RS0068242": "Beis wie T2; Veröff: SZ 2018/14",
     "RS0131980": "Veröff: SZ 2018/14",
-    "RS0131982": "Veröff: SZ 2018/14",
     "RS0131981": "Veröff: SZ 2018/14",
+    "RS0131982": "Veröff: SZ 2018/14",
     "RS0070671": "Auch; Veröff: SZ 2018/14",
     "RS0070452": "Veröff: SZ 2018/14"
    },
    "rss": [
     "RS0131980",
-    "RS0131982",
-    "RS0131981"
+    "RS0131981",
+    "RS0131982"
    ],
    "neu_ab": "2018-02-21",
    "veroeffentlicht": "2018-03-07"
@@ -65496,16 +65496,16 @@
    ],
    "rs": [
     "RS0034039",
-    "RS0133223",
-    "RS0133222"
+    "RS0133222",
+    "RS0133223"
    ],
    "schlagworte": null,
    "rsa": {
     "RS0034039": "Vgl; Beisatz: Hier: Fiktive Anrechnung unterlassener, aber rechtskräftig bewilligter Einhebung von Erhaltungs‑ und Verbesserungsbeiträgen nach § 14 WGG. (T2)"
    },
    "rss": [
-    "RS0133223",
-    "RS0133222"
+    "RS0133222",
+    "RS0133223"
    ],
    "neu_ab": "2020-07-21",
    "veroeffentlicht": "2020-10-22"
@@ -65519,20 +65519,20 @@
    "art": null,
    "url": "https://ogd.ris.bka.gv.at/Dokument.wxe?Abfrage=Justiz&Dokumentnummer=JJT_20200722_OGH0002_0010OB00064_20Y0000_000",
    "normen": [
-    "ABGB §1112 A",
+    "ABGB §1104",
     "MRG §7",
-    "MRG §29 Abs1 Z2",
-    "ABGB §1104"
+    "ABGB §1112 A",
+    "MRG §29 Abs1 Z2"
    ],
    "rs": [
-    "RS0069313",
     "RS0020787",
+    "RS0069313",
     "RS0118607"
    ],
    "schlagworte": null,
    "rsa": {
-    "RS0069313": "Beisatz: Hier zur Frage, ob der Mietvertrag nach § 29 Abs 1 Z 2 MRG mangels (jedweder) Wiederherstellungspflicht des Vermieters nach § 7 Abs 1 MRG aufgelöst wurde und inwieweit bei einer unzureichenden Versicherungsleistung eine zumindest teilweise (verkleinerte) Wiederherstellung des Mietobjekts zu erfolgen hat. (T1)<br/>Anm.: \tMit historischer Betrachtung des § 7 Abs 1 MRG als Nachfolgebestimmung des § 10 MG und mit eingehender Darstellung der bisherigen Judikatur und Literatur.(T2)",
     "RS0020787": "Beisatz: Vgl auch 5 Ob 304/05z. (T1)<br/>Beisatz: Zur Frage, inwieweit bei einer unzureichenden Versicherungsleistung eine zumindest teilweise Wiederherstellung des Mietobjekts zu erfolgen hat.(T2)<br/>Beisatz: Hier: Möglichkeit der (teilweisen) Wiederherstellung des vollständig abgebrannten Wohnhauses unter Schaffung einer verkleinerten Wohneinheit des Mieters. Abweisung des Feststellungsbegehrens, dass das Mietverhältnis mangels (jedweder) Wiederherstellungspflicht des Vermieters erloschen ist. (T3)<br/>Anm.: \tMit historischer Betrachtung des § 7 Abs 1 MRG als Nachfolgebestimmung des § 10 MG und mit eingehender Darstellung der bisherigen Judikatur und Literatur.(T4)",
+    "RS0069313": "Beisatz: Hier zur Frage, ob der Mietvertrag nach § 29 Abs 1 Z 2 MRG mangels (jedweder) Wiederherstellungspflicht des Vermieters nach § 7 Abs 1 MRG aufgelöst wurde und inwieweit bei einer unzureichenden Versicherungsleistung eine zumindest teilweise (verkleinerte) Wiederherstellung des Mietobjekts zu erfolgen hat. (T1)<br/>Anm.: \tMit historischer Betrachtung des § 7 Abs 1 MRG als Nachfolgebestimmung des § 10 MG und mit eingehender Darstellung der bisherigen Judikatur und Literatur.(T2)",
     "RS0118607": "Vgl; Beisatz: Hier zur Frage, ob der Mietvertrag nach § 29 Abs 1 Z 2 MRG mangels (jedweder) Wiederherstellungspflicht des Vermieters nach § 7 Abs 1 MRG aufgelöst wurde und inwieweit bei einer unzureichenden Versicherungsleistung eine zumindest teilweise (verkleinerte) Wiederherstellung des Mietobjekts zu erfolgen hat. (T1)<br/>Anm.: \tMit historischer Betrachtung des § 7 Abs 1 MRG als Nachfolgebestimmung des § 10 MG und mit eingehender Darstellung der bisherigen Judikatur und Literatur. (T2)<br/>"
    },
    "neu_ab": "2020-07-22",
@@ -72930,8 +72930,8 @@
    ],
    "rs": [
     "RS0027764",
-    "RS0122970",
     "RS0122971",
+    "RS0122970",
     "RS0069990",
     "RS0020813"
    ],

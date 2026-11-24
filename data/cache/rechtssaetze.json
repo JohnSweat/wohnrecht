@@ -6623,14 +6623,14 @@
   "text": "Die von der Verwaltungsbehörde wegen Baugebrechen verfügte Anordnung des Abbruchs der Baulichkeit, die Bestandgegenstand ist oder der sich der Bestandgegenstand befindet, bewirkt nur und erst dann gemäß § 1112 ABGB die Auflösung des Bestandgegenstandes, wenn feststeht, dass die Baugebrechen nicht beseitigt werden können oder vom Bestandgeber nicht beseitigt werden müssen.",
   "geladen": "2026-11-18"
  },
- "RS0122970": {
-  "id": "JJR_20080108_OGH0002_0050OB00192_07G0000_001",
-  "text": "Ein Abbruchauftrag wegen Baugebrechen ist dann endgültig und bindend, wenn entweder die Baugebrechen, die zur Bescheiderlassung geführt haben, aus technischen Gründen nicht behoben werden können oder wenn der Bestandgeber sie nicht behebt und hiezu auch nicht verpflichtet ist.",
-  "geladen": "2026-11-18"
- },
  "RS0122971": {
   "id": "JJR_20080108_OGH0002_0050OB00192_07G0000_002",
   "text": "Ist eine „erhaltende\" Sanierung ausgeschlossen und sind praktisch einem Neubau gleichkommende Maßnahmen erforderlich, was zum „rechtlichen Untergang\" des Mietobjekts im Sinn des § 29 Abs 1 Z 2 MRG iVm § 1112 ABGB führt, dann kann sich der Bestandnehmer infolge Beendigung des Bestandverhältnisses nicht mehr erfolgreich auf § 3 Abs 3 Z 2 MRG berufen.",
+  "geladen": "2026-11-18"
+ },
+ "RS0122970": {
+  "id": "JJR_20080108_OGH0002_0050OB00192_07G0000_001",
+  "text": "Ein Abbruchauftrag wegen Baugebrechen ist dann endgültig und bindend, wenn entweder die Baugebrechen, die zur Bescheiderlassung geführt haben, aus technischen Gründen nicht behoben werden können oder wenn der Bestandgeber sie nicht behebt und hiezu auch nicht verpflichtet ist.",
   "geladen": "2026-11-18"
  },
  "RS0069990": {
@@ -8553,14 +8553,6 @@
   "text": "Dass § 30 Abs 2 Z 4 MRG nur die eigenen Leistungen des Mieters an den Dritten (Untermieter) ausdrücklich erwähnt, schließt die Einbeziehung von Aufwendungen des Untermieters auf den Bestandgegenstand bei der vom Gesetz angeordneten Verhältnismäßigkeitsprüfung nach deren Zweck zwar nicht grundsätzlich aus, doch ist die Interessenlage bei Leistungen des Untermieters in der Regel anders, weil seine Aufwendungen dem Mieter vorläufig nicht zugutekommen und vor Beendigung des Vertrages auch nicht gesagt werden, wie weit sie dann noch für den Mieter von Nutzen sein werden. Zudem steht dem Untermieter gegen den Mieter selbst ohne Vereinbarung ein Anspruch auf Ersatz des notwendigen und nützlichen Aufwandes nach § 1097 ABGB zu; häufig können daher bei der Prüfung des Kündigungsgrundes des § 30 Abs 2 Z 4, zweiter Fall, MRG die Aufwendungen der Untermieter auf das Bestandobjekt unberücksichtigt gelassen werden.",
   "geladen": "2026-11-18"
  },
- "RS0069313": {
-  "id": "JJR_19880315_OGH0002_0050OB00019_8800000_004",
-  "t": {
-   "T1": "Hier zur Frage, ob der Mietvertrag nach § 29 Abs 1 Z 2 MRG mangels (jedweder) Wiederherstellungspflicht des Vermieters nach § 7 Abs 1 MRG aufgelöst wurde und inwieweit bei einer unzureichenden Versicherungsleistung eine zumindest teilweise (verkleinerte) Wiederherstellung des Mietobjekts zu erfolgen hat."
-  },
-  "text": "Sofern eine Wiederherstellungspflicht besteht, wird der Mietvertrag trotz Untergangs des Mietgegenstandes nicht aufgelöst.",
-  "geladen": "2026-11-18"
- },
  "RS0020787": {
   "id": "JJR_19880315_OGH0002_0050OB00019_8800000_001",
   "t": {
@@ -8571,6 +8563,14 @@
   "text": "Kann der durch Zufall unbrauchbar gewordene Mietgegenstand mangels ausreichender Versicherungsleistung nicht zur Gänze wiederhergestellt werden, so ist Teilherstellung geboten, jedoch nur insoweit, als es vom Standpunkt der Brauchbarkeit vernünftig erscheint.",
   "geladen": "2026-11-18"
  },
+ "RS0069313": {
+  "id": "JJR_19880315_OGH0002_0050OB00019_8800000_004",
+  "t": {
+   "T1": "Hier zur Frage, ob der Mietvertrag nach § 29 Abs 1 Z 2 MRG mangels (jedweder) Wiederherstellungspflicht des Vermieters nach § 7 Abs 1 MRG aufgelöst wurde und inwieweit bei einer unzureichenden Versicherungsleistung eine zumindest teilweise (verkleinerte) Wiederherstellung des Mietobjekts zu erfolgen hat."
+  },
+  "text": "Sofern eine Wiederherstellungspflicht besteht, wird der Mietvertrag trotz Untergangs des Mietgegenstandes nicht aufgelöst.",
+  "geladen": "2026-11-18"
+ },
  "RS0118607": {
   "id": "JJR_20031209_OGH0002_0050OB00275_03G0000_001",
   "t": {
@@ -8579,14 +8579,14 @@
   "text": "Ausgenommen bei Mietobjekten nach § 1 Abs 4 und 5 MRG durchbricht § 7 MRG die Vorschrift des § 1112 ABGB über das Erlöschen der Mietverhältnisse durch Untergang der Bestandsache.",
   "geladen": "2026-11-18"
  },
- "RS0133223": {
-  "id": "JJR_20200721_OGH0002_0050OB00115_20B0000_002",
-  "text": "Bei der Berechnung eines allfälligen EVB‑Passivums hat sich die GBV, die verpflichtet ist, EVB vorzuschreiben, einen rechtskräftig bewilligten Erhöhungsbetrag des EVB für die Zwecke der Ermittlung eines Deckungsfehlbetrags im Verfahren nach § 14 Abs 2 WGG soweit anrechnen zu lassen, als sie diesen Erhöhungsbetrag tatsächlich zur Finanzierung von dem Erhöhungsverfahren zugrunde liegenden Erhaltungsarbeiten verwenden hätte können.",
-  "geladen": "2026-11-18"
- },
  "RS0133222": {
   "id": "JJR_20200721_OGH0002_0050OB00115_20B0000_001",
   "text": "Die Berücksichtigung von Beträgen, die zu einem EVB‑Passivum geführt haben, hat bei Berechnung des Deckungserfordernisses in einem Verfahren nach § 14 Abs 2 WGG aF nicht zur Voraussetzung, dass die GBV die in § 14d Abs 4 und 6 WGG aF vorgesehenen Formvorschriften vor Durchführung der vorfinanzierten Erhaltungsarbeiten eingehalten hat. Die GBV hat allerdings zu beweisen, dass sie den EVB im Sinn des § 14d Abs 7 WGG widmungsgemäß für Erhaltungsarbeiten verwendet hat.",
+  "geladen": "2026-11-18"
+ },
+ "RS0133223": {
+  "id": "JJR_20200721_OGH0002_0050OB00115_20B0000_002",
+  "text": "Bei der Berechnung eines allfälligen EVB‑Passivums hat sich die GBV, die verpflichtet ist, EVB vorzuschreiben, einen rechtskräftig bewilligten Erhöhungsbetrag des EVB für die Zwecke der Ermittlung eines Deckungsfehlbetrags im Verfahren nach § 14 Abs 2 WGG soweit anrechnen zu lassen, als sie diesen Erhöhungsbetrag tatsächlich zur Finanzierung von dem Erhöhungsverfahren zugrunde liegenden Erhaltungsarbeiten verwenden hätte können.",
   "geladen": "2026-11-18"
  },
  "RS0118666": {
@@ -10311,14 +10311,14 @@
   "text": "\"Verbesserungsarbeit\" strebt an, aus dem bestehenden Zustand einen besseren, vorteilhafteren, aus verschiedenen Gründen positiver bewerteten zu machen (Krejci in: Korinek-Krejci, Handbuch zum MRG, 238). Dies kann nicht abstrakt, sondern nur unter Berücksichtigung aller im Einzelfall die Erreichung dieses Zustandes fördernden oder hindernden Umstände beurteilt werden.",
   "geladen": "2026-11-18"
  },
- "RS0131982": {
-  "id": "JJR_20180221_OGH0002_0030OB00013_18K0000_003",
-  "text": "Bei der Zurverfügungstellung von Firmendomizilen ohne räumliche Unterbringung handelt es sich schon begrifflich um keine „Überlassung des Mietgegenstands“ iSd § 30 Abs 2 Z 4 MRG.",
-  "geladen": "2026-11-18"
- },
  "RS0131981": {
   "id": "JJR_20180221_OGH0002_0030OB00013_18K0000_002",
   "text": "Wenn der Vermieter dem Mieter die Betriebskosten gemäß § 21 Abs 4 MRG vorschreibt, wäre es nicht sachgerecht, bei der Ermittlung der Höhe der Mietzinszahlung des Beklagten im Zeitpunkt der Aufkündigung nur darauf abzustellen, ob er in diesem Monat Betriebskosten zu zahlen hatte; vielmehr erscheint es geboten, für den Monat der Zustellung der Aufkündigung ein Zwölftel der in den letzten zwölf Monaten vor der Aufkündigung insgesamt vorgeschriebenen Betriebskosten anzusetzen.",
+  "geladen": "2026-11-18"
+ },
+ "RS0131982": {
+  "id": "JJR_20180221_OGH0002_0030OB00013_18K0000_003",
+  "text": "Bei der Zurverfügungstellung von Firmendomizilen ohne räumliche Unterbringung handelt es sich schon begrifflich um keine „Überlassung des Mietgegenstands“ iSd § 30 Abs 2 Z 4 MRG.",
   "geladen": "2026-11-18"
  },
  "RS0070671": {
@@ -11385,11 +11385,6 @@
   "text": "Das Günstigkeitsprinzip des § 21 Abs 1 Z 1 WGG 1979 ist - bezogen auf den Fall einer Preisvereinbarung nach § 15 WGG 1979 - so zu verstehen, dass die Vereinbarung nur dann und insoweit rechtsunwirksam ist, als der Gesamtpreis für die Einräumung von Wohnungseigentum den am Kostendeckungsprinzip orientierten Preisbildungsvorschriften des WGG 1979 widerspricht.",
   "geladen": "2026-11-18"
  },
- "RS0130414": {
-  "id": "JJR_20151030_OGH0002_0050OB00006_15S0000_002",
-  "text": "Es steht im Verfahren nach § 18a MRG der Berücksichtigung möglicher Förderungsmittel bei Bestimmung des monatlichen Deckungserfordernisses im Rahmen der vorläufigen Mietzinserhöhung nicht entgegen, dass diese bloß in Aussicht gestellt aber noch nicht verbindlich zugesichert wurden. Anderes gilt allerdings im Verfahren nach § 18b MRG, in dem die Förderung von Sanierungsmaßnahmen durch das Wohnhaussanierungsgesetz Voraussetzung für deren Berücksichtigung als Erhaltungsarbeit ist.",
-  "geladen": "2026-11-18"
- },
  "RS0130413": {
   "id": "JJR_20151030_OGH0002_0050OB00006_15S0000_001",
   "text": "Im Verfahren wegen Erhöhung der Hauptmietzinse gemäß § 37 Abs 1 Z 10 MRG ist vom Gericht nur zu prüfen, ob die gesetzlichen Voraussetzungen im Sinne der §§ 18, 18a, 18b und 19 MRG vorliegen. Allfällige (angeblich) der Durchführung von Erhaltungsarbeiten entgegenstehende privatrechtliche Vereinbarungen sind nicht zu prüfen (Würth/Zingher/Kovanyi, Miet‑ und Wohnrecht23 Band I § 37 MRG Rz 5). [hier: Mietermitbestimmungsstatut]",
@@ -11400,14 +11395,19 @@
   "text": "Die Verpflichtungserklärung gemäß § 18a Abs 2 MRG kann wirksam auch durch einen mit Prozessvollmacht ausgestatteten Vertreter erfolgen.",
   "geladen": "2026-11-18"
  },
- "RS0130401": {
-  "id": "JJR_20151030_OGH0002_0050OB00099_15T0000_001",
-  "text": "Die Verweigerung oder gezielte Verzögerung notwendiger Terminvereinbarungen durch den Mieter ist einer Verweigerung des Zugangs zum Mietobjekt gleichzuhalten, sodass der auf ein solches Verhalten zurückzuführende Zeitverlust sowohl bei der Prüfung der zeitlichen Angemessenheit als auch der absoluten Frist einer Mängelbehebung zu berücksichtigen und zugunsten des Vermieters auszuklammern ist.",
+ "RS0130414": {
+  "id": "JJR_20151030_OGH0002_0050OB00006_15S0000_002",
+  "text": "Es steht im Verfahren nach § 18a MRG der Berücksichtigung möglicher Förderungsmittel bei Bestimmung des monatlichen Deckungserfordernisses im Rahmen der vorläufigen Mietzinserhöhung nicht entgegen, dass diese bloß in Aussicht gestellt aber noch nicht verbindlich zugesichert wurden. Anderes gilt allerdings im Verfahren nach § 18b MRG, in dem die Förderung von Sanierungsmaßnahmen durch das Wohnhaussanierungsgesetz Voraussetzung für deren Berücksichtigung als Erhaltungsarbeit ist.",
   "geladen": "2026-11-18"
  },
  "RS0130402": {
   "id": "JJR_20151030_OGH0002_0050OB00099_15T0000_002",
   "text": "Die Frage der Witterung hat bei der Beurteilung der Angemessenheit der Mängelbehebungsdauer Berücksichtigung zu finden, rechtfertigt als solche aber die Überschreitung der absoluten, selbst bei umfänglichen und/oder schwierigen Sanierungen nicht überschreitbaren Höchstfrist nicht.",
+  "geladen": "2026-11-18"
+ },
+ "RS0130401": {
+  "id": "JJR_20151030_OGH0002_0050OB00099_15T0000_001",
+  "text": "Die Verweigerung oder gezielte Verzögerung notwendiger Terminvereinbarungen durch den Mieter ist einer Verweigerung des Zugangs zum Mietobjekt gleichzuhalten, sodass der auf ein solches Verhalten zurückzuführende Zeitverlust sowohl bei der Prüfung der zeitlichen Angemessenheit als auch der absoluten Frist einer Mängelbehebung zu berücksichtigen und zugunsten des Vermieters auszuklammern ist.",
   "geladen": "2026-11-18"
  },
  "RS0069713": {
@@ -11718,20 +11718,20 @@
   "text": "Tragender Gedanke des Rechtes des Vermieters auf Mietzinserhöhung ist der Übergang von der kriegsbedingten und nachkriegsbedingten Wohnungsbewirtschaftung und Geschäftsraumbewirtschaftung zu einer marktwirtschaftlichen Ordnung des Mietwesens. In bestehende Vertragsverhältnisse wird jedoch nur eingegriffen, wenn die Person des bisherigen Mieters mit demjenigen, der das Unternehmen in den gemieteten Räumen nunmehr auf seine Rechnung betreibt, nicht mehr identisch ist, so dass der ursprüngliche Mieter kein existentielles, schützenswertes eigenes Unternehmerinteresse an der Beibehaltung des niedrigen Mietzinses haben kann. In all diesen Fällen würde der günstige Mietzins nur noch zu Lasten des Vermieters verwertet werden, weshalb in diesen Fällen die Anhebung auf einen angemessenen Zins gerechtfertigt ist (Reich-Rohrwig, Mietzinserhöhung bei Geschäftsraum-Hauptmiete, ecolex spezial, 20 f mwN, 68).",
   "geladen": "2026-11-18"
  },
- "RS0117532": {
-  "id": "JJR_20021217_OGH0002_0050OB00202_02W0000_001",
-  "t": {
-   "T1": "Reinigung der Dachrinne von Laub, Schutt und Taubenkot."
-  },
-  "text": "Unter \"Unratabfuhr\" ist in erster Linie die regelmäßige Beseitigung des Hausmülls, der sich gewöhnlich und im Betrieb einer Hauswirtschaft ergibt, zu verstehen. Aber auch sonstige Ablagerungen, die im Lauf der Zeit durch Reinigung des Bodens, des Hofes oder des Kellers entstehen, zählen dazu. Gerümpel, alte Gebrauchsgegenstände, Bauschutt oder Sperrmüll sind nicht ohne weiteres dem Begriff des Unrats zu subsumieren, weil die Kosten der Entfernung solcher Gegenstände grundsätzlich diejenigen Mieter treffen, von denen die Gegenstände herrühren. Nur dann, wenn sich die Herkunft des Gerümpels nicht mehr feststellen lässt, sind die Kosten seiner Wegschaffung als Betriebskosten anzusehen, wenn die Beseitigung im Interesse aller Hausbewohner gelegen ist oder aber die Entfernung, wie etwa bei Dachböden, behördlich angeordnet wird.",
-  "geladen": "2026-11-18"
- },
  "RS0117533": {
   "id": "JJR_20021217_OGH0002_0050OB00202_02W0000_002",
   "t": {
    "T1": "Reinigung der Dachrinne von Laub, Schutt und Taubenkot."
   },
   "text": "Kosten, die dem Vermieter durch die behördlich angeordnete Beseitigung von Taubenkot aus dem Dachboden und Lichthof des Hauses entstehen, sind, weil sie nicht der Bekämpfung der Tauben dienen, zwar nicht als Schädlingsbekämpfungsmaßnahmen zu qualifizieren, jedoch als Unratabfuhr im Sinn des § 21 Abs 1 Z 2 MRG.",
+  "geladen": "2026-11-18"
+ },
+ "RS0117532": {
+  "id": "JJR_20021217_OGH0002_0050OB00202_02W0000_001",
+  "t": {
+   "T1": "Reinigung der Dachrinne von Laub, Schutt und Taubenkot."
+  },
+  "text": "Unter \"Unratabfuhr\" ist in erster Linie die regelmäßige Beseitigung des Hausmülls, der sich gewöhnlich und im Betrieb einer Hauswirtschaft ergibt, zu verstehen. Aber auch sonstige Ablagerungen, die im Lauf der Zeit durch Reinigung des Bodens, des Hofes oder des Kellers entstehen, zählen dazu. Gerümpel, alte Gebrauchsgegenstände, Bauschutt oder Sperrmüll sind nicht ohne weiteres dem Begriff des Unrats zu subsumieren, weil die Kosten der Entfernung solcher Gegenstände grundsätzlich diejenigen Mieter treffen, von denen die Gegenstände herrühren. Nur dann, wenn sich die Herkunft des Gerümpels nicht mehr feststellen lässt, sind die Kosten seiner Wegschaffung als Betriebskosten anzusehen, wenn die Beseitigung im Interesse aller Hausbewohner gelegen ist oder aber die Entfernung, wie etwa bei Dachböden, behördlich angeordnet wird.",
   "geladen": "2026-11-18"
  },
  "RS0034990": {
@@ -11879,14 +11879,14 @@
   "text": "Von einem inneren Zusammenhang mehrerer ins außerstreitige Verfahren verwiesener Begehren kann nur dann gesprochen werden, wenn ihn der Gesetzgeber selbst herstellte, indem er sie gemeinsam in eines der Verfahren nach §37 Abs 1 MRG verwies oder die Verbindung verschiedener Verfahren anordnete. In solchen Fällen erübrigt sich in bereits gerichtsanhängigen Verfahren die Anrufung der Schlichtungsstelle für zusammenhängige Begehren. Bei Angelegenheiten, die verschiedenen Kompetenztatbeständen des §37 Abs1 MRG zuzuordnen sind, handelt es sich aber um verschiedene Sachen, für die die zwingende Prozessvoraussetzung der vorherigen Anrufung der Schlichtungsstelle uneingeschränkt gilt.",
   "geladen": "2026-11-18"
  },
- "RS0117376": {
-  "id": "JJR_20021015_OGH0002_0050OB00240_02H0000_003",
-  "text": "Was den Umfang der unmittelbaren gerichtlichen Zuständigkeit nach § 37 Abs 3 Z 22 MRG anlangt, so kommt es nicht auf den Sicherungsanspruch, sondern auf den zu sichernden Anspruch an. Bei der Beurteilung der Teilungsfrage ist auf die Rechtsprechung zur Teilabziehung Bedacht zu nehmen.",
-  "geladen": "2026-11-18"
- },
  "RS0117374": {
   "id": "JJR_20021015_OGH0002_0050OB00240_02H0000_001",
   "text": "Der Antrag nach § 37 Abs 1 MRG ist trotz sonst vorgeschalteter Schlichtungsstelle unmittelbar bei Gericht einzubringen, wenn eine einstweilige Verfügung bereits vorher beantragt worden ist oder unter einem beantragt wird. Die spätere Zurückziehung des Sicherungsantrages ändert nichts an der gerichtlichen Zuständigkeit.",
+  "geladen": "2026-11-18"
+ },
+ "RS0117376": {
+  "id": "JJR_20021015_OGH0002_0050OB00240_02H0000_003",
+  "text": "Was den Umfang der unmittelbaren gerichtlichen Zuständigkeit nach § 37 Abs 3 Z 22 MRG anlangt, so kommt es nicht auf den Sicherungsanspruch, sondern auf den zu sichernden Anspruch an. Bei der Beurteilung der Teilungsfrage ist auf die Rechtsprechung zur Teilabziehung Bedacht zu nehmen.",
   "geladen": "2026-11-18"
  },
  "RS0070193": {
@@ -12936,14 +12936,14 @@
   "text": "Die Vereinbarung in einem unbefristeten Mietvertrag, dass die Mieterin - entgegen der dispositiven Regelung des § 1109 ABGB - den Mietgegenstand neu ausgemalt und mit frisch versiegelten Böden zurückzustellen hat, ist auch im Vollanwendungsbereich des MRG zulässig.",
   "geladen": "2026-11-18"
  },
+ "RS0127699": {
+  "id": "JJR_20120227_OGH0002_0020OB00215_10X0000_014",
+  "text": "Bei bloß gewöhnlicher Abnutzung ist der Mieter grundsätzlich nicht verpflichtet, ein Bestandobjekt neu ausgemalt oder mit abgeschliffenen und neu versiegelten Holzböden zurückzustellen.",
+  "geladen": "2026-11-18"
+ },
  "RS0127698": {
   "id": "JJR_20120227_OGH0002_0020OB00215_10X0000_013",
   "text": "Das Ausmalen eines Bestandobjekts oder die Wiederherstellung von Oberflächenbelägen als Maßnahmen einer Endrenovierung fallen weder im Vollanwendungsbereich, noch im Teil- und Nichtanwendungsbereich des MRG in die Erhaltungspflicht des Vermieters, sodass die Übertragung dieser Pflichten keinen Gewährleistungsausschluss bewirkt (§ 9 KSchG). In allen drei Anwendungsbereichen des MRG liegt somit bei Verbrauchergeschäften ebenso wie bei Verträgen zwischen Verbrauchern kein Hindernis zur Übertragung von „Endrenovierungspflichten“ auf den Mieter vor. Eine „Endrenovierungspflichten“ des Mieters vorsehende Klausel in Allgemeinen Geschäftsbedingungen unterliegt aber der Inhaltskontrolle nach § 879 Abs 3 ABGB.",
-  "geladen": "2026-11-18"
- },
- "RS0127700": {
-  "id": "JJR_20120227_OGH0002_0020OB00215_10X0000_015",
-  "text": "Sowohl im Vollausnahmebereich, als auch im Teil‑ und im Nichtanwendungsbereich des MRG sind Malerei‑, Tapezier‑, Fußbodenbelags‑ und Verfliesungsarbeiten idR als nicht anzeige‑ und genehmigungspflichtige unwesentliche Veränderungen zu qualifizieren.",
   "geladen": "2026-11-18"
  },
  "RS0127697": {
@@ -12954,9 +12954,9 @@
   "text": "Eine Klausel in Allgemeinen Geschäftsbedingungen bzw Vertragsformblättern und Textbausteinen, wonach die vorhandenen Versorgungsleitungen nur in einem solchen Umfang in Anspruch genommen werden dürfen, dass keine Überlastung eintritt, erweckt bei „kundenfeindlichster“ Auslegung den Eindruck, dass sich der Mieter eben mit den „vorhandenen“ Versorgungsleitungen abfinden muss, selbst wenn diese schadhaft oder so veraltet wären, dass sie den ‑ zumindest bei einer Wohnungsmiete im Regelfall geschuldeten ‑ üblichen Gebrauch des Bestandobjekts nicht gewährleisten würden und lässt überdies die Deutung zu, dass dem Mieter die ihm in Form des Zinsminderungsrechts zur Verfügung stehenden Gewährleistungsrechte genommen werden sollen, und zwar gleichgültig, ob es sich um eine schon bei Übergabe vorhandene oder erst nach der Übergabe (auch durch Vernachlässigung der geschuldeten Erhaltungspflicht) eingetretene Gebrauchsbeeinträchtigung handelt. Diese Klausel verstößt daher gegen die zwingende gesetzliche Bestimmung des § 1096 Abs 1 zweiter und dritter Satz ABGB, weshalb sie im Vollanwendungsbereich wie im Teilanwendungsbereich des MRG, bei Verbrauchergeschäften iSd § 1 KSchG ebenso wie bei Geschäften zwischen Verbrauchern, unzulässig ist.",
   "geladen": "2026-11-18"
  },
- "RS0127699": {
-  "id": "JJR_20120227_OGH0002_0020OB00215_10X0000_014",
-  "text": "Bei bloß gewöhnlicher Abnutzung ist der Mieter grundsätzlich nicht verpflichtet, ein Bestandobjekt neu ausgemalt oder mit abgeschliffenen und neu versiegelten Holzböden zurückzustellen.",
+ "RS0127700": {
+  "id": "JJR_20120227_OGH0002_0020OB00215_10X0000_015",
+  "text": "Sowohl im Vollausnahmebereich, als auch im Teil‑ und im Nichtanwendungsbereich des MRG sind Malerei‑, Tapezier‑, Fußbodenbelags‑ und Verfliesungsarbeiten idR als nicht anzeige‑ und genehmigungspflichtige unwesentliche Veränderungen zu qualifizieren.",
   "geladen": "2026-11-18"
  },
  "RS0116140": {
@@ -13497,14 +13497,14 @@
   "text": "Grundsätzlich sind Aufwendungen des Mieters zur Verbesserung des Mietgegenstandes ohne absolute Festlegung eines Zeitraumes, innerhalb dessen sie erfolgt sein müssen, bei der Mietzinsbestimmung angemessen zu berücksichtigen. Maßgebend für das Ausmaß der Berücksichtigung ist, daß die Aufwendungen im maßgebenden Beurteilungszeitpunkt (hier: Entscheidungszeitpunkt) noch von objektivem Nutzen sind.",
   "geladen": "2026-11-18"
  },
- "RS0126630": {
-  "id": "JJR_20110222_OGH0002_0080OB00004_11P0000_002",
-  "text": "Eine ordnungsgemäße Anzeige nach § 12a Abs 3 MRG liegt nur vor, wenn sie durch die vertretungsbefugten Organe der Gesellschaft erfolgt und die eindeutige Feststellung des Machtwechsels in der Gesellschaft ermöglicht. Eine Verletzung der Anzeigepflicht ist der Gesellschaft zuzurechnen.",
-  "geladen": "2026-11-18"
- },
  "RS0126629": {
   "id": "JJR_20110222_OGH0002_0080OB00004_11P0000_001",
   "text": "Für die Rechtszuständigkeit von Schadenersatzansprüchen zufolge Verletzung der Anzeigepflicht nach § 12a Abs 3 MRG ist danach zu unterscheiden, in wessen Vermögen der geltend gemachte Schaden eingetreten ist. Mangels gegenteiliger Vereinbarung stehen bis zum Übertragungsstichtag entstandene Mietzinsentgänge dem Verkäufer der Mietsache zu.",
+  "geladen": "2026-11-18"
+ },
+ "RS0126630": {
+  "id": "JJR_20110222_OGH0002_0080OB00004_11P0000_002",
+  "text": "Eine ordnungsgemäße Anzeige nach § 12a Abs 3 MRG liegt nur vor, wenn sie durch die vertretungsbefugten Organe der Gesellschaft erfolgt und die eindeutige Feststellung des Machtwechsels in der Gesellschaft ermöglicht. Eine Verletzung der Anzeigepflicht ist der Gesellschaft zuzurechnen.",
   "geladen": "2026-11-18"
  },
  "RS0110431": {
@@ -13548,14 +13548,14 @@
   "text": "Ein Indiz für die Vermietung im Rahmen eines Beherbergungsunternehmens liegt im Einschluss der Betriebskosten in das Entgelt. Das ist für sich allein zwar nicht besonders aussagekräftig, kann jedoch in einem Grenzfall den Ausschlag geben. In die Beurteilung, ob Räume im Rahmen des Betriebes eines Beherbergungsunternehmens vermietet werden, fließt immer auch die Verkehrsauffassung ein, weshalb sich der Gesetzgeber einer Begriffsdefinition enthalten hat. Das eröffnet den Gerichten einen Beurteilungsspielraum.",
   "geladen": "2026-11-18"
  },
- "RS0126601": {
-  "id": "JJR_20110209_OGH0002_0050OB00154_10Y0000_001",
-  "text": "Massive bauliche Eingriffe und konzeptive Umgestaltungen im Sinn einer Revitalisierung und Neunutzung eines ganzen historischen Gebäudekomplexes auf der Basis eines zwischen der Liegenschaftseigentümerin, der Betriebsgesellschaft und der mietenden Gebietskörperschaft begründeten besonderen wirtschaftlichen Finanzierungs‑ und Betriebskonzepts stellt ‑ qualitativ ‑ einen so weitreichenden Eingriff in das Gesamtobjekt dar, dass als Folge daraus resultierende Änderungen im Inneren einzelner Mietgegenstände keinen dem § 17 Abs 2 letzter Satz MRG zugänglichen Anwendungsfall mehr darstellen.",
-  "geladen": "2026-11-18"
- },
  "RS0126602": {
   "id": "JJR_20110209_OGH0002_0050OB00154_10Y0000_002",
   "text": "Von mehreren Mietern gemeinsam genutzte Technikräume sind bei der Nutzflächenermittlung nach § 17 MRG zu berücksichtigen und den Nutzern anteilig zuzurechnen.",
+  "geladen": "2026-11-18"
+ },
+ "RS0126601": {
+  "id": "JJR_20110209_OGH0002_0050OB00154_10Y0000_001",
+  "text": "Massive bauliche Eingriffe und konzeptive Umgestaltungen im Sinn einer Revitalisierung und Neunutzung eines ganzen historischen Gebäudekomplexes auf der Basis eines zwischen der Liegenschaftseigentümerin, der Betriebsgesellschaft und der mietenden Gebietskörperschaft begründeten besonderen wirtschaftlichen Finanzierungs‑ und Betriebskonzepts stellt ‑ qualitativ ‑ einen so weitreichenden Eingriff in das Gesamtobjekt dar, dass als Folge daraus resultierende Änderungen im Inneren einzelner Mietgegenstände keinen dem § 17 Abs 2 letzter Satz MRG zugänglichen Anwendungsfall mehr darstellen.",
   "geladen": "2026-11-18"
  },
  "RS0069367": {
@@ -13744,15 +13744,6 @@
   "text": "Ausschlaggebend für die Anwendbarkeit der Kostenersatzbestimmung des § 37 Abs 3 Z 17 MRG idF des WohnAußStrBeglG ist die Anhängigmachung des Verfahrens bei der vorgeschalteten Schlichtungsstelle.",
   "geladen": "2026-11-18"
  },
- "RS0118671": {
-  "id": "JJR_20031021_OGH0002_0050OB00199_03F0000_006",
-  "t": {
-   "T1": "Die Rechtsprechung (5 Ob 199/03f) anerkennt das Grundrecht auf Informationsfreiheit ganz allgemein, sodass nicht nur „Zuwanderern“ oder Personen, die sich eine für den Beruf angeeignete besondere Bildung nach ihrer Pensionierung erhalten wollen, ein gegenüber dem Hauseigentümer durchsetzbares Recht auf Nutzung der Empfangsmöglichkeiten einer Parabolantenne zu gewähren ist.",
-   "T2": "Ob die Voraussetzungen für die Duldungspflicht des Vermieters gegeben sind, hängt von den besonderen Umständen des Einzelfalls ab."
-  },
-  "text": "Die Errichtung einer Satellitenempfangsanlage kann einem Mieter nicht allein mit dem Argument verwehrt werden, ihm stehe ohnehin die Möglichkeit des Anschlusses an ein im Haus bereits vorhandenes Telekabel offen. Soweit die bisherige Judikatur gegenteilige Ansätze zeigte, sind sie im Lichte der gemeinschaftsrechtlichen Vorgaben nicht weiter zu verfolgen. Das heißt jedoch nicht, dass jedem Verlangen eines Mieters nach einer eigenen Parabolantenne nachzugeben wäre. Die in § 9 Abs 1 Z 5 bis Z 7 MRG normierten Voraussetzungen für eine dem Mieter zu gestattende Veränderung des Mietgegenstandes können im Einzelfall durchaus den gemeinschaftsrechtlichen Kriterien entsprechen.",
-  "geladen": "2026-11-18"
- },
  "RS0118670": {
   "id": "JJR_20031021_OGH0002_0050OB00199_03F0000_005",
   "t": {
@@ -13760,6 +13751,15 @@
    "T2": "Ob die Voraussetzungen für die Duldungspflicht des Vermieters gegeben sind, hängt von den besonderen Umständen des Einzelfalls ab."
   },
   "text": "Das individuelle Recht auf Nutzung der Empfangsmöglichkeiten einer Parabolantenne darf auch im Mietrecht nur jenen Beschränkungen unterworfen werden, die ihm durch gemeinschaftsrechtlich anerkannte, höherwertige Allgemeininteressen gesetzt sind. Auch für die Parteien eines Mietverhältnisses hat zu gelten, dass die Möglichkeit, eine Parabolantenne zu nutzen, im Allgemeinen jedem, der eine solche Antenne besitzen möchte, zuerkannt werden muss.",
+  "geladen": "2026-11-18"
+ },
+ "RS0118671": {
+  "id": "JJR_20031021_OGH0002_0050OB00199_03F0000_006",
+  "t": {
+   "T1": "Die Rechtsprechung (5 Ob 199/03f) anerkennt das Grundrecht auf Informationsfreiheit ganz allgemein, sodass nicht nur „Zuwanderern“ oder Personen, die sich eine für den Beruf angeeignete besondere Bildung nach ihrer Pensionierung erhalten wollen, ein gegenüber dem Hauseigentümer durchsetzbares Recht auf Nutzung der Empfangsmöglichkeiten einer Parabolantenne zu gewähren ist.",
+   "T2": "Ob die Voraussetzungen für die Duldungspflicht des Vermieters gegeben sind, hängt von den besonderen Umständen des Einzelfalls ab."
+  },
+  "text": "Die Errichtung einer Satellitenempfangsanlage kann einem Mieter nicht allein mit dem Argument verwehrt werden, ihm stehe ohnehin die Möglichkeit des Anschlusses an ein im Haus bereits vorhandenes Telekabel offen. Soweit die bisherige Judikatur gegenteilige Ansätze zeigte, sind sie im Lichte der gemeinschaftsrechtlichen Vorgaben nicht weiter zu verfolgen. Das heißt jedoch nicht, dass jedem Verlangen eines Mieters nach einer eigenen Parabolantenne nachzugeben wäre. Die in § 9 Abs 1 Z 5 bis Z 7 MRG normierten Voraussetzungen für eine dem Mieter zu gestattende Veränderung des Mietgegenstandes können im Einzelfall durchaus den gemeinschaftsrechtlichen Kriterien entsprechen.",
   "geladen": "2026-11-18"
  },
  "RS0109368": {
@@ -13824,14 +13824,14 @@
   "text": "Zwar kommt der Eigentümergemeinschaft iSd § 4 Abs 1 WEG auch im Altmietverhältnis keine Vermieterposition zu, jedoch ist Vertragspartner hinsichtlich der Aufwendungen nach § 21 Abs 1 MRG die Eigentümergemeinschaft, nicht aber der einzelne Wohnungseigentümer. „Vom Vermieter aufgewendete Kosten“ iSd § 21 Abs 1 MRG sind notwendigerweise die von der Eigentümergemeinschaft als Wohnungseigentümergesamtheit aufgewendeten Kosten für den Betrieb des Hauses insoweit und in jenem Ausmaß, als sie auf den Mieter des einzelnen Wohnungseigentümers nach den allein maßgeblichen Bestimmungen des MRG überwälzt werden dürfen. Auch der einzelne Wohnungseigentümer ist Teil der Eigentümergemeinschaft und wird von dieser in Verwaltungsangelegenheiten repräsentiert. Jedenfalls für „Altmietverträge“, also solche, die vor Begründung von Wohnungseigentum geschlossen wurden, gilt im Hinblick auf die Bestimmung des § 4 Abs 3 WEG, dass die Betriebskosten nicht erst dann den einzelnen Wohnungseigentümern als „aufgewendet“ iSd § 21 Abs 1 MRG zuzurechnen sind, wenn sie von der Eigentümergemeinschaft auf jene überbunden werden. Ein neuer Fristenlauf für die Präklusion nach § 21 Abs 3 4. Satz MRG wird durch eine solche Überbindung nicht in Gang gesetzt.",
   "geladen": "2026-11-18"
  },
- "RS0126358": {
-  "id": "JJR_20101021_OGH0002_0020OB00050_10G0000_001",
-  "text": "Auch Optionsvereinbarungen können nicht zur Umgehung gesetzlicher Mietzinsbildungsvorschriften benutzt werden.",
-  "geladen": "2026-11-18"
- },
  "RS0126359": {
   "id": "JJR_20101021_OGH0002_0020OB00050_10G0000_002",
   "text": "Entspricht der vereinbarte Mietzins nicht dem gesetzmäßigen Mietzins, besteht insoferne Teilnichtigkeit.",
+  "geladen": "2026-11-18"
+ },
+ "RS0126358": {
+  "id": "JJR_20101021_OGH0002_0020OB00050_10G0000_001",
+  "text": "Auch Optionsvereinbarungen können nicht zur Umgehung gesetzlicher Mietzinsbildungsvorschriften benutzt werden.",
   "geladen": "2026-11-18"
  },
  "RS0126362": {
@@ -13853,14 +13853,14 @@
   "text": "Für die schriftliche Anzeige des Ersatzanspruches des Bestandnehmers reicht ein mit Telefax übermitteltes Schreiben, das nur den mit Maschinschrift geschriebenen Namen des Absenders enthält, nicht aus.",
   "geladen": "2026-11-18"
  },
- "RS0126245": {
-  "id": "JJR_20100923_OGH0002_0050OB00167_10K0000_003",
-  "text": "Gegenstand des Verfahrens nach §§ 9, 37 Abs 1 Z 6 MRG ist die Prüfung aller positiven und negativen Voraussetzungen des § 9 MRG, die für eine Antragsstattgebung vorliegen müssen. Die Nichteinhaltung von Voraussetzungen des § 9 Abs 1 MRG kann daher nicht durch dem Spruch angefügte Auflagen oder Bedingungen beseitigt werden.",
-  "geladen": "2026-11-18"
- },
  "RS0126243": {
   "id": "JJR_20100923_OGH0002_0050OB00167_10K0000_001",
   "text": "Es stellt keinen Verstoß gegen § 36 Abs 3 und 4 AußStrG dar, wenn das Tatsachenvorbringen die Behauptung enthalten hat, Räumlichkeiten seien „mitgemietet“ worden, und das Gericht daher die Umstände der Einräumung des Besitzes an diesen Räumlichkeiten beziehungsweise die Frage des Rechtsgrundes der Überlassung dieser Räumlichkeiten für aufklärungsbedürftig erachtete.",
+  "geladen": "2026-11-18"
+ },
+ "RS0126245": {
+  "id": "JJR_20100923_OGH0002_0050OB00167_10K0000_003",
+  "text": "Gegenstand des Verfahrens nach §§ 9, 37 Abs 1 Z 6 MRG ist die Prüfung aller positiven und negativen Voraussetzungen des § 9 MRG, die für eine Antragsstattgebung vorliegen müssen. Die Nichteinhaltung von Voraussetzungen des § 9 Abs 1 MRG kann daher nicht durch dem Spruch angefügte Auflagen oder Bedingungen beseitigt werden.",
   "geladen": "2026-11-18"
  },
  "RS0069771": {
@@ -14112,14 +14112,14 @@
   "text": "Mit § 21 Abs 1 Z 6 MRG wurde der Mietermehrheit ein Wahlrecht zwischen einer anteiligen Prämienbelastung durch die entsprechende Versicherung und dem Risiko einer Mietzinserhöhung nach § 18 MRG im Schadensfall eingeräumt. Ohne Zustimmung der Mietermehrheit könnten die anteiligen Versicherungsprämien aus einer Glasbruch- und Sturmschadenversicherung nicht als Betriebskosten eingehoben werden.",
   "geladen": "2026-11-18"
  },
- "RS0126484": {
-  "id": "JJR_20101202_OGH0002_0050OB00237_09B0000_002",
-  "text": "Die Beweislast für das Vorliegen der Voraussetzungen für die Überwälzbarkeit von Prämien für eine Glasbruch- und Sturmschadenversicherung des Hauses als Betriebskosten gemäß § 21 Abs 1 Z 6 MRG liegt beim Vermieter. Unklarheiten dazu gehen daher ‑ ungeachtet des Untersuchungsgrundsatzes ‑ zu seinen Lasten.",
-  "geladen": "2026-11-18"
- },
  "RS0126483": {
   "id": "JJR_20101202_OGH0002_0050OB00237_09B0000_001",
   "text": "Die Prüfung, ob die Voraussetzungen für eine Überwälzung von Versicherungsprämien nach § 21 Abs 1 Z 6 MRG vorliegen (mehrheitliche Zustimmung der Hauptmieter), hat einheitlich zum Zeitpunkt der vertraglichen Disposition des Vermieters (Abschluss, Erneuerung oder Änderung des Versicherungsvertrags) zu erfolgen. Nachträgliche Änderungen, sei es in der Anzahl der vermieteten Mietgegenstände (durch Vermietung weiterer Objekte oder durch ersatzlose Beendigung von Mietverhältnissen), sei es durch Meinungsänderungen der Stimmberechtigten müssen ohne Einfluss auf die einmal erfolgte oder verweigerte Zustimmung der Mehrheit bleiben. Ein nach Vorliegen der Zustimmung der Mehrheit der Hauptmieter eingetretener Mieterwechsel in dem einen oder anderen Bestandobjekt ist ohne Belang, die bestandene Zustimmung bindet auch den neuen Mieter bis es zum Auslaufen, zur Erneuerung oder zur Änderung des Versicherungsvertrags kommt.",
+  "geladen": "2026-11-18"
+ },
+ "RS0126484": {
+  "id": "JJR_20101202_OGH0002_0050OB00237_09B0000_002",
+  "text": "Die Beweislast für das Vorliegen der Voraussetzungen für die Überwälzbarkeit von Prämien für eine Glasbruch- und Sturmschadenversicherung des Hauses als Betriebskosten gemäß § 21 Abs 1 Z 6 MRG liegt beim Vermieter. Unklarheiten dazu gehen daher ‑ ungeachtet des Untersuchungsgrundsatzes ‑ zu seinen Lasten.",
   "geladen": "2026-11-18"
  },
  "RS0042145": {
@@ -14198,9 +14198,9 @@
   "text": "Gemäß § 16 Abs 3 MRG richtet sich die Ausstattungskategorie einer Wohnung nach deren Ausstattungszustand im Zeitpunkt des Abschlusses des Mietvertrages. Dieser Urkategorie ändert sich durch bloße Renovierungsmaßnahmen während der Dauer dieses Mietverhältnisses nicht, würde also nach rechtsdogmatischen Grundsätzen auch dann weitergelten, wenn ein Mieter kraft Gesetzes oder mit Zustimmung des Vermieters - im Wege der Vertragsübernahme - in den bestehenden Mietvertrag eintritt und auf diese Weise eine Wohnung mit objektiv höherwertigen Kategoriemerkmalen erhält. Diese dem allgemeinen Privatrecht entnommene Regel lässt sich freilich nicht generell auf den diffizilen Interessenausgleich im Bereich des Mieterschutzes übertragen. Der Gesetzgeber selbst hat Ausnahmen im MRG geschaffen, indem er etwa anordnete, dass beim Wohnungstausch (§ 13 Abs 3 Satz 2 MRG), beim Ermäßigungsbegehren des Hauptmieters (§ 44 Abs 2 Z 2 MRG) und beim Eintritt in einen bestehenden Mietvertrag gemäß § 46 Abs 2 MRG nachträgliche Änderungen der Ausstattungskategorie zu berücksichtigen sind. Unstrittig dabei ist, dass es sich beispielsweise beim Wohnungstausch um eine Vertragsübernahme handelt, die dem neuen Mieter die gesamte Rechtsposition des bisherigen Mieters verschafft. Die Bestimmung des § 16 Abs 3 MRG stellt nicht allein auf die formelle Beibehaltung beziehungsweise Änderung der Vertragskonstruktion ab, es ist vielmehr nach objektiven, allen Hauptmietern des Hauses einsichtigen Kriterien zu beurteilen, ob Veränderungen eines Mietverhältnisses so wesentlich sind, dass im Sinne des § 16 Abs 3 MRG vom Abschluss eines neuen Mietvertrages gesprochen werden kann.",
   "geladen": "2026-11-18"
  },
- "RS0125899": {
-  "id": "JJR_20100325_OGH0002_0050OB00253_09F0000_001",
-  "text": "Für die Bestimmung der Kategorie nach § 20 Abs 1 Z 1 lit c MRG kommt es nicht auf den Zeitpunkt der Wohnungseigentumsbegründung an, sondern auf den Zeitpunkt der Begründung des aktuell maßgeblichen Dauerzustands, also den Abschluss des laufenden Mietvertrags oder den Beginn der Nutzung durch den Eigentümer.",
+ "RS0125900": {
+  "id": "JJR_20100325_OGH0002_0050OB00253_09F0000_002",
+  "text": "Nur dann, wenn die Kosten einer Erhaltungsarbeit (die nicht mit dem Deckungserfordernis nach § 18 Abs 1 Z 1 ff zu verwechseln sind) inklusive Finanzierungskosten in der summierten Mietzinsreserve der letzten zehn Kalenderjahre und in den während des Verteilungszeitraums zu erwartenden Hauptmietzinseinnahmen keine Deckung finden, ist eine Erhöhung des Hauptmietzinses zulässig. Die „künftigen Hauptmietzinse“ im Sinn des § 18 Abs 1 1. Satz MRG sind nicht die „anrechenbaren“ fiktiven Beträge nach Z 6 leg cit, sondern die während des Verteilungszeitraums tatsächlich real zu erwartenden Hauptmietzinse.",
   "geladen": "2026-11-18"
  },
  "RS0125901": {
@@ -14208,9 +14208,9 @@
   "text": "Bei der Beurteilung, ob die Höhe der zu erwartenden tatsächlichen Hauptmietzinseinnahmen des projektierten Verteilungszeitraums nach § 18 Abs 1 erster Satz MRG einer Erhöhung der Hauptmietzinse entgegensteht, kommt es nicht darauf an, ob die Vermieter über ihre Einnahmen bei wirtschaftlicher Betrachtung frei verfügen können, oder ob sie damit Kredite für früher durchgeführte Verbesserungsarbeiten zurückzahlen.",
   "geladen": "2026-11-18"
  },
- "RS0125900": {
-  "id": "JJR_20100325_OGH0002_0050OB00253_09F0000_002",
-  "text": "Nur dann, wenn die Kosten einer Erhaltungsarbeit (die nicht mit dem Deckungserfordernis nach § 18 Abs 1 Z 1 ff zu verwechseln sind) inklusive Finanzierungskosten in der summierten Mietzinsreserve der letzten zehn Kalenderjahre und in den während des Verteilungszeitraums zu erwartenden Hauptmietzinseinnahmen keine Deckung finden, ist eine Erhöhung des Hauptmietzinses zulässig. Die „künftigen Hauptmietzinse“ im Sinn des § 18 Abs 1 1. Satz MRG sind nicht die „anrechenbaren“ fiktiven Beträge nach Z 6 leg cit, sondern die während des Verteilungszeitraums tatsächlich real zu erwartenden Hauptmietzinse.",
+ "RS0125899": {
+  "id": "JJR_20100325_OGH0002_0050OB00253_09F0000_001",
+  "text": "Für die Bestimmung der Kategorie nach § 20 Abs 1 Z 1 lit c MRG kommt es nicht auf den Zeitpunkt der Wohnungseigentumsbegründung an, sondern auf den Zeitpunkt der Begründung des aktuell maßgeblichen Dauerzustands, also den Abschluss des laufenden Mietvertrags oder den Beginn der Nutzung durch den Eigentümer.",
   "geladen": "2026-11-18"
  },
  "RS0070018": {
@@ -14231,14 +14231,14 @@
   "text": "Darüber, welchen Anteil an dem Gesamterfordernis ein Miteigentümer des Hauses im Verhältnis zu den anderen Miteigentümern des Hauses zu tragen hat, sagt die Entscheidung nach §§ 18 f MRG nichts aus. Dieser Anteil richtet sich daher bei Fehlen einer abweichenden Vereinbarung zwischen den Miteigentümern solange auch nicht an einer Wohnung des Hauses Wohnungseigentum grundbücherlich begründet wurde, nach § 839 Satz 1 ABGB.",
   "geladen": "2026-11-18"
  },
- "RS0125841": {
-  "id": "JJR_20100325_OGH0002_0050OB00055_10I0000_002",
-  "text": "Mit dem letzten Halbsatz des § 49d Abs 3 MRG ist klargestellt, dass ein „Verlangen“, wie es bisher der gesetzlichen Terminologie entsprach, nun automatisch als „Anhebungsbegehren“ iSd neuen § 45 MRG zu qualifizieren ist, es also keines neuerlichen Anhebungsbegehrens bedarf.",
-  "geladen": "2026-11-18"
- },
  "RS0125840": {
   "id": "JJR_20100325_OGH0002_0050OB00055_10I0000_001",
   "text": "Eine, wenn auch seinerzeit berechtigte Erhöhung des Hauptmietzinses gemäß § 45 MRG in der Fassung der MRN 2001 (allenfalls gemäß § 45 MRG in der Fassung des 3. WÄG in Verbindung mit § 49d Abs 3 MRG) verliert ihre gesetzliche Grundlage, wenn der Abbruch des Gebäudes bewilligt oder behördlich aufgetragen wird. Trotz einer seinerzeit zulässigen Anhebung des Hauptmietzinses erlischt die Berechtigung, die Erhöhung weiterhin zu verlangen, mit Bewirkung einer solchen Abbruchsbewilligung.",
+  "geladen": "2026-11-18"
+ },
+ "RS0125841": {
+  "id": "JJR_20100325_OGH0002_0050OB00055_10I0000_002",
+  "text": "Mit dem letzten Halbsatz des § 49d Abs 3 MRG ist klargestellt, dass ein „Verlangen“, wie es bisher der gesetzlichen Terminologie entsprach, nun automatisch als „Anhebungsbegehren“ iSd neuen § 45 MRG zu qualifizieren ist, es also keines neuerlichen Anhebungsbegehrens bedarf.",
   "geladen": "2026-11-18"
  },
  "RS0126083": {
@@ -14440,14 +14440,14 @@
   "text": "Der Grundsatz, dass die Betriebskosten grundsätzlich nach dem Verhältnis der Nutzflächen der einzelnen Mietgegenstände aufzuteilen sind, wird auch insofern durchbrochen als demjenigen Mieter, der unverhältnismäßig hohe Betriebskosten verursacht, allein das Übermaß auferlegt werden kann. Dies wurde - (entgegen der vom Rekursgericht vertretenen Meinung) - ganz allgemein ausgesprochen; ein Anwendungsfall davon ist zB der unverhältnismäßig hohe Wasserverbrauch durch einen Gewerbebetrieb.",
   "geladen": "2026-11-18"
  },
- "RS0070742": {
-  "id": "JJR_19911010_OGH0002_0080OB00563_9100000_002",
-  "text": "Ob die Veräußerung des Hauses rechtswirksam als Kündigungsgrund für das Mietrechtsverhältnis einer darin gelegenen Wohnung vereinbart werden kann, richtet sich nicht allein nach der Anzahl der im Bestandobjekt befindlichen Wohnungen, sondern bedarf vielmehr einer Wertung im Einzelfall, vor allem einer Gegenüberstellung der für das Haus erzielbaren Kaufpreise mit und ohne Vermietung des strittigen Bestandobjektes. Ist bei Vermietung ein vernünftiger Kaufpreis nicht erzielbar und daher die Differenz der erzielbaren Kaufpreise sehr erheblich, muss der Kündigungsgrund der Veräußerung des Hauses als \"wichtig und bedeutsam\" angesehen werden.",
-  "geladen": "2026-11-18"
- },
  "RS0070703": {
   "id": "JJR_19911010_OGH0002_0080OB00563_9100000_001",
   "text": "Der Kündigungsgrund der Veräußerung des Hauses (§ 30 Abs 2 Z 13 MRG) kann nur dann rechtswirksam vereinbart werden, wenn bei Vermietung des strittigen Bestandobjektes ein vernünftiger Kaufpreis nicht erzielbar ist.",
+  "geladen": "2026-11-18"
+ },
+ "RS0070742": {
+  "id": "JJR_19911010_OGH0002_0080OB00563_9100000_002",
+  "text": "Ob die Veräußerung des Hauses rechtswirksam als Kündigungsgrund für das Mietrechtsverhältnis einer darin gelegenen Wohnung vereinbart werden kann, richtet sich nicht allein nach der Anzahl der im Bestandobjekt befindlichen Wohnungen, sondern bedarf vielmehr einer Wertung im Einzelfall, vor allem einer Gegenüberstellung der für das Haus erzielbaren Kaufpreise mit und ohne Vermietung des strittigen Bestandobjektes. Ist bei Vermietung ein vernünftiger Kaufpreis nicht erzielbar und daher die Differenz der erzielbaren Kaufpreise sehr erheblich, muss der Kündigungsgrund der Veräußerung des Hauses als \"wichtig und bedeutsam\" angesehen werden.",
   "geladen": "2026-11-18"
  },
  "RS0068307": {
