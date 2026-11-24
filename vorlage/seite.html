@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#f6f4ef">
 <script>try{var f=localStorage.getItem("ogh-wohnrecht:farbe");if(f==="hell"||f==="dunkel")document.documentElement.setAttribute("data-farbe",f);}catch(e){}</script>
 <style>
-:root{--bg:#f6f4ef;--card:#fff;--ink:#1d1f23;--mute:#666b73;--line:#dedad0;--acc:#8a1c1c;--onacc:#fff;--chip:#ece8dd;--warnbg:#fff4e0;--warnline:#d9a441;--okbg:#e8f2ea;color-scheme:light}
+:root{--bg:#f6f4ef;--card:#fff;--ink:#1d1f23;--mute:#585d65;--line:#dedad0;--acc:#8a1c1c;--onacc:#fff;--chip:#ece8dd;--warnbg:#fff4e0;--warnline:#d9a441;--okbg:#e8f2ea;color-scheme:light}
 @media(prefers-color-scheme:dark){:root:not([data-farbe=hell]){--bg:#16171a;--card:#1f2125;--ink:#ecebe6;--mute:#9a9da3;--line:#33363c;--acc:#e08a7c;--onacc:#16171a;--chip:#2a2d32;--warnbg:#2c2517;--warnline:#9c7a32;--okbg:#1d2a20;color-scheme:dark}}
 :root[data-farbe=dunkel]{--bg:#16171a;--card:#1f2125;--ink:#ecebe6;--mute:#9a9da3;--line:#33363c;--acc:#e08a7c;--onacc:#16171a;--chip:#2a2d32;--warnbg:#2c2517;--warnline:#9c7a32;--okbg:#1d2a20;color-scheme:dark}
 *{box-sizing:border-box}
@@ -169,6 +169,24 @@ footer p{margin:4px 0}
 .v-tab thead th{border-top:0;color:var(--mute);font-weight:600;font-size:.76rem}
 .vorl{color:var(--mute);font-size:.76rem}
 @media(max-width:520px){.v-tab th,.v-tab td{padding:6px 7px}}
+.v-kette{margin:4px 0 6px;padding-left:22px;font-size:.9rem;font-variant-numeric:tabular-nums}
+.v-kette li{margin:2px 0}
+.verdeckt{font-size:.86rem;color:var(--mute);background:var(--card);border:1px dashed var(--line);border-radius:6px;padding:8px 12px;margin:10px 0}
+.verwaist{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:8px 14px;margin:0 0 14px;font-size:.88rem}
+.verwaist h3{font-size:.95rem;margin:2px 0 2px}
+a.norm{color:inherit;text-decoration:underline dotted;text-underline-offset:2px}
+a.norm:hover{color:var(--acc)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* Druck: nur Inhalte, ohne Bedienelemente; vor dem Druck lädt die Seite alle Treffer */
+@media print{
+  :root,:root[data-farbe=dunkel]{--bg:#fff;--card:#fff;--ink:#000;--mute:#333;--line:#bbb;--acc:#000;--chip:#eee;color-scheme:light}
+  body{font-size:11pt;background:#fff}
+  .wrap{max-width:none;padding:0}
+  .tabs,.farbe,.fplatz,.bar,.bar-schleier,.acts,.mehrWrap,.panel,.toast,.linkbtn,.verdeckt,details.note,details.w-intro,.v-form,#linkV{display:none!important}
+  .item,.fz,.tr,.rs,.neu-row{break-inside:avoid}
+  a{color:#000;text-decoration:none}
+  .neu{border:0;padding:0}
+}
 </style>
 </head>
 <body>
@@ -187,6 +205,7 @@ footer p{margin:4px 0}
 <button class="tab" type="button" id="tabV" aria-pressed="false"><span class="lang">Indexrechner (VPI)</span><span class="kurz">Index</span></button>
 </nav>
 
+<main id="inhalt">
 <div id="viewW" hidden>
 <details class="w-intro">
 <summary style="cursor:pointer;font-weight:600">Was diese Rubrik zeigt</summary>
@@ -223,7 +242,7 @@ footer p{margin:4px 0}
 <select id="fmass" aria-label="Maßnahme"><option value="">Alle Maßnahmen</option></select>
 <select id="fet" aria-label="Förderungswerber"><option value="">Alle Förderungswerber</option><option value="j">Bauvereinigungen und Firmen</option><option value="w">Eigentümergemeinschaften</option><option value="s">Stadt Wien</option><option value="p">Privat und Miteigentümer</option><option value="u">nur im PDF lesbar</option></select>
 </div>
-<div class="row"><label class="schalter" id="fPrWrap" hidden title="Bei diesen Zusagen konnte die Seite Förderungswerber oder Betrag nicht sicher auslesen; maßgeblich ist das PDF."><input type="checkbox" id="fPr"><span class="schiene" aria-hidden="true"></span><span id="fPrText"></span></label></div>
+<div class="row"><button class="btn" type="button" id="linkW" title="Link mit Suche und Filtern kopieren">Link zu dieser Suche</button><label class="schalter" id="fPrWrap" hidden title="Bei diesen Zusagen konnte die Seite Förderungswerber oder Betrag nicht sicher auslesen; maßgeblich ist das PDF."><input type="checkbox" id="fPr"><span class="schiene" aria-hidden="true"></span><span id="fPrText"></span></label></div>
 <div class="count" id="wbarAnzahl"></div>
 <div class="bar-fuss" id="wbarGriff"><span class="griff" aria-hidden="true"></span><button class="btn" type="button" id="wbarZu">Fertig</button></div>
 </div>
@@ -233,7 +252,7 @@ footer p{margin:4px 0}
 <div class="bar-schleier" id="wbarSchleier"></div>
 <div id="wTraeger"></div>
 <h3 class="w-h" id="wFoerdTitel">Alle Förderzusagen der MA 50</h3>
-<div class="count" id="fCount"></div>
+<div class="count" id="fCount" role="status" aria-live="polite"></div>
 <div id="wFoerd"></div>
 <div class="mehrWrap"><button class="btn" type="button" id="fMehr" hidden></button></div>
 <h3 class="w-h" id="wDokTitel" hidden>Hintergrund: Dokumente der Stadt Wien</h3>
@@ -247,6 +266,8 @@ footer p{margin:4px 0}
 <li>Er vergleicht zwei Monatswerte des Verbraucherpreisindex (VPI) von Statistik Austria: Veränderung in Prozent = (neuer Wert ÷ alter Wert − 1) × 100. Mit einem Betrag rechnet er Betrag × Faktor.</li>
 <li>Maßgeblich ist, was vereinbart ist: welcher Index (Basis), welcher Ausgangsmonat, ab welcher Schwelle angepasst wird und wie gerundet wird. Das prüft der Rechner nicht.</li>
 <li>Seit 1.1.2026 begrenzt das Mieten-Wertsicherungsgesetz (MieWeG) Wertsicherungen bei Wohnungsmieten. Der Rechner berücksichtigt das nicht; er rechnet nur.</li>
+<li>Mit einer <b>Schwelle</b> rechnet er die Anpassungen zwischen Ausgangs- und Vergleichsmonat als Kette: Nach jeder Anpassung gilt der erreichte Monat als neue Ausgangsbasis, und der Betrag wird mit fortgeschrieben. So lauten viele Klauseln; ob „erreicht“ oder erst „überschritten“ zählt, regelt der Vertrag.</li>
+<li>Zur Auswahl steht auch der <b>HVPI</b> (Harmonisierter Verbraucherpreisindex), soweit Statistik Austria ihn als offene Daten bereitstellt.</li>
 <li>Vorläufige Werte kann Statistik Austria noch ändern. Zur Kontrolle eignet sich der Indexrechner von Statistik Austria (Link unten).</li>
 <li><b>Keine Rechtsberatung.</b></li>
 </ul>
@@ -258,12 +279,21 @@ footer p{margin:4px 0}
 <label>Vergleichsmonat<span class="zwei"><select id="vBisM" aria-label="Vergleichsmonat"></select><select id="vBisJ" aria-label="Vergleichsjahr"></select></span></label>
 <label>Betrag (freiwillig)<input id="vBetrag" type="text" inputmode="decimal" placeholder="z. B. 850,00" autocomplete="off"></label>
 <label>Schwelle in % (freiwillig)<input id="vSchwelle" type="text" inputmode="decimal" placeholder="z. B. 5" autocomplete="off"></label>
+<label>Schwelle gilt, wenn sie<select id="vSchwArt"><option value="u">überschritten ist</option><option value="e">erreicht oder überschritten ist</option></select></label>
 </div>
 <div class="v-erg sans" id="vErgebnis" aria-live="polite"></div>
+<div class="acts sans"><button class="btn" type="button" id="linkV" title="Link mit dieser Rechnung kopieren">Link zu dieser Rechnung</button></div>
 <h3 class="w-h" id="vTabTitel">Letzte Werte</h3>
 <div style="overflow-x:auto"><table class="v-tab sans" id="vTabelle"></table></div>
 <div class="count" id="vStand"></div>
 </div>
+<section id="rwBox" hidden>
+<h3 class="w-h">Richtwerte und Kategoriebeträge</h3>
+<div class="count" id="rwInfo"></div>
+<div style="overflow-x:auto"><table class="v-tab sans" id="rwTab"></table></div>
+<div style="overflow-x:auto;margin-top:10px"><table class="v-tab sans" id="katTab"></table></div>
+<div class="sans" id="rwQuellen" style="font-size:.8rem;color:var(--mute);margin-top:6px"></div>
+</section>
 <h3 class="w-h">Zum Nachlesen</h3>
 <div id="vDok" class="sans"></div>
 </div>
@@ -311,8 +341,9 @@ footer p{margin:4px 0}
 <label class="schalter" id="opWrap" hidden title="Bei den meisten Entscheidungen aus dem RIS gibt es in den offenen Daten keinen Kurztext, nur die Paragrafen."><input type="checkbox" id="op"><span class="schiene" aria-hidden="true"></span><span id="opText"></span></label>
 <label class="schalter" id="zwWrap" hidden title="Der OGH lehnt dabei ab, ohne inhaltlich etwas Neues zu sagen."><input type="checkbox" id="zw"><span class="schiene" aria-hidden="true"></span><span id="zwText"></span></label>
 <button class="btn" type="button" id="npBtn">Notizen sichern / laden</button>
+<button class="btn" type="button" id="linkE" title="Link mit Suche und Filtern kopieren">Link zu dieser Suche</button>
 </div>
-<div class="count" id="count"></div>
+<div class="count" id="count" role="status" aria-live="polite"></div>
 <div class="bar-fuss" id="barGriff"><span class="griff" aria-hidden="true"></span><button class="btn" type="button" id="barZu">Fertig</button></div>
 </div>
 </div>
@@ -337,6 +368,7 @@ footer p{margin:4px 0}
 <div id="list"></div>
 <div class="mehrWrap"><button class="btn" type="button" id="mehr" hidden></button></div>
 </div>
+</main>
 
 <footer id="footer"></footer>
 </div>
@@ -377,16 +409,16 @@ var ZURUECK = {Z: 1, A: 1};
 var HINWEISE = [
   {ab: "2026-01-01", themen: "M", muster: /wertsicher|indexanpass|indexklausel|valorisier/i,
    text: "Seit 1.1.2026 begrenzt das Mieten-Wertsicherungsgesetz (MieWeG) Mieterhöhungen über Wertsicherungsklauseln bei Wohnungsmieten.",
-   quelle: "https://www.wko.at/oe/information-consulting/immobilien-vermoegenstreuhaender/mietrecht-inflationslinderungsgesetz-wertsicherungsgesetz"},
-  {ab: "2023-07-01", themen: "K", muster: /miet|wohnung/i,
-   text: "Seit 1.7.2023 gilt bei der Vermittlung von Mietwohnungen das Bestellerprinzip: Die Provision zahlt, wer den Makler zuerst beauftragt hat.",
-   quelle: "https://wien.arbeiterkammer.at/beratung/Wohnen/makler/Maklerprovision-Bestellerprinzip-ab-1.-Juli-2023.html"},
-  {ab: "2022-07-01", themen: "WH", muster: /beschluss|mehrheit|umlauf|abstimm|willensbildung|stimm/i,
-   text: "Seit 1.7.2022 kommt ein Mehrheitsbeschluss auch mit zwei Dritteln der abgegebenen Stimmen zustande, wenn diese mindestens ein Drittel aller Anteile vertreten (WEG-Novelle 2022).",
-   quelle: "https://wien.arbeiterkammer.at/beratung/Wohnen/eigentum/gemeinschaft/Beschlussfassungt.html"},
-  {ab: "2022-01-01", themen: "W", muster: /wallbox|ladestation|ladeeinrichtung|e-auto|elektroauto|photovoltaik|solaranlage|einbruch|sicherheitst[üu]r|barrierefrei|beschattung/i,
-   text: "Seit 1.1.2022 erleichtert die WEG-Novelle 2022 bestimmte Änderungen am eigenen Objekt, etwa Ladestationen für E-Autos, Photovoltaik oder einbruchssichere Türen.",
-   quelle: "https://www.forum-media.at/news/Recht-Steuern/Wohnrecht/Die-WEG-Novelle-2022"}
+   quelle: "https://www.ris.bka.gv.at/eli/bgbl/I/2025/114"},
+  {ab: "2026-01-01", themen: "M", muster: /befrist/i,
+   text: "Für befristete Wohnungsmietverträge und Verlängerungen ab 1.1.2026 gilt bei Vermietern, die Unternehmer sind, eine Mindestdauer von fünf statt drei Jahren (§ 29 MRG, 5. MILG).",
+   quelle: "https://www.ris.bka.gv.at/eli/bgbl/I/2025/114"},
+  {ab: "2023-12-31", themen: "MG", muster: /richtwert|kategoriebetr|kategoriemietzins/i,
+   text: "Seit Ende 2023 begrenzen die Mietrechtlichen Inflationslinderungsgesetze die Anpassung der Richtwerte und Kategoriebeträge (2024 bzw. 2025 keine Anpassung, 2026 höchstens 1 %, 2027 höchstens 2 %).",
+   quelle: "https://www.ris.bka.gv.at/eli/bgbl/I/2023/176"},
+  {ab: "2019-08-01", themen: "G", muster: /nachträglich|eigentumsübertrag|übertragung (?:in|ins) (?:das )?eigentum|kaufoption|mietkauf/i,
+   text: "Seit 1.8.2019 (WGG-Novelle 2019) gelten neue Regeln für den Erwerb ins Eigentum, etwa ein Anspruch schon nach fünf statt zehn Jahren.",
+   quelle: "https://www.ris.bka.gv.at/eli/bgbl/I/2019/85"}
 ];
 
 function fmt(iso) { return iso ? iso.slice(8, 10) + "." + iso.slice(5, 7) + "." + iso.slice(0, 4) : ""; }
@@ -396,6 +428,14 @@ function sicher(u) { return typeof u === "string" && /^https:\/\//.test(u) ? u :
 function kuerze(s, n) { if (!s) return ""; return s.length > n ? s.slice(0, n - 1).replace(/\s+\S*$/, "") + " …" : s; }
 function risSuche(gz) { return "https://www.ris.bka.gv.at/Ergebnis.wxe?Abfrage=Justiz&GZ=" + encodeURIComponent(gz.replace(/\s/g, "")) + "&SucheNachRechtssatz=True&SucheNachText=True"; }
 function paraVon(norm) { var m = /^(.*?)\s*§\s*(\d+[a-z]?)/i.exec(norm || ""); return m && m[1].trim() ? m[1].trim() + " §" + m[2] : null; }
+// Suchtext vereinheitlichen: Kleinbuchstaben, ohne Akzente; ä/ae, ö/oe, ü/ue, ß/ss gelten als gleich
+function falte(t) {
+  t = String(t || "").toLowerCase().replace(/ß/g, "ss");
+  try { t = t.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); } catch (err) { t = t.replace(/[äàáâ]/g, "a").replace(/[öòóô]/g, "o").replace(/[üùúû]/g, "u"); }
+  return t.replace(/ae/g, "a").replace(/oe/g, "o").replace(/ue/g, "u");
+}
+// Geschäftszahl wie „5 Ob 55/26p“ (auch ohne Leerzeichen)
+var GZ_MUSTER = /^\d+\s*[a-z]{1,4}\s*\d+\/\d+[a-z]?$/i;
 function paraSort(a, b) {
   var x = /§(\d+)([a-z]?)$/i.exec(a) || [0, 0, ""], y = /§(\d+)([a-z]?)$/i.exec(b) || [0, 0, ""];
   return (+x[1] - +y[1]) || x[2].localeCompare(y[2]);
@@ -420,7 +460,12 @@ E.forEach(function (e) {
   if (e.o) nOgh++;
   var text = [e.t, e.s, e.sw, e.n.join(" ")].concat(e.r.map(function (x) { return rsText(x); })).join(" ");
   var rsNummern = e.r.map(function (x) { return RS[x[0]].n; }).join(" ");
-  e.hay = [e.gz, e.k, (e.gzw || []).join(" "), text, rsNummern, TH[e.th] || "", ART[e.a] || ""].join(" ").toLowerCase();
+  var gzs = [e.gz, e.k].concat(e.gzw || []);
+  e.hay = falte([gzs.join(" "), gzs.join(" ").replace(/\s+/g, ""), text, rsNummern, TH[e.th] || "", ART[e.a] || ""].join(" "));
+  e.gzKurz = gzs.map(function (g) { return String(g || "").replace(/\s+/g, "").toLowerCase(); });
+  e.paraNr = {};
+  e.parasKlein = {};
+  for (var p0 in e.paras) { e.paraNr[p0.split(" §")[1].toLowerCase()] = 1; e.parasKlein[p0.toLowerCase()] = 1; }
   e.hinweis = null;
   for (var i = 0; i < HINWEISE.length; i++) {
     var h = HINWEISE[i];
@@ -453,6 +498,25 @@ function setzeNotiz(k, feld, wert) {
   return speichern();
 }
 function anzahlMerk() { var n = 0; E.forEach(function (e) { if (hatNotiz(e.k)) n++; }); return n; }
+// Notizen zu Einträgen, die nicht mehr in der Liste stehen (etwa Entscheidungen nur zum WEG, seit November 2026 nicht mehr enthalten)
+var byK = {};
+E.forEach(function (e) { byK[e.k] = e; });
+function verwaist() { return Object.keys(notizen).filter(function (k) { return !byK[k] && hatNotiz(k); }).sort(); }
+function verwaistBox(liste) {
+  var box = el("section", "verwaist sans");
+  box.appendChild(el("h3", null, liste.length + (liste.length === 1 ? " Notiz zu einem Eintrag, der nicht mehr in der Liste steht" : " Notizen zu Einträgen, die nicht mehr in der Liste stehen")));
+  box.appendChild(el("p", "count", "Die Liste enthält seit November 2026 nur noch Entscheidungen zu MRG und WGG. Deine Notizen bleiben gespeichert und sind im Export enthalten."));
+  liste.forEach(function (k) {
+    var z = el("div", "zeile"), x = notizen[k], gz = String(k).split("~")[0];
+    z.appendChild(el("span", "gr", gz + (x.m ? " · gemerkt" : "") + (x.n ? " · " + kuerze(x.n, 200) : "")));
+    if (/\d/.test(gz)) z.appendChild(linkBtn("RIS-Suche ↗", risSuche(gz)));
+    var del = el("button", "btn", "Löschen"); del.type = "button";
+    del.onclick = function () { delete notizen[k]; speichern(); render(); };
+    z.appendChild(del);
+    box.appendChild(z);
+  });
+  return box;
+}
 
 // ---------- Ansicht ----------
 var st = {q: "", th: "", yr: "", para: "", so: "d", zw: false, op: false, merk: false};
@@ -484,7 +548,7 @@ if (QUELLEN.indexOf("ris") >= 0) qtxt.push("RIS");
 if (QUELLEN.indexOf("ogh") >= 0) qtxt.push("Auswahl des OGH");
 $("lead").textContent = "Stand " + fmt(STAND) + " · " + E.length + " Entscheidungen · Quelle: " + qtxt.join(" und ");
 var iq = $("infoQuellen");
-if (QUELLEN.indexOf("ris") >= 0) iq.appendChild(document.createTextNode("OGH-Entscheidungen ab 2005, die im RIS einem Rechtssatz zu den Wohnrechtsgesetzen zugeordnet sind (MRG, WEG, WGG, Bestandrecht und Nachbarrecht im ABGB u. a.). Ist kein Entscheidungstext veröffentlicht, führt „RIS-Suche“ zu den Rechtssätzen dieser Geschäftszahl. Die Entscheidungsart führt das RIS erst seit 2022 und nicht durchgehend; der Schalter „Zurückweisungen“ wirkt nur dort. "));
+if (QUELLEN.indexOf("ris") >= 0) iq.appendChild(document.createTextNode("OGH-Entscheidungen ab 2005, die im RIS einem Rechtssatz zum MRG oder WGG zugeordnet sind. Ist kein Entscheidungstext veröffentlicht, führt „RIS-Suche“ zu den Rechtssätzen dieser Geschäftszahl. Die Entscheidungsart führt das RIS erst seit 2022 und nicht durchgehend; der Schalter „Zurückweisungen“ wirkt nur dort. "));
 iq.appendChild(document.createTextNode(zeigeOgh ? "„OGH-Auswahl“ markiert Entscheidungen, die der OGH auf ogh.gv.at selbst vorstellt; nur sie haben eine Überschrift." : "Die vom OGH auf ogh.gv.at vorgestellten Entscheidungen, nach Wohnthemen gefiltert. Das ist nicht die gesamte Rechtsprechung."));
 (function () {
   var f = $("footer"), p = el("p");
@@ -548,21 +612,48 @@ function aktualisiereChips() {
 }
 
 // ---------- Filtern und Zeichnen ----------
-var woerter = [];
+var woerter = [], paraSuche = [], gzSuche = null;
+// Suchbegriffe zerlegen: „§ 37“ sucht den Paragrafen (nicht jede 37), eine Geschäftszahl sucht genau diese Entscheidung
+function zerlegeSuche(q) {
+  paraSuche = []; gzSuche = null;
+  var G = "(MRG|WGG|WEG(?:\\s*2002)?|ABGB|RichtWG|MieWeG|HeizKG|BTVG)";
+  var re = new RegExp("(?:\\b" + G + "\\s*)?§\\s*(\\d+[a-z]?)(?:\\s+" + G + "\\b)?", "gi");
+  var rest = String(q || "").replace(re, function (m, g1, nr, g2) {
+    var g = (g1 || g2 || "").toUpperCase().replace(/\s+/g, " ").replace("RICHTWG", "RichtWG").replace("MIEWEG", "MieWeG").replace("HEIZKG", "HeizKG");
+    paraSuche.push({g: g, nr: nr.toLowerCase()}); return " ";
+  }).trim();
+  if (GZ_MUSTER.test(rest)) { gzSuche = rest.replace(/\s+/g, "").toLowerCase(); rest = ""; }
+  woerter = rest ? falte(rest).split(/\s+/).filter(Boolean) : [];
+}
+// Gemerkte Einträge und gezielt gesuchte Geschäftszahlen zeigt die Liste auch, wenn die Schalter sie sonst ausblenden
+function schalterAus() { return st.merk || !!gzSuche; }
+function passtSuche(e) {
+  if (gzSuche && e.gzKurz.indexOf(gzSuche) < 0) return false;
+  for (var j = 0; j < paraSuche.length; j++) {
+    var ps = paraSuche[j];
+    if (ps.g ? !e.parasKlein[(ps.g + " §" + ps.nr).toLowerCase()] : !e.paraNr[ps.nr]) return false;
+  }
+  for (var i = 0; i < woerter.length; i++) if (e.hay.indexOf(woerter[i]) < 0) return false;
+  return true;
+}
 function passt(e) {
-  if (!st.zw && ZURUECK[e.a]) return false;
-  if (st.op && e.np) return false;
+  if (!schalterAus() && !st.zw && ZURUECK[e.a]) return false;
+  if (!schalterAus() && st.op && e.np) return false;
   if (st.merk && !hatNotiz(e.k)) return false;
   if (st.th && e.th !== st.th) return false;
   if (st.yr && e.jahr !== st.yr) return false;
   if (st.para && !e.paras[st.para]) return false;
-  for (var i = 0; i < woerter.length; i++) if (e.hay.indexOf(woerter[i]) < 0) return false;
-  return true;
+  return passtSuche(e);
+}
+// Treffer, die nur wegen Thema, Jahr, Paragraf oder der Schalter fehlen
+function verdeckt() {
+  if (!st.q) return [];
+  return E.filter(function (e) { return treffer.indexOf(e) < 0 && (!st.merk || hatNotiz(e.k)) && passtSuche(e); });
 }
 
 var treffer = [], gezeigt = 0, letztesJahr = "";
 function render() {
-  woerter = st.q ? st.q.toLowerCase().split(/\s+/).filter(Boolean) : [];
+  zerlegeSuche(st.q);
   aktualisiereChips();
   treffer = E.filter(passt).sort(function (a, b) {
     var x = (a.d || "") + a.k, y = (b.d || "") + b.k;
@@ -571,17 +662,35 @@ function render() {
   $("list").textContent = "";
   letztesJahr = "";
   gezeigt = 0;
+  var weg = verdeckt();
   if (!treffer.length) {
-    $("list").appendChild(el("div", "empty", st.merk ? "Noch nichts gemerkt. Tippe bei einer Entscheidung auf „Merken“ oder „Notiz“." : "Keine Entscheidung passt zu diesen Filtern."));
+    $("list").appendChild(el("div", "empty", st.merk ? (st.q ? "Keine gemerkte Entscheidung passt zur Suche." : "Noch nichts gemerkt. Tippe bei einer Entscheidung auf „Merken“ oder „Notiz“.") : "Keine Entscheidung passt zu diesen Filtern."));
+  }
+  if (weg.length) {
+    var hw = el("div", "verdeckt sans");
+    hw.appendChild(document.createTextNode((treffer.length ? "Dazu " : "") + weg.length + (weg.length === 1 ? " Treffer" : " Treffer") + " außerhalb der gewählten Filter (Thema, Jahr, Paragraf oder Schalter). "));
+    var bw = el("button", "linkbtn", "Alle Treffer zeigen"); bw.type = "button";
+    bw.onclick = function () {
+      st.th = ""; st.yr = ""; $("yr").value = ""; st.para = ""; $("para").value = "";
+      if (weg.some(function (e) { return ZURUECK[e.a]; })) { st.zw = true; $("zw").checked = true; }
+      if (weg.some(function (e) { return e.np; })) { st.op = false; $("op").checked = false; zeichneNeu(); }
+      render();
+    };
+    hw.appendChild(bw);
+    $("list").appendChild(hw);
   }
   zeigeBis(Math.min(SEITE, treffer.length));
+  var vw = st.merk && !st.q ? verwaist() : [];
+  if (vw.length) $("list").insertBefore(verwaistBox(vw), $("list").firstChild);
   var txt = ZAHL(treffer.length) + " von " + ZAHL(E.length) + " Entscheidungen";
-  if (nZurueck && !st.zw) txt += " · " + nZurueck + " Zurückweisungen ausgeblendet";
-  if (st.op) txt += " · " + ZAHL(E.filter(function (e) { return e.np && (st.zw || !ZURUECK[e.a]); }).length) + " nur mit Paragrafen ausgeblendet";
+  if (schalterAus()) txt += st.merk ? " · gemerkte Einträge immer vollständig" : " · Suche nach Geschäftszahl: Schalter gelten hier nicht";
+  else if (nZurueck && !st.zw) txt += " · " + nZurueck + " Zurückweisungen ausgeblendet";
+  if (st.op && !schalterAus()) txt += " · " + ZAHL(E.filter(function (e) { return e.np && (st.zw || !ZURUECK[e.a]); }).length) + " nur mit Paragrafen ausgeblendet";
   $("count").textContent = txt;
   $("barSumme").textContent = filterSumme();
   $("barZahl").textContent = treffer.length + " Treffer";
   if (typeof filterE !== "undefined" && filterE.offen()) eGeaendert = true;
+  if (!$("viewE").hidden && !imSprung) setzeHash(eHash());
 }
 function filterSumme() {
   var teile = [];
@@ -625,12 +734,25 @@ function normGruppen(liste) {
     return {g: g, p: ps.filter(function (x) { return !ps.some(function (y) { return y !== x && y.indexOf(x + " ") === 0; }); })};
   });
 }
+// Gesetzesnummern im RIS (Bundesrecht konsolidiert) für Links auf den Paragrafen in der geltenden Fassung
+var GESETZ_NR = {"MRG": "10002531", "WGG": "10011509", "WEG 2002": "20001921", "ABGB": "10001622", "MieWeG": "20013068"};
+function normLink(gesetz, nr) {
+  return "https://www.ris.bka.gv.at/NormDokument.wxe?Abfrage=Bundesnormen&Gesetzesnummer=" + GESETZ_NR[gesetz] + "&Paragraf=" + encodeURIComponent(nr);
+}
 function normZeile(liste) {
   var box = el("div", "normen");
   normGruppen(liste).forEach(function (gr, i) {
     if (i) box.appendChild(document.createTextNode(" · "));
     box.appendChild(el("b", null, gr.g));
-    if (gr.p.length) box.appendChild(document.createTextNode(" " + gr.p.join(", ")));
+    gr.p.forEach(function (x, j) {
+      box.appendChild(document.createTextNode(j ? ", " : " "));
+      var m = /^§ (\d+[a-z]?)\b/.exec(x);
+      if (m && GESETZ_NR[gr.g]) {
+        var a = el("a", "norm", x); a.href = normLink(gr.g, m[1]); a.target = "_blank"; a.rel = "noopener noreferrer";
+        a.title = gr.g + " § " + m[1] + " im RIS (geltende Fassung; die Entscheidung kann eine ältere betreffen)";
+        box.appendChild(a);
+      } else box.appendChild(document.createTextNode(x));
+    });
   });
   return box;
 }
@@ -773,19 +895,34 @@ function notizBox(e, bN) {
 
 // ---------- Neu ----------
 var neuOffen = false;
+// Letzter Besuch: Datenstand, den dieser Browser zuletzt gesehen hat. Bezugspunkt bleibt fest, solange der Datenstand gleich ist,
+// damit „seit deinem letzten Besuch“ nach einem Neuladen nicht verschwindet.
+var BKEY = "ogh-wohnrecht:besuch", seitBesuch = null;
+try {
+  var bs = JSON.parse(localStorage.getItem(BKEY) || "{}") || {};
+  if (bs.s && bs.s < STAND) { seitBesuch = bs.s; localStorage.setItem(BKEY, JSON.stringify({s: STAND, vorher: bs.s})); }
+  else if (bs.s === STAND) seitBesuch = bs.vorher || null;
+  else if (!bs.s) localStorage.setItem(BKEY, JSON.stringify({s: STAND}));
+} catch (err) {}
+function neuSeitBesuch(e) { return !!(seitBesuch && e.nd && e.nd > seitBesuch && e.nd <= STAND); }
 function zeichneNeu() {
-  var alle = E.filter(function (e) { return e.nd && e.nd >= neuAb && e.nd <= STAND && !(st.op && e.np); });
+  var alle = E.filter(function (e) { return (e.nd && e.nd >= neuAb && e.nd <= STAND || neuSeitBesuch(e)) && !(st.op && e.np); });
+  var ab = seitBesuch && seitBesuch < neuAb ? seitBesuch : neuAb;
   var neu = alle.filter(function (e) { return !ZURUECK[e.a]; }).sort(function (a, b) { return (b.nd + b.k).localeCompare(a.nd + a.k); });
   var nz = alle.length - neu.length;
   if (!neu.length) { $("neu").hidden = true; return; }
   $("neu").hidden = false;
-  $("neuInfo").textContent = "– seit " + fmt(neuAb) + ": " + neu.length + (neu.length === 1 ? " Entscheidung" : " Entscheidungen") + (nz ? " (dazu " + nz + " Zurückweisungen)" : "");
+  var nb = neu.filter(neuSeitBesuch).length;
+  $("neuInfo").textContent = (ab === seitBesuch ? "– im RIS veröffentlicht nach " : "– im RIS veröffentlicht seit ") + fmt(ab) + ": " + neu.length + (neu.length === 1 ? " Entscheidung" : " Entscheidungen") + (nz ? " (dazu " + nz + " Zurückweisungen)" : "") +
+    (seitBesuch ? " · " + (nb ? "davon " + nb + " seit deinem letzten Besuch (Stand " + fmt(seitBesuch) + ")" : "seit deinem letzten Besuch nichts Neues") : "");
   var box = $("neuListe"); box.textContent = "";
   var zeig = neuOffen ? neu : neu.slice(0, NEU_KURZ);
   zeig.forEach(function (e) {
     var r = el("button", "neu-row"); r.type = "button";
-    r.appendChild(el("span", "nd", fmt(e.d)));
+    var nd = el("span", "nd", fmt(e.d)); nd.title = "Entscheidungsdatum" + (e.nd && e.nd !== e.d ? "; im RIS veröffentlicht am " + fmt(e.nd) : "");
+    r.appendChild(nd);
     r.appendChild(el("span", "gz", e.gz));
+    if (neuSeitBesuch(e)) r.appendChild(el("span", "tag neu", "seit letztem Besuch"));
     r.appendChild(el("span", "nt" + (e.np ? " np" : ""), e.t || kuerze(e.sw, 120) || (e.r.length ? kuerze(RS[e.r[0][0]].t, 120) : normKurz(e.n))));
     r.onclick = function () { springe(e); };
     box.appendChild(r);
@@ -813,14 +950,82 @@ function springe(e) {
   node.classList.add("flash");
   setTimeout(function () { node.classList.remove("flash"); }, 2200);
 }
+// ---------- Adresse: Rubrik, Suche, Filter und Rechnung stehen im Teil nach „#“, damit sich Links teilen lassen ----------
+// #ogh?q=…&th=M&yr=2024&para=…  ·  #wien?fq=…&fbez=10  ·  #vpi?b=2020&von=2025-01&bis=2026-01&betrag=850&s=5  ·  #e-5-ob-55-26p
+var bereit = false, imSprung = false;
+function setzeHash(h) {
+  if (!bereit) return;
+  try { history.replaceState(null, "", location.pathname + location.search + (h ? "#" + h : "")); } catch (err) {}
+}
+function hashAus(name, werte) {
+  var teile = [];
+  Object.keys(werte).forEach(function (k) { if (werte[k]) teile.push(k + "=" + encodeURIComponent(werte[k])); });
+  return name + (teile.length ? "?" + teile.join("&") : "");
+}
+function eHash() {
+  var h = hashAus("ogh", {q: st.q, th: st.th, yr: st.yr, para: st.para, zw: st.zw && nZurueck ? "1" : "", op: st.op ? "1" : "", so: st.so === "a" ? "a" : ""});
+  return h === "ogh" ? "" : h;
+}
+function wHash() {
+  var w = {};
+  ["wq", "wtyp", "fq", "fbez", "fmass", "fet"].forEach(function (id) { w[id] = $(id).value.trim(); });
+  return hashAus("wien", w);
+}
+function vHash() {
+  return hashAus("vpi", {b: $("vBasis").value, von: vMonat("vVonM", "vVonJ"), bis: vMonat("vBisM", "vBisJ"),
+                         betrag: $("vBetrag").value.trim(), s: $("vSchwelle").value.trim(), art: $("vSchwArt").value === "e" ? "e" : ""});
+}
+function setzeWahl(id, wert) {
+  var x = $(id);
+  if (x.tagName === "SELECT" && !Array.prototype.some.call(x.options, function (o) { return o.value === wert; })) return false;
+  x.value = wert;
+  return true;
+}
 function vonHash() {
   var h = "";
   try { h = decodeURIComponent(location.hash.slice(1)); } catch (err) { return; }
-  if (h === "wien") { zeigeAnsicht("w"); return; }
-  if (h === "vpi") { zeigeAnsicht("v"); return; }
+  var i = h.indexOf("?"), name = i < 0 ? h : h.slice(0, i), p = {};
+  (i < 0 ? "" : h.slice(i + 1)).split("&").forEach(function (t) {
+    var j = t.indexOf("="); if (j > 0) p[t.slice(0, j)] = t.slice(j + 1);
+  });
+  if (name === "wien") {
+    zeigeAnsicht("w");
+    if (W && i >= 0) {
+      ["wq", "wtyp", "fq", "fbez", "fmass", "fet"].forEach(function (id) { setzeWahl(id, p[id] || ""); });
+      renderTraeger(); renderFoerd();
+    }
+    return;
+  }
+  if (name === "vpi") {
+    zeigeAnsicht("v");
+    if (V && V.r && V.r.length && i >= 0) {
+      if (p.b && setzeWahl("vBasis", p.b)) $("vBasis").onchange();
+      var r = vReihe(), ende = vEnde(r);
+      [["von", "vVonM", "vVonJ"], ["bis", "vBisM", "vBisJ"]].forEach(function (x) {
+        var ym = p[x[0]];
+        if (/^\d{4}-\d{2}$/.test(ym || "") && mDiff(r.von, ym) >= 0 && mDiff(ym, ende) >= 0) setzeMonat(x[1], x[2], ym);
+      });
+      $("vBetrag").value = p.betrag || ""; $("vSchwelle").value = p.s || ""; $("vSchwArt").value = p.art === "e" ? "e" : "u";
+      rechneVpi();
+    }
+    return;
+  }
   zeigeAnsicht("e");
-  if (h && byId[h]) springe(byId[h]);
+  if (name === "ogh") {
+    st.q = p.q || ""; $("q").value = st.q;
+    st.th = TH[p.th] ? p.th : "";
+    st.yr = setzeWahl("yr", p.yr || "") ? p.yr || "" : "";
+    st.para = setzeWahl("para", p.para || "") ? p.para || "" : "";
+    st.so = p.so === "a" ? "a" : "d"; $("so").value = st.so;
+    st.zw = p.zw === "1"; $("zw").checked = st.zw;
+    st.op = p.op === "1" && !$("opWrap").hidden; $("op").checked = st.op;
+    st.merk = false;
+    render(); zeichneNeu();
+    return;
+  }
+  if (h && byId[h]) { imSprung = true; springe(byId[h]); imSprung = false; }
 }
+$("linkE").onclick = function () { setzeHash(eHash() || "ogh"); kopiere(location.href, "Link zu dieser Suche kopiert"); };
 
 // ---------- Notizen sichern / laden ----------
 function npStatus(t) { $("npStatus").textContent = t; }
@@ -859,6 +1064,7 @@ function importiere(text) {
     var alt = notizen[k];
     if (!alt || (sauber.t > (alt.t || 0))) { notizen[k] = sauber; neu++; } else gleich++;
   });
+  if (!neu && !gleich) { npStatus("In diesem Text stehen keine Notizen. Bitte einen Export dieser Seite einfügen."); return; }
   var ok = speichern();
   npStatus(ok ? neu + " Notizen übernommen, " + gleich + " waren schon aktuell." : "Nicht gespeichert: Der Browser blockiert den lokalen Speicher.");
   render();
@@ -981,6 +1187,18 @@ function pruefeLeisten() {
 window.addEventListener("scroll", pruefeLeisten, {passive: true});
 window.addEventListener("resize", pruefeLeisten);
 document.addEventListener("keydown", function (ev) {
+  if (ev.key === "Tab") {
+    // Offene Leiste: Tab bleibt in der Leiste (wie in einem Dialog)
+    var l = leisten.filter(function (x) { return x.offen(); })[0];
+    if (!l) return;
+    var bar = l.kopf.parentNode;
+    var f = Array.prototype.filter.call(bar.querySelectorAll("button,input,select,textarea,a[href]"), function (x) { return !x.disabled && x.offsetParent !== null; });
+    if (!f.length) return;
+    var i = f.indexOf(document.activeElement);
+    if (ev.shiftKey && (i <= 0)) { ev.preventDefault(); f[f.length - 1].focus(); }
+    else if (!ev.shiftKey && (i < 0 || i === f.length - 1)) { ev.preventDefault(); f[0].focus(); }
+    return;
+  }
   if (ev.key !== "Escape") return;
   leisten.forEach(function (l) { if (l.offen()) { l.setze(false); l.kopf.focus(); } });
 });
@@ -1026,9 +1244,9 @@ function zeigeAnsicht(a) {
   if (a === "w") zeichneWien();
   if (a === "v") zeichneVpi();
 }
-$("tabW").onclick = function () { if (location.hash !== "#wien") location.hash = "wien"; else zeigeAnsicht("w"); };
-$("tabV").onclick = function () { if (location.hash !== "#vpi") location.hash = "vpi"; else zeigeAnsicht("v"); };
-$("tabE").onclick = function () { if (location.hash === "#wien" || location.hash === "#vpi") location.hash = ""; zeigeAnsicht("e"); };
+$("tabW").onclick = function () { zeigeAnsicht("w"); if (W) setzeHash(wHash()); else setzeHash("wien"); };
+$("tabV").onclick = function () { zeigeAnsicht("v"); if (V && V.r && V.r.length) setzeHash(vHash()); else setzeHash("vpi"); };
+$("tabE").onclick = function () { zeigeAnsicht("e"); setzeHash(eHash()); };
 
 var wZuletzt = null, wAnzahlT = null, wAnzahlF = null;
 // Förderzusagen mit „prüfen“ ausblenden; die Wahl bleibt im Browser
@@ -1146,6 +1364,7 @@ function renderTraeger() {
   });
   wAnzahlT = liste.length;
   wSumme();
+  if (!$("viewW").hidden) setzeHash(wHash());
   var box = $("wTraeger"); box.textContent = "";
   if (!liste.length) { box.appendChild(el("div", "leer", "Kein Eintrag passt.")); return; }
   liste.forEach(function (t) { box.appendChild(traegerKarte(t)); });
@@ -1261,6 +1480,7 @@ function renderFoerd() {
   });
   wAnzahlF = fTreffer.length;
   wSumme();
+  if (!$("viewW").hidden) setzeHash(wHash());
   var summe = fTreffer.reduce(function (s, f) { return s + (f.nr || 0); }, 0);
   var nAus = wOhnePr ? W.foerd.filter(function (f) { return f.pr && f.pr.length; }).length : 0;
   $("fCount").textContent = fTreffer.length + " von " + W.foerd.length + " Förderzusagen · " + EUR(summe) + " nicht rückzahlbar (soweit erkannt)" +
@@ -1298,7 +1518,11 @@ function zahlKurz(x) {
 function leseZahl(s) {
   s = String(s || "").replace(/[\s€%]/g, "");
   if (!s) return null;
+  // Österreichische Schreibweise: Punkt trennt Tausender (1.000 oder 1.000,50), Komma die Dezimalen.
+  // Ohne Komma gilt ein Punkt nur dann als Dezimalpunkt, wenn er nicht wie ein Tausenderpunkt aussieht (850.5).
   if (s.indexOf(",") >= 0) s = s.replace(/\./g, "").replace(",", ".");
+  else if (/^-?\d{1,3}(\.\d{3})+$/.test(s)) s = s.replace(/\./g, "");
+  if (!/^-?(\d+\.?\d*|\.\d+)$/.test(s)) return null;
   var x = parseFloat(s);
   return isFinite(x) ? x : null;
 }
@@ -1319,6 +1543,7 @@ function zeichneVpi() {
   [{t: "Indexrechner von Statistik Austria (zur Kontrolle der Berechnung)", s: "https://www.statistik.at/Indexrechner", a: "Website"},
    {t: "Mieten-Wertsicherungsgesetz (MieWeG) im RIS, geltende Fassung", s: "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=20013068", a: "RIS"}]
     .concat(dok).forEach(function (d) { $("vDok").appendChild(hintergrundZeile(d)); });
+  zeichneRichtwerte();
   if (!V || !V.r || !V.r.length) {
     $("vInhalt").textContent = "";
     $("vInhalt").appendChild(el("div", "leer", "Noch keine Indexwerte. Sie erscheinen nach dem nächsten Lauf des wöchentlichen Abrufs."));
@@ -1345,6 +1570,7 @@ function zeichneVpi() {
   };
   ["vVonM", "vVonJ", "vBisM", "vBisJ"].forEach(function (id) { $(id).onchange = rechneVpi; });
   ["vBetrag", "vSchwelle"].forEach(function (id) { $(id).addEventListener("input", rechneVpi); });
+  $("vSchwArt").onchange = rechneVpi;
   $("vStand").textContent = "Veränderung zum Vormonat und zum Vorjahresmonat aus den gerundeten Indexwerten berechnet; „vorl.“ = vorläufig. Stand der Indexwerte " + fmt(V.stand) + " · Quelle: Statistik Austria, Lizenz CC BY 4.0";
   rechneVpi();
 }
@@ -1353,6 +1579,7 @@ function rechneVpi() {
   var a = vWert(r, von), b = vWert(r, bis), box = $("vErgebnis");
   box.textContent = "";
   vTabelle(r);
+  if (!$("viewV").hidden) setzeHash(vHash());
   if (a == null || b == null) {
     box.appendChild(el("div", "v-zeile", "Für " + mText(a == null ? von : bis) + " gibt es im " + r.n + " keinen Wert. Verfügbar: " + mText(r.von) + " bis " + mText(vEnde(r)) + "."));
     return;
@@ -1370,17 +1597,70 @@ function rechneVpi() {
   if (betrag != null) box.appendChild(el("div", "v-zeile", "Betrag: " + ZAHL(betrag, 2) + " × " + ZAHL(faktor, 6) + " = " + ZAHL(Math.round(betrag * faktor * 100) / 100, 2)));
   var schwelle = leseZahl($("vSchwelle").value);
   if (schwelle != null && schwelle > 0) {
-    var ende = vEnde(r), m = mPlus(von, 1), gef = null, wGef = null, letzte = null;
-    for (; mDiff(m, ende) >= 0; m = mPlus(m, 1)) {
-      var w = vWert(r, m); if (w == null) continue;
-      letzte = (w / a - 1) * 100;
-      if (Math.abs(letzte) > schwelle) { gef = m; wGef = w; break; }
+    var kette = vKette(r, von, bis, schwelle, $("vSchwArt").value === "e", betrag);
+    var wort = $("vSchwArt").value === "e" ? "erreicht" : "überschritten";
+    if (!kette.schritte.length) {
+      box.appendChild(el("div", "v-zeile", "Schwelle " + zahlKurz(schwelle) + " %: bis " + mText(bis) + " nicht " + wort +
+        (kette.letzte != null ? " (zuletzt " + proz(kette.letzte) + " gegenüber " + mText(von) + ")" : "")));
+    } else {
+      box.appendChild(el("div", "v-zeile", "Schwelle " + zahlKurz(schwelle) + " % " + wort + ": " + kette.schritte.length +
+        (kette.schritte.length === 1 ? " Anpassung" : " Anpassungen") + " bis " + mText(bis) + (kette.schritte.length > 1 ? " (jeweils ab der letzten Anpassung gerechnet)" : "")));
+      var ol = el("ol", "v-kette");
+      kette.schritte.forEach(function (x) {
+        ol.appendChild(el("li", null, mText(x.m) + ": " + iw(x.w) + (vorl(x.m) ? " (vorläufig)" : "") + ", " + proz(x.p) + " gegenüber " + mText(x.basis) +
+          (x.betrag != null ? " → Betrag " + ZAHL(x.betrag, 2) : "")));
+      });
+      box.appendChild(ol);
+      if (kette.letzte != null) box.appendChild(el("div", "v-zeile", "Seit der letzten Anpassung (" + mText(kette.schritte[kette.schritte.length - 1].m) + ") bis " + mText(bis) + ": " + proz(kette.letzte)));
     }
-    box.appendChild(el("div", "v-zeile", gef
-      ? "Schwelle " + zahlKurz(schwelle) + " %: erstmals überschritten im " + mText(gef) + " (" + iw(wGef) + ", " + proz((wGef / a - 1) * 100) + (vorl(gef) ? ", vorläufig" : "") + ")"
-      : "Schwelle " + zahlKurz(schwelle) + " %: bis " + mText(ende) + " nicht überschritten" + (letzte != null ? " (zuletzt " + proz(letzte) + ")" : "")));
   }
   if (vorl(von) || vorl(bis)) box.appendChild(el("div", "hinweis", "Vorläufiger Wert: Statistik Austria kann ihn mit der endgültigen Veröffentlichung noch ändern."));
+}
+// Anpassungen als Kette: Sobald die Veränderung gegenüber der letzten Basis die Schwelle erreicht bzw. überschreitet,
+// wird angepasst und der Monat wird zur neuen Basis. Rundung wie in der Anzeige: Prozent aus den Indexwerten.
+function vKette(r, von, bis, schwelle, auchGleich, betrag) {
+  var basisW = vWert(r, von), basisM = von, schritte = [], letzte = null, b = betrag;
+  if (basisW == null) return {schritte: [], letzte: null};
+  for (var m = mPlus(von, 1); mDiff(m, bis) >= 0; m = mPlus(m, 1)) {
+    var w = vWert(r, m); if (w == null) continue;
+    var p = (w / basisW - 1) * 100, x = Math.round(Math.abs(p) * 1e8) / 1e8;
+    letzte = p;
+    if (auchGleich ? x >= schwelle : x > schwelle) {
+      if (b != null) b = Math.round(b * w / basisW * 100) / 100;
+      schritte.push({m: m, w: w, p: p, basis: basisM, betrag: b});
+      basisW = w; basisM = m; letzte = null;
+    }
+  }
+  return {schritte: schritte, letzte: letzte};
+}
+// Richtwerte (RichtWG) und Kategoriebeträge (§ 15a MRG) aus data/richtwerte.json, von Hand gepflegt
+function zeichneRichtwerte() {
+  var RW = D.rw;
+  if (!RW || !RW.richtwerte) return;
+  $("rwBox").hidden = false;
+  $("rwInfo").textContent = "Euro je Quadratmeter Nutzfläche und Monat, ohne Zuschläge und Abstriche. Von Hand gepflegt; maßgeblich ist die jeweilige Kundmachung.";
+  var quellen = [];
+  function tabelle(t, teil, ersteSpalte, name) {
+    var kopf = el("thead"), zk = el("tr");
+    zk.appendChild(el("th", null, ersteSpalte));
+    teil.s.forEach(function (x) { zk.appendChild(el("th", null, "ab " + fmt(x.ab))); quellen.push({x: x, name: name}); });
+    kopf.appendChild(zk); t.appendChild(kopf);
+    var tb = el("tbody");
+    teil.k.forEach(function (name, i) {
+      var z = el("tr"); z.appendChild(el("td", null, name));
+      teil.s.forEach(function (x) { z.appendChild(el("td", null, ZAHL(x.w[i], 2))); });
+      tb.appendChild(z);
+    });
+    t.appendChild(tb);
+  }
+  tabelle($("rwTab"), RW.richtwerte, "Richtwert", "Richtwerte");
+  if (RW.kategorien) tabelle($("katTab"), RW.kategorien, "Kategorie", "Kategoriebeträge");
+  var q = $("rwQuellen");
+  quellen.forEach(function (y) {
+    var x = y.x, z = el("div"); z.appendChild(document.createTextNode(y.name + " ab " + fmt(x.ab) + ": " + (x.q || "")));
+    if (sicher(x.l)) { z.appendChild(document.createTextNode(" ")); var a = el("a", null, "Quelle ↗"); a.href = x.l; a.target = "_blank"; a.rel = "noopener noreferrer"; z.appendChild(a); }
+    q.appendChild(z);
+  });
 }
 function vTabelle(r) {
   var t = $("vTabelle"); t.textContent = "";
@@ -1407,9 +1687,18 @@ if (W) $("footer").appendChild(el("p", null, "Wohnbauträger Wien: Veröffentlic
 if (W && W.gbs) $("footer").appendChild(el("p", null, "Gemeindebauten: Stadt Wien – Wiener Wohnen, Datensatz „Gemeindebauten“, Lizenz CC BY 3.0 AT."));
 if (V) $("footer").appendChild(el("p", null, "Verbraucherpreisindex: Statistik Austria, Lizenz CC BY 4.0, Stand " + fmt(V.stand) + "."));
 
+// Vor dem Drucken alle Treffer der sichtbaren Liste laden (sonst nur die ersten 50 bzw. 30)
+window.addEventListener("beforeprint", function () {
+  if (!$("viewE").hidden && gezeigt < treffer.length) zeigeBis(treffer.length);
+  if (!$("viewW").hidden && W && fGezeigt < fTreffer.length) zeigeFoerd(fTreffer.length);
+});
+$("linkW").onclick = function () { setzeHash(wHash()); kopiere(location.href, "Link zu dieser Suche kopiert"); };
+$("linkV").onclick = function () { setzeHash(vHash()); kopiere(location.href, "Link zu dieser Rechnung kopiert"); };
+
 render();
 zeichneNeu();
 vonHash();
+bereit = true;
 window.addEventListener("hashchange", vonHash);
 })();
 </script>

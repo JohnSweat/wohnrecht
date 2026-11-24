@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Verbraucherpreisindex (VPI) von Statistik Austria für den Indexrechner.
 
-Lädt für alle VPI-Basen (VPI 2025 bis VPI I/II 1958) die Monatswerte des Gesamtindex aus den
-Open-Data-Dateien von Statistik Austria und schreibt data/vpi.json. Vorläufige Werte sind in der
+Lädt für alle VPI-Basen (VPI 2025 bis VPI I/II 1958) und den HVPI 2025 die Monatswerte des Gesamtindex
+aus den Open-Data-Dateien von Statistik Austria und schreibt data/vpi.json. Vorläufige Werte sind in der
 Zeitliste mit „(vorl.)“ gekennzeichnet und werden mitgeschrieben.
 
 Quelle: Statistik Austria, data.statistik.gv.at, Lizenz CC BY 4.0.
@@ -23,7 +23,8 @@ BASIS = pathlib.Path(__file__).resolve().parent.parent
 QUELLE = "https://data.statistik.gv.at/data/"
 UA = "wohnrecht/1.0 (+https://github.com/JohnSweat/wohnrecht; nicht-kommerzielles Nachschlagewerk, Abruf einmal pro Woche)"
 
-# Schlüssel, Anzeigename, Dateistamm (ohne .csv); neueste Basis zuerst
+# Schlüssel, Anzeigename, Dateistamm (ohne .csv)[, freiwillig]; neueste Basis zuerst.
+# Freiwillige Reihen: Fällt der Abruf aus, gilt der bisherige Stand, der Lauf scheitert deshalb aber nicht.
 BASEN = [
     ("2025", "VPI 2025", "OGD_vpi25c18_VPI_2025COICOP18_1"),
     ("2020", "VPI 2020", "OGD_vpi20c18_VPI_2020COICOP18_1"),
@@ -37,6 +38,8 @@ BASEN = [
     ("1966", "VPI 1966", "OGD_vpi66_VPI_1966_1"),
     ("1958i", "VPI I 1958", "OGD_vpi58_VPI_1958_i_1"),
     ("1958ii", "VPI II 1958", "OGD_vpi58ii_VPI_1958_ii_1"),
+    # Harmonisierter VPI (gleiches Dateiformat; Gesamtindex „HVPI-0“); Wertsicherungen können auch an ihm hängen
+    ("hvpi2025", "HVPI 2025", "OGD_hvpi25_HVD_HVPI_2025_1", True),
 ]
 
 
@@ -129,7 +132,7 @@ def main(argv=None) -> int:
     heute = dt.datetime.now(dt.timezone.utc).date()
     reihen, vorlaeufig, fehler = [], set(alt.get("vorlaeufig", [])), []
     neu_geladen = False
-    for key, name, stamm in BASEN:
+    for key, name, stamm, *frei in BASEN:
         try:
             werte = lies_reihe(hole(args.quelle + stamm + ".csv"))
             grund = plausibel(werte, heute)
@@ -143,7 +146,10 @@ def main(argv=None) -> int:
             print(f"{name}: {len(werte)} Monate, {min(werte)} bis {max(werte)}, zuletzt {werte[max(werte)]}"
                   + (f" (vorläufig: {', '.join(sorted(vorl))})" if vorl else ""), flush=True)
         except (urllib.error.URLError, OSError, ValueError, StopIteration) as err:
-            fehler.append(f"{name}: {err}")
+            if frei and frei[0]:
+                print(f"Hinweis: {name} nicht geladen ({err})", file=sys.stderr)
+            else:
+                fehler.append(f"{name}: {err}")
             if key in alte_reihen:
                 reihen.append(alte_reihen[key])
                 print(f"{name}: Abruf fehlgeschlagen, bisheriger Stand bleibt", file=sys.stderr)

@@ -403,6 +403,21 @@ def kompakt_dokumente(d: dict | None) -> list[dict]:
     return aus
 
 
+def kompakt_richtwerte(d: dict | None) -> dict | None:
+    """Von Hand gepflegte Richtwerte und Kategoriebeträge (data/richtwerte.json); unvollständige Zeilen fallen weg."""
+    if not d:
+        return None
+    aus = {}
+    for teil, kopf in (("richtwerte", "laender"), ("kategorien", "spalten")):
+        x = d.get(teil) or {}
+        spalten = x.get(kopf) or []
+        staende = [{"ab": s["ab"], "w": s["werte"], "q": s.get("quelle"), "l": s.get("link")}
+                   for s in x.get("staende", []) if s.get("ab") and len(s.get("werte") or []) == len(spalten)]
+        if spalten and staende:
+            aus[teil] = {"k": spalten, "s": sorted(staende, key=lambda s: s["ab"], reverse=True)}
+    return aus or None
+
+
 def kompakt_vpi(v: dict | None) -> dict | None:
     """Indexrechner: Monatswerte je VPI-Basis (lückenlos ab „von“)."""
     if not v or not v.get("reihen"):
@@ -452,7 +467,8 @@ def main(argv=None) -> int:
     daten = {"stand": stand, "quellen": quellen, "neuTage": NEU_TAGE, "eintraege": eintraege, "rs": rechtssaetze, "normen": normen,
              "wien": kompakt_wien(lade(basis / "data" / "wien.json", None)),
              "vpi": kompakt_vpi(lade(basis / "data" / "vpi.json", None)),
-             "dok": kompakt_dokumente(lade(basis / "data" / "dokumente.json", None))}
+             "dok": kompakt_dokumente(lade(basis / "data" / "dokumente.json", None)),
+             "rw": kompakt_richtwerte(lade(basis / "data" / "richtwerte.json", None))}
 
     vorlage = (basis / "vorlage" / "seite.html").read_text(encoding="utf-8")
     html = baue_seite(vorlage, daten)
