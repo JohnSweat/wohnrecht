@@ -61,12 +61,16 @@ def monat(code: str) -> str | None:
     c = code.strip()
     if not c.startswith("VPIZR-") or len(c) != 12 or not c[6:].isdigit():
         return None
+    if not 1 <= int(c[10:12]) <= 12:   # sonst liefe folge() endlos
+        return None
     return f"{c[6:10]}-{c[10:12]}"
 
 
 def lies_reihe(daten: bytes) -> dict[str, float]:
     """Gesamtindex (Klassifikationscode endet auf „-0“) je Monat aus der Hauptdatei."""
     zeilen = daten.decode("utf-8-sig", "replace").splitlines()
+    if not zeilen or not zeilen[0].strip():
+        raise ValueError("leere Datei")
     kopf = [k.strip() for k in zeilen[0].split(";")]
     try:
         i_zeit, i_wert = kopf.index("C-VPIZR-0"), kopf.index("F-VPIMZBM")
@@ -96,6 +100,8 @@ def lies_vorlaeufig(daten: bytes) -> set[str]:
 
 def folge(von: str, bis: str) -> list[str]:
     j, m = int(von[:4]), int(von[5:])
+    if not 1 <= m <= 12:
+        raise ValueError(f"ungültiger Monat {von}")
     aus = []
     while f"{j:04d}-{m:02d}" <= bis:
         aus.append(f"{j:04d}-{m:02d}")

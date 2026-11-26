@@ -23,9 +23,8 @@ on:
         type: boolean
         default: false
 
-permissions:
-  contents: write
-  issues: write
+# Rechte nur so weit wie nötig, je Job (unten)
+permissions: {}
 
 concurrency:
   group: aktualisieren
@@ -40,6 +39,8 @@ jobs:
   faellig:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    permissions:
+      contents: read
     outputs:
       ja: ${{ steps.pruefen.outputs.ja }}
     steps:
@@ -68,6 +69,9 @@ jobs:
     if: needs.faellig.outputs.ja == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 120
+    permissions:
+      contents: write   # Commit der Daten
+      issues: write     # Benachrichtigung bei neuen Entscheidungen
     steps:
       - uses: actions/checkout@v7
 
@@ -103,7 +107,12 @@ jobs:
         id: wien
         if: ${{ !inputs.diagnose }}
         continue-on-error: true
-        run: python scripts/wien.py --debug "${{ inputs.debug || '0' }}"
+        # Eingabe nur über die Umgebung, nie direkt in den Befehl einsetzen; nur Ziffern zulassen
+        env:
+          DEBUG_N: ${{ inputs.debug || '0' }}
+        run: |
+          case "$DEBUG_N" in ''|*[!0-9]*) echo "Eingabe debug ist keine Zahl: ignoriert"; DEBUG_N=0 ;; esac
+          python scripts/wien.py --debug "$DEBUG_N"
 
       - name: Verbraucherpreisindex (Statistik Austria)
         id: vpi
@@ -125,6 +134,8 @@ jobs:
             echo "Keine Änderungen."
           else
             git commit -q -m "Daten aktualisiert $(date -u +%F)"
+            # Kam inzwischen ein Commit auf den Zweig (z. B. ein Merge), erst darauf aufsetzen
+            git pull --rebase -q
             git push
           fi
 

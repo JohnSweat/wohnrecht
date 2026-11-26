@@ -40,7 +40,7 @@ SUCHE_URL = "https://www.data.gv.at/api/hub/search/search"
 DMS = "https://dms.wien.gv.at"
 UA = "wohnrecht/1.0 (+https://github.com/JohnSweat/wohnrecht; nicht-kommerzielles Nachschlagewerk, Abruf einmal pro Woche)"
 PAUSE = 1.0
-PARSER_VERSION = 2
+PARSER_VERSION = 3
 
 # ---------------------------------------------------------------------------
 # Netz
@@ -530,7 +530,9 @@ def ordne_zu(wer, traeger: list[dict]) -> str | None:
 # Überblick je Träger
 # ---------------------------------------------------------------------------
 
-RECHTSFORM = re.compile(
+# Eigener Name: Früher hieß diese Konstante ebenfalls RECHTSFORM und überschrieb beim Laden des Moduls die
+# breite Fassung oben, die partei() braucht (OG, KG, Verein, Stiftung … galten dadurch als Privatperson).
+RECHTSFORM_KERN = re.compile(
     r"(?:(?:reg(?:istrierte)?|eingetragene)\.?\s*)?\bgen(?:ossenschaft)?\.?\s*(?:mit\s+beschränkter\s+haftung|m\.?\s*b\.?\s*h\b\.?)"
     r"|ges(?:ellschaft)?\.?\s*(?:mit\s+beschränkter\s+haftung|m\.?\s*b\.?\s*h\b\.?)"
     r"|\bgmbh\b|\bm\.?\s*b\.?\s*h\b\.?|aktiengesellschaft|\bag\b", re.I)
@@ -540,7 +542,7 @@ def kern(name: str) -> str:
     """Vergleichsschlüssel für Firmennamen: ohne Rechtsform, "gemeinnützig", Satzzeichen.
     "MIGRA Gemeinnützige Wohnungsges.m.b.H." und "MIGRA gemeinnützige Wohnungsgesellschaft mbH"
     ergeben denselben Schlüssel."""
-    s = RECHTSFORM.sub(" ", (name or "").lower())
+    s = RECHTSFORM_KERN.sub(" ", (name or "").lower())
     s = re.sub(r"gemeinnützig\w*", " ", s)
     s = re.sub(r"\bu\.\s", " und ", s.replace("&", " und "))
     return re.sub(r"[^a-z0-9äöüß]+", "", s)
@@ -755,6 +757,11 @@ def debug_ausgabe(e: dict, text: str) -> None:
     print("     " + json.dumps({k: e.get(k) for k in felder}, ensure_ascii=False))
 
 
+def zu_viele_fehler(fehlgeschlagen: int, versuche: int) -> bool:
+    """Gilt als Fehler des Laufs: mindestens 5 Ausfälle und mindestens die Hälfte der Versuche."""
+    return fehlgeschlagen >= 5 and fehlgeschlagen * 2 >= versuche
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description="Rubrik Wohnbauträger Wien aktualisieren.")
     ap.add_argument("--debug", type=int, default=0, help="für N Förderzusagen Strukturhinweise ausgeben")
@@ -813,11 +820,15 @@ def main(argv=None) -> int:
         except (urllib.error.URLError, OSError, ValueError) as err:
             print(f"FEHLER: Suche auf data.gv.at: {err}", file=sys.stderr)
             return 1
+        if not zusagen_ds and alt.get("foerderungen"):
+            # Schutz gegen eine leere Suchantwort: sonst wären alle bisherigen Förderzusagen weg
+            print("FEHLER: data.gv.at liefert keine Förderzusagen mehr – nichts gespeichert, Suche prüfen.", file=sys.stderr)
+            return 1
 
     # Förderzusagen: neue laden, alle (neu) auswerten
     alte_fz = {e["id"]: e for e in alt.get("foerderungen", [])}
     foerderungen = []
-    geladen = 0
+    geladen = pdf_fehler = 0
     debug_rest = args.debug
     for ds in sorted(zusagen_ds, key=lambda x: x.get("datum") or "", reverse=True):
         textdatei = texte / f"{ds['id']}.txt"
@@ -841,6 +852,7 @@ def main(argv=None) -> int:
                 time.sleep(PAUSE)
             except (urllib.error.URLError, OSError, ValueError) as err:
                 print(f"  {ds['id']}: {err}", file=sys.stderr)
+                pdf_fehler += 1
                 if vorher:
                     foerderungen.append(vorher)
                 continue
@@ -851,7 +863,11 @@ def main(argv=None) -> int:
         if debug_rest > 0:
             debug_ausgabe(e, text)
             debug_rest -= 1
-    print(f"Förderzusagen: {len(foerderungen)} ausgewertet, {geladen} PDFs neu geladen", flush=True)
+    print(f"Förderzusagen: {len(foerderungen)} ausgewertet, {geladen} PDFs neu geladen"
+          + (f", {pdf_fehler} nicht ladbar" if pdf_fehler else ""), flush=True)
+    # Einzelne kaputte Freigaben kommen vor; scheitert aber mindestens die Hälfte (und mehr als eine Handvoll), stimmt etwas nicht
+    if zu_viele_fehler(pdf_fehler, geladen + pdf_fehler):
+        fehler.append(f"Förderzusagen: {pdf_fehler} von {geladen + pdf_fehler} PDFs nicht ladbar")
 
     # Fehlt die Firmenbuchnummer (z. B. Zweigniederlassung), über den Namen aus anderen Zusagen ergänzen
     def schluessel(name: str) -> str:
@@ -877,6 +893,8 @@ def main(argv=None) -> int:
             schreibe_json(gb_pfad, lies_gemeindebauten(hole(GEMEINDEBAUTEN_URL, "application/xml")))
         except (urllib.error.URLError, OSError, ValueError, ET.ParseError) as err:
             print(f"Hinweis: Gemeindebauten nicht geladen ({err}); letzter Stand bleibt.", file=sys.stderr)
+            if not gb_pfad.exists():
+                fehler.append(f"Gemeindebauten nicht geladen und kein früherer Stand vorhanden ({err})")
     gb = lade_json(gb_pfad, None)
     gb_info = None
     if gb and gb.get("bauten"):
@@ -896,10 +914,12 @@ def main(argv=None) -> int:
     # Prüfberichte: Geschäftsjahr steht im Dateinamen (z. B. PB_W50_GJ_2024_Auszug.PDF)
     alte_wgg = {d["id"]: d for d in alt.get("pruefberichte", [])}
     pruefberichte = []
+    wgg_versuche = wgg_fehler = 0
     for ds in wgg_ds:
         e = alte_wgg.get(ds["id"]) or dict(ds)
         e["traeger"] = ordne_zu(ds["titel"], traeger)
         if "gj" not in e and ds.get("share") and not args.nur_auswerten:
+            wgg_versuche += 1
             try:
                 namen = [name for _, name in pdf_links(ds["share"])]
                 m = next((GJ.search(n) for n in namen if GJ.search(n)), None)
@@ -907,7 +927,10 @@ def main(argv=None) -> int:
                 time.sleep(PAUSE / 2)
             except (urllib.error.URLError, OSError) as err:
                 print(f"  WGG {ds['id']}: {err}", file=sys.stderr)
+                wgg_fehler += 1
         pruefberichte.append(e)
+    if zu_viele_fehler(wgg_fehler, wgg_versuche):
+        fehler.append(f"WGG-Prüfberichte: {wgg_fehler} von {wgg_versuche} Freigaben nicht lesbar")
     bescheinigungen = []
     for ds in btvg_ds:
         e = dict(ds)
