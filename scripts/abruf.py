@@ -331,6 +331,11 @@ def frage_norm(norm: str) -> tuple[list[dict], int | None]:
         if gesamt is not None and len(gefunden) >= gesamt:
             break
         time.sleep(PAUSE)
+    else:
+        # Grenze erreicht: Der Bestand wäre unvollständig, also lieber den Lauf scheitern lassen (alter Stand bleibt)
+        raise RisFehler(f"Norm {norm!r}: Grenze von {MAX_SEITEN} Seiten erreicht, {len(gefunden)} von {gesamt} Rechtssätzen geladen")
+    if gesamt is not None and len(gefunden) < gesamt:
+        print(f"Warnung: Norm {norm!r}: nur {len(gefunden)} von {gesamt} Rechtssätzen geliefert", file=sys.stderr)
     return gefunden, gesamt
 
 
@@ -348,6 +353,22 @@ def schreibe_json(pfad: pathlib.Path, daten) -> None:
         json.dump(daten, f, ensure_ascii=False, indent=1, sort_keys=False)
         f.write("\n")
     tmp.replace(pfad)
+
+
+def vereinige(ziel: dict, quelle: dict) -> dict:
+    """Zwei Einträge derselben Entscheidung zusammenführen; ziel behält ID und Geschäftszahlen-Reihenfolge."""
+    for g in quelle.get("gz", []):
+        if g not in ziel["gz"]:
+            ziel["gz"].append(g)
+    for feld in ("datum", "art", "url", "schlagworte"):
+        ziel[feld] = ziel.get(feld) or quelle.get(feld)
+    for feld in ("normen", "rs", "rss"):
+        for x in quelle.get(feld, []):
+            if x not in ziel.setdefault(feld, []):
+                ziel[feld].append(x)
+    for nr, anm in quelle.get("rsa", {}).items():
+        ziel.setdefault("rsa", {}).setdefault(nr, anm)
+    return ziel
 
 
 def abruf_ris(ab: str, alt: dict) -> tuple[dict, list[str], dict, dict]:
@@ -379,20 +400,32 @@ def abruf_ris(ab: str, alt: dict) -> tuple[dict, list[str], dict, dict]:
         if not k["datum"]:
             st["ohne_datum"] += 1
         schluessel = gz_norm(gz[0])
+        jjt = k["id"] if (k["id"] or "").startswith("JJT_") else None
         kid = nach_gz.get(schluessel)
+        if kid is None and jjt in entsch:
+            # dieselbe Entscheidung, zuerst unter einer anderen Geschäftszahl gesehen (verbundene Verfahren)
+            kid = jjt
+            nach_gz[schluessel] = kid
+            entsch[kid]["gz"] += [g for g in gz if g not in entsch[kid]["gz"]]
         if kid is None:
-            kid = k["id"] if (k["id"] or "").startswith("JJT_") else "GZ:" + schluessel
+            kid = jjt or "GZ:" + schluessel
             entsch[kid] = {"id": kid, "gz": gz, "datum": k["datum"], "art": k["art"], "url": k["url"],
                            "normen": [], "rs": [], "schlagworte": None}
             nach_gz[schluessel] = kid
         e = entsch[kid]
         # Link nachtragen und auf die Dokumentnummer umschlüsseln, wenn sie erst jetzt bekannt ist
-        if kid.startswith("GZ:") and (k["id"] or "").startswith("JJT_"):
+        if kid.startswith("GZ:") and jjt:
             entsch.pop(kid)
-            kid = k["id"]
-            e["id"] = kid
-            entsch[kid] = e
-            nach_gz[schluessel] = kid
+            for sl, i in list(nach_gz.items()):
+                if i == kid:
+                    nach_gz[sl] = jjt
+            if jjt in entsch:
+                # gibt es schon: zusammenführen statt überschreiben
+                e = vereinige(entsch[jjt], e)
+            else:
+                e["id"] = jjt
+                entsch[jjt] = e
+            kid = jjt
         for feld in ("datum", "art", "url"):
             e[feld] = e[feld] or k[feld]
         for n in rs["normen"]:
@@ -531,6 +564,12 @@ def frage_texte(zeit: dict):
         if gesamt is not None and n >= gesamt:
             break
         time.sleep(PAUSE)
+    else:
+        print(f"Warnung: Entscheidungstexte {zeit}: Grenze von {MAX_SEITEN_TEXTE} Seiten erreicht, {n} von {gesamt} gelesen",
+              file=sys.stderr)
+        return
+    if gesamt is not None and n < gesamt:
+        print(f"Warnung: Entscheidungstexte {zeit}: nur {n} von {gesamt} geliefert", file=sys.stderr)
 
 
 def ergaenze_aus_texten(entsch: dict, zeitraeume: list[dict]) -> dict:

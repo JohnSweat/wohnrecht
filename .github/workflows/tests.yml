@@ -1,0 +1,71 @@
+name: Tests
+
+# Prüft jeden Push und jeden Pull Request ohne Netz: Unittests, Syntax der Skripte, Bau der Seite und das
+# eingebettete JavaScript. Reine Datencommits des Ablaufs „Aktualisieren“ lösen keinen Lauf aus.
+on:
+  push:
+    # nur die vom Ablauf erzeugten Dateien; handgepflegte (richtwerte, wien_traeger, dokumente, ogh_auswahl) lösen Tests aus
+    paths-ignore:
+      - "data/ris.json"
+      - "data/ogh_feed.json"
+      - "data/wien.json"
+      - "data/vpi.json"
+      - "data/cache/**"
+      - "docs/**"
+      - "dist/**"
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Unittests
+        run: python -m unittest discover -s tests -p "test_*.py" -v
+
+      - name: Syntax der Skripte
+        run: python -m py_compile scripts/*.py
+
+      - name: Seite bauen
+        run: |
+          python scripts/seite_bauen.py
+          python - <<'EOF'
+          import pathlib, sys
+          p = pathlib.Path("dist/ogh-wohnrecht.html")
+          groesse = p.stat().st_size if p.exists() else 0
+          print(f"{p}: {groesse} Bytes")
+          sys.exit(0 if groesse > 100_000 else "Seite fehlt oder ist unplausibel klein")
+          EOF
+
+      # node ist auf ubuntu-latest vorinstalliert; geprüft werden die eingebetteten Skripte ohne src und ohne JSON-Daten
+      - name: JavaScript der Vorlage prüfen
+        run: |
+          python - <<'EOF'
+          import pathlib, re, subprocess, sys, tempfile
+          html = pathlib.Path("vorlage/seite.html").read_text(encoding="utf-8")
+          bloecke = [m.group(2) for m in re.finditer(r"<script\b([^>]*)>(.*?)</script>", html, re.S)
+                     if "src=" not in m.group(1) and "json" not in m.group(1).lower()]
+          if not bloecke:
+              sys.exit("Kein eingebettetes Skript gefunden")
+          ok = True
+          for i, js in enumerate(bloecke):
+              with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False, encoding="utf-8") as f:
+                  f.write(js)
+              r = subprocess.run(["node", "--check", f.name])
+              print(f"Skript {i + 1} von {len(bloecke)}: {'in Ordnung' if r.returncode == 0 else 'Syntaxfehler'}")
+              ok = ok and r.returncode == 0
+          sys.exit(0 if ok else 1)
+          EOF

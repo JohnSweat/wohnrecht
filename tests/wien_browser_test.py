@@ -20,10 +20,10 @@ sys.path.insert(0, str(HIER))
 import seite_bauen  # noqa: E402
 import wien  # noqa: E402
 from test_skripte import FOERDERZUSAGE_BILD, FOERDERZUSAGE_PRIVAT, FOERDERZUSAGE_STADT, FOERDERZUSAGE_VERTRETEN, FOERDERZUSAGE_WEG  # noqa: E402
+from browser_hilfe import ausgabeordner, chrome_optionen  # noqa: E402
 from playwright.sync_api import sync_playwright  # noqa: E402
 
-aus = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else "/tmp/ogh-wien-test")
-aus.mkdir(parents=True, exist_ok=True)
+aus = ausgabeordner(sys.argv[1] if len(sys.argv) > 1 else None, "ogh-wien-test")
 ergebnis = {}
 
 
@@ -100,7 +100,7 @@ with tempfile.TemporaryDirectory() as tmp:
 
     fehler = []
     with sync_playwright() as p:
-        b = p.chromium.launch(executable_path="/usr/bin/google-chrome", headless=True)
+        b = p.chromium.launch(**chrome_optionen())
         for name, vp in (("desktop", {"width": 1280, "height": 900}), ("handy", {"width": 390, "height": 844})):
             ctx = b.new_context(viewport=vp, device_scale_factor=2 if name == "handy" else 1)
             pg = ctx.new_page()

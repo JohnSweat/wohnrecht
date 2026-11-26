@@ -23,7 +23,7 @@ Der Filter steht in jeder Rubrik oben an seinem Platz. Weiter unten in den Eintr
 GitHub Actions führt jeden Montag den Ablauf **Aktualisieren** aus (`.github/workflows/aktualisieren.yml`). Weil GitHub geplante Läufe nicht garantiert (sie können sich verspäten oder ausfallen), stößt der Zeitplan täglich an; gerechnet wird aber nur montags oder wenn die letzte RIS-Abfrage 7 oder mehr Tage zurückliegt. Ein ausgefallener Montag wird so am nächsten Tag nachgeholt. Schritte des Ablaufs:
 
 1. `scripts/abruf.py` – OGH-Entscheidungen aus dem RIS (Open-Government-Data-Schnittstelle) und neue Hervorhebungen aus dem OGH-Feed. Weil das RIS die Normen nur bei Rechtssätzen führt, fragt das Skript alle Rechtssätze zu MRG und WGG ab und baut aus deren Entscheidungsketten die Liste der Entscheidungen (mit Link zum Entscheidungstext). Die Entscheidungsart kommt aus den Entscheidungstexten. Zu jeder Entscheidung zeigt die Seite die Rechtssätze (vom OGH formulierte Rechtsgrundsätze) mit der Angabe, wie die Entscheidung dazu steht (erstmals hier, bestätigt, vgl. aber …), und den Beisätzen. Die Texte lädt der Ablauf einmal in `data/cache/rechtssaetze.json` (beim ersten Mal einige Tausend Abrufe, mit Zeitbudget je Lauf), danach nur neue.
-2. `scripts/wien.py` – Dokumente der Stadt Wien über die Suchschnittstelle von data.gv.at; Förderzusagen werden als PDF geladen und ausgewertet. Dazu der Datensatz „Gemeindebauten“ von Wiener Wohnen (verkleinert in `data/cache/gemeindebauten.json`; fällt der Abruf aus, gilt der letzte Stand).
+2. `scripts/wien.py` – Dokumente der Stadt Wien über die Suchschnittstelle von data.gv.at; Förderzusagen werden als PDF geladen und ausgewertet. Dazu der Datensatz „Gemeindebauten“ von Wiener Wohnen (verkleinert in `data/cache/gemeindebauten.json`; fällt der Abruf aus, gilt der letzte Stand). Der Schritt gilt als fehlgeschlagen, wenn mindestens die Hälfte der PDF- oder Prüfbericht-Abrufe scheitert (ab 5 Ausfällen) oder die Suche gar keine Förderzusagen mehr liefert.
 3. `scripts/vpi.py` – Verbraucherpreisindex von Statistik Austria (Gesamtindex je Monat und Basis) nach `data/vpi.json`
 4. `scripts/seite_bauen.py` – baut die Seite: `docs/index.html` für GitHub Pages (mit Manifest und Symbol für den Startbildschirm) und `dist/ogh-wohnrecht.html` als Einzeldatei
 
@@ -45,6 +45,8 @@ Kein KI-Aufruf, keine Zugangsdaten nötig; nur Python-Standardbibliothek und `pd
 | Stadt Wien – Wiener Wohnen | Datensatz „Gemeindebauten“ (Name, Wohnungen, Bauzeit, Adressen) | CC BY 3.0 AT |
 | Statistik Austria | Verbraucherpreisindex (Gesamtindex, alle Basen) | CC BY 4.0 |
 
+**Code:** MIT-Lizenz (`LICENSE`). Sie gilt für Skripte, Vorlage und Tests, nicht für die Daten; für diese gelten die Lizenzen der Quellen oben.
+
 Automatisch verdichtete Texte und ausgelesene Werte sind keine amtlichen Angaben; maßgeblich ist das Originaldokument. Keine Rechtsberatung.
 
 **Datenschutz:** Ist eine Förderzusage an Privatpersonen oder Miteigentümer gerichtet, speichert die Seite keinen Namen und kürzt die Adresse auf den Bezirk; dasselbe gilt für Einzelpersonen als Vertreter. Die aus den PDFs ausgelesenen Texte liegen nicht im Repository, nur im Zwischenspeicher von GitHub Actions (`data/cache/wien_texte/`, in `.gitignore`); fehlt er, lädt der Ablauf die PDFs neu.
@@ -58,7 +60,7 @@ Automatisch verdichtete Texte und ausgelesene Werte sind keine amtlichen Angaben
 - `dist/` – dieselbe Seite als Einzeldatei zum Herunterladen
 - `scripts/` – Abruf und Seitenbau
 - `vorlage/` – HTML-Vorlage, Manifest und Symbole
-- `tests/` – `python -m unittest discover -s tests -p "test_*.py"`; Browsertests mit Playwright (`browser_test.py`, `wien_browser_test.py`, `ergaenzungen_browser_test.py`)
+- `tests/` – `python -m unittest discover -s tests -p "test_*.py"`; Browsertests mit Playwright (`browser_test.py`, `wien_browser_test.py`, `ergaenzungen_browser_test.py`). Die Unittests, eine Syntaxprüfung des Skripts der Seite und ein Probebau laufen bei jedem Push und Pull Request (`.github/workflows/tests.yml`).
 
 ## Trägerliste anpassen
 

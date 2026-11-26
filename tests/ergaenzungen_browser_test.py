@@ -1,19 +1,18 @@
 """Browsertest für Suche, teilbare Links, Merkliste, Neu-Bereich, Druck, Gesetzeslinks und Richtwerte.
 
 Aufruf: python tests/ergaenzungen_browser_test.py dist/ogh-wohnrecht.html [ausgabeordner]
-Braucht Playwright für Python und Chrome bzw. Chromium (Pfad über die Umgebungsvariable CHROME, sonst Playwright-Standard).
+Braucht Playwright für Python und Chrome bzw. Chromium (Pfad über die Umgebungsvariable CHROME_PFAD, siehe browser_hilfe.py).
 """
 import json
-import os
 import pathlib
 import re
 import sys
 
+from browser_hilfe import ausgabeordner, chrome_optionen
 from playwright.sync_api import sync_playwright
 
 seite = pathlib.Path(sys.argv[1]).resolve()
-aus = pathlib.Path(sys.argv[2] if len(sys.argv) > 2 else "/tmp/ogh-test")
-aus.mkdir(parents=True, exist_ok=True)
+aus = ausgabeordner(sys.argv[2] if len(sys.argv) > 2 else None, "ogh-test")
 URL = seite.as_uri()
 fehler = []
 ergebnis = {}
@@ -41,8 +40,7 @@ daten = json.loads(re.search(r'<script type="application/json" id="daten">(.*?)<
 zurueck = next((e for e in daten["eintraege"] if e.get("a") in ("Z", "A")), None)
 
 with sync_playwright() as p:
-    pfad = os.environ.get("CHROME")
-    browser = p.chromium.launch(**({"executable_path": pfad} if pfad else {}))
+    browser = p.chromium.launch(**chrome_optionen())
     ctx = browser.new_context(viewport={"width": 1280, "height": 900}, locale="de-AT")
     page = ctx.new_page()
     page.on("pageerror", lambda e: fehler.append(str(e)))

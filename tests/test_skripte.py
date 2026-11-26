@@ -455,6 +455,48 @@ class RisAbfrageTest(unittest.TestCase):
         self.assertEqual(neue, ["JJT_20261001_OGH0002_0050OB00050_26B0000_000"])
         self.assertEqual(eintraege["JJT_20190101_OGH0002_0050OB00001_19A0000_000"]["neu_ab"], "2019-01-01")
 
+    def test_grenze_der_seiten(self):
+        def immer_voll(params):
+            return {"OgdSearchResult": {"OgdDocumentResults": dict(RIS_RS_SEITE["OgdSearchResult"]["OgdDocumentResults"],
+                                                                   Hits={"#text": "100000"})}}
+        abruf.ris_seite = immer_voll
+        gesichert = abruf.MAX_SEITEN
+        abruf.MAX_SEITEN = 2
+        try:
+            with self.assertRaises(abruf.RisFehler):
+                abruf.frage_norm("MRG")
+        finally:
+            abruf.MAX_SEITEN = gesichert
+
+    def test_verbundene_entscheidung_wird_zusammengefuehrt(self):
+        jjt = "JJT_20240101_OGH0002_0050OB00010_24A0000_000"
+        url = "https://www.ris.bka.gv.at/Dokument.wxe?Abfrage=Justiz&Dokumentnummer=" + jjt
+
+        def rs(nr, norm, kette):
+            return {"id": "JJR_" + nr, "rs": [nr], "gz": [kette[0]["gz"][0]], "normen": [norm], "datum": None,
+                    "schlagworte": None, "kette": kette}
+
+        def glied(gz, mit_link):
+            return {"id": jjt if mit_link else None, "gz": gz, "datum": "2024-01-01", "art": None, "gericht": "OGH",
+                    "url": url if mit_link else None, "anm": None}
+        docs = [
+            rs("RS0000001", "MRG §1", [glied(["5Ob10/24a", "5Ob11/24b"], True)]),
+            # dieselbe Entscheidung, zuerst ohne Link unter der zweiten Zahl, dann mit Link
+            rs("RS0000002", "MRG §2", [glied(["5Ob11/24b"], False)]),
+            rs("RS0000003", "MRG §3", [glied(["5Ob11/24b", "5Ob10/24a"], True)]),
+        ]
+        gesichert = abruf.frage_norm
+        abruf.frage_norm = lambda norm: (docs, len(docs))
+        try:
+            eintraege, neue, st, rs_info = abruf.abruf_ris("2005-01-01", {})
+        finally:
+            abruf.frage_norm = gesichert
+        self.assertEqual(list(eintraege), [jjt])
+        e = eintraege[jjt]
+        self.assertEqual(e["rs"], ["RS0000001", "RS0000002", "RS0000003"])
+        self.assertEqual(e["normen"], ["MRG §1", "MRG §2", "MRG §3"])
+        self.assertEqual(e["gz"], ["5Ob10/24a", "5Ob11/24b"])
+
     def test_fremde_dokumente(self):
         self.antwort = RIS_SEITE  # Entscheidungstexte statt Rechtssätze
         eintraege, neue, st, rs_info = abruf.abruf_ris("2005-01-01", {})
@@ -714,6 +756,31 @@ class WienTest(unittest.TestCase):
         self.assertEqual(wien.partei(["Max Muster e.U. (FN 999999a)"])["art"], "privat")
         self.assertEqual(wien.partei(["Wiener Wohnen –", "Bausanierungsmanagement", "Rosa-Fischer-Gasse 2", "1030 Wien"])["name"], "Wiener Wohnen")
 
+    def test_rechtsformen_ohne_firmenbuchnummer(self):
+        # Regression: eine zweite Konstante RECHTSFORM für kern() überschrieb die breite Fassung für partei()
+        for name in ("Muster OG", "Beispiel KG", "Verein Wohnen", "Stiftung Wien", "Pfarre St. Josef", "Bauvereinigung Muster",
+                     "Beispiel Versicherung", "Muster Holding"):
+            with self.subTest(name=name):
+                p = wien.partei([name, "Beispielgasse 1", "1010 Wien"])
+                self.assertEqual((p["art"], p["name"]), ("unternehmen", name))
+        self.assertTrue(wien.RECHTSFORM.search("Muster OG"))
+        self.assertFalse(wien.RECHTSFORM_KERN.search("muster og"))
+        # Vertreter ohne Firmenbuchnummer ist dann keine "Einzelperson"
+        empf, vertr = wien.zerlege_briefkopf(["Muster Hausverwaltung GmbH (FN 123456a)", "vertreten durch Beispiel Bau OG",
+                                              "Beispielgasse 1", "1010 Wien"])
+        self.assertEqual((vertr["art"], vertr["name"]), ("unternehmen", "Beispiel Bau OG"))
+        # Personen bleiben privat (auch mit ähnlichen Wortteilen)
+        for zeilen in (["Maria Kirchner", "Ordensgasse 3", "1010 Wien"], ["Otto Fondsberger", "1010 Wien"]):
+            self.assertEqual(wien.partei(zeilen)["art"], "privat")
+        self.assertEqual(wien.kern("MIGRA Gemeinnützige Wohnungsges.m.b.H."), wien.kern("MIGRA gemeinnützige Wohnungsgesellschaft mbH"))
+
+    def test_fehlerschwelle(self):
+        self.assertFalse(wien.zu_viele_fehler(0, 0))
+        self.assertFalse(wien.zu_viele_fehler(4, 4))     # zu wenige, um den Lauf scheitern zu lassen
+        self.assertFalse(wien.zu_viele_fehler(5, 20))    # einzelne kaputte Freigaben
+        self.assertTrue(wien.zu_viele_fehler(5, 10))
+        self.assertTrue(wien.zu_viele_fehler(30, 30))
+
     def test_traeger_zuordnung(self):
         faelle = {
             "Gemeinnützige Wohnungs- und Siedlungsgenossenschaft SIEDLUNGSUNION reg. Gen.m.b.H.": "siedlungsunion",
@@ -815,6 +882,18 @@ class VpiTest(unittest.TestCase):
         self.assertEqual(vpi.lies_reihe(alt), {"1959-03": 99.3, "1959-04": 100.0})
         with self.assertRaises(ValueError):
             vpi.lies_reihe(b"irgendwas;anderes\n1;2")
+
+    def test_ungueltige_monate_und_leere_datei(self):
+        self.assertIsNone(vpi.monat("VPIZR-202613"))
+        self.assertIsNone(vpi.monat("VPIZR-202600"))
+        self.assertEqual(vpi.monat("VPIZR-202612"), "2026-12")
+        csv = (self.KOPF_NEU + "\nVPIZR-202613;VPICOICOP18-0;100,3;;;;\nVPIZR-202601;VPICOICOP18-0;100,5;;;;\n").encode("utf-8")
+        self.assertEqual(vpi.lies_reihe(csv), {"2026-01": 100.5})
+        with self.assertRaises(ValueError):
+            vpi.folge("2026-13", "2027-01")   # früher Endlosschleife
+        for leer in (b"", "\ufeff".encode("utf-8"), b"\n\n"):
+            with self.assertRaises(ValueError):
+                vpi.lies_reihe(leer)
 
     def test_vorlaeufig_und_luecken(self):
         zr = "code;name;;en_name\nVPIZR-202609;Sep.26;;September 2026\nVPIZR-202610;Okt.26 (vorl.);;October 2026 (prel.)\n"

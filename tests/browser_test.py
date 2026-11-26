@@ -6,11 +6,11 @@ import json
 import pathlib
 import sys
 
+from browser_hilfe import ausgabeordner, chrome_optionen
 from playwright.sync_api import sync_playwright
 
 seite = pathlib.Path(sys.argv[1]).resolve()
-aus = pathlib.Path(sys.argv[2] if len(sys.argv) > 2 else "/tmp/ogh-test")
-aus.mkdir(parents=True, exist_ok=True)
+aus = ausgabeordner(sys.argv[2] if len(sys.argv) > 2 else None, "ogh-test")
 URL = seite.as_uri()
 fehler = []
 ergebnis = {}
@@ -22,7 +22,7 @@ def pruefe(name, bedingung, info=""):
 
 
 with sync_playwright() as p:
-    browser = p.chromium.launch(executable_path="/usr/bin/google-chrome", headless=True)
+    browser = p.chromium.launch(**chrome_optionen())
 
     # ---------- Desktop ----------
     ctx = browser.new_context(viewport={"width": 1280, "height": 900})

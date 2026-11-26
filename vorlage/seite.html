@@ -1056,6 +1056,7 @@ function importiere(text) {
   var neu = 0, gleich = 0;
   Object.keys(quelle).forEach(function (k) {
     var v = quelle[k];
+    if (k === "__proto__" || k === "constructor" || k === "prototype") return;   // kein Eingriff in Objekt-Prototypen
     if (!v || typeof v !== "object") return;
     var sauber = {};
     if (v.m) sauber.m = 1;
@@ -1483,8 +1484,10 @@ function renderFoerd() {
   wSumme();
   if (!$("viewW").hidden) setzeHash(wHash());
   var summe = fTreffer.reduce(function (s, f) { return s + (f.nr || 0); }, 0);
+  var summeDl = fTreffer.reduce(function (s, f) { return s + (f.dl || 0); }, 0);
   var nAus = wOhnePr ? W.foerd.filter(function (f) { return f.pr && f.pr.length; }).length : 0;
-  $("fCount").textContent = fTreffer.length + " von " + W.foerd.length + " Förderzusagen · " + EUR(summe) + " nicht rückzahlbar (soweit erkannt)" +
+  $("fCount").textContent = fTreffer.length + " von " + W.foerd.length + " Förderzusagen · " + EUR(summe) + " nicht rückzahlbar · " +
+    EUR(summeDl) + " Darlehen (soweit erkannt)" +
     (nAus ? " · " + nAus + " mit „prüfen“ ausgeblendet" : "");
   $("wFoerd").textContent = ""; fGezeigt = 0;
   if (!fTreffer.length) $("wFoerd").appendChild(el("div", "leer", "Keine Förderzusage passt zu diesen Filtern."));
