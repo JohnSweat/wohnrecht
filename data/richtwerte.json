@@ -1,0 +1,22 @@
+{
+  "hinweis": "Von Hand gepflegt. Werte in Euro je Quadratmeter Nutzfläche und Monat. Maßgeblich ist die jeweilige Kundmachung.",
+  "richtwerte": {
+    "laender": ["Burgenland", "Kärnten", "Niederösterreich", "Oberösterreich", "Salzburg", "Steiermark", "Tirol", "Vorarlberg", "Wien"],
+    "staende": [
+      {"ab": "2026-04-01", "werte": [6.15, 7.89, 6.92, 7.30, 9.31, 9.30, 8.22, 10.35, 6.74], "quelle": "Statistik Austria, Verlautbarung nach § 5 Abs 2 RichtWG idF BGBl. I Nr. 114/2025 (Anpassung 2026 auf 1 % begrenzt)", "link": "https://www.statistik.at/fileadmin/pages/2114/VOe_Richtwerte_Kategoriemieten_20260401.pdf"},
+      {"ab": "2023-04-01", "werte": [6.09, 7.81, 6.85, 7.23, 9.22, 9.21, 8.14, 10.25, 6.67], "quelle": "BGBl. II Nr. 81/2023; die Anpassung zum 1.4.2025 entfiel (§ 10 Abs 1c RichtWG)", "link": "https://www.ris.bka.gv.at/Dokumente/BgblAuth/BGBLA_2023_II_81/BGBLA_2023_II_81.pdf"},
+      {"ab": "2022-04-01", "werte": [5.61, 7.20, 6.31, 6.66, 8.50, 8.49, 7.50, 9.44, 6.15], "quelle": "BGBl. II Nr. 137/2022"},
+      {"ab": "2019-04-01", "werte": [5.30, 6.80, 5.96, 6.29, 8.03, 8.02, 7.09, 8.92, 5.81], "quelle": "BGBl. II Nr. 70/2019", "link": "https://www.ris.bka.gv.at/Dokumente/BgblAuth/BGBLA_2019_II_70/BGBLA_2019_II_70.pdf"}
+    ]
+  },
+  "kategorien": {
+    "spalten": ["A", "B", "C", "D brauchbar", "D unbrauchbar"],
+    "staende": [
+      {"ab": "2026-04-01", "werte": [4.51, 3.38, 2.25, 2.25, 1.13], "quelle": "Statistik Austria (Anpassung 2026 auf 1 % begrenzt)", "link": "https://www.statistik.at/fileadmin/pages/2114/VOe_Richtwerte_Kategoriemieten_20260401.pdf"},
+      {"ab": "2023-07-01", "werte": [4.47, 3.35, 2.23, 2.23, 1.12], "quelle": "BGBl. II Nr. 170/2023; 2024 und 2025 keine Anpassung (3. und 4. MILG)"},
+      {"ab": "2022-11-01", "werte": [4.23, 3.18, 2.12, 2.12, 1.06], "quelle": "BGBl. II Nr. 363/2022"},
+      {"ab": "2022-06-01", "werte": [4.01, 3.01, 2.00, 2.00, 1.00], "quelle": "Kundmachung BMJ 2022"},
+      {"ab": "2022-04-01", "werte": [3.80, 2.85, 1.90, 1.90, 0.95], "quelle": "Kundmachung BMJ 2022"}
+    ]
+  }
+}

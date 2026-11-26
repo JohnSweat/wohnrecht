@@ -35,8 +35,7 @@ def pruefe(name, ok, info=""):
 with tempfile.TemporaryDirectory() as tmp:
     basis = pathlib.Path(tmp)
     (basis / "data" / "cache" / "wien_texte").mkdir(parents=True)
-    (basis / "vorlage").mkdir()
-    shutil.copy(REPO / "vorlage" / "seite.html", basis / "vorlage" / "seite.html")
+    shutil.copytree(REPO / "vorlage", basis / "vorlage")   # Vorlage mit Manifest und Symbolen (seite_bauen kopiert sie nach docs/)
     shutil.copy(REPO / "data" / "ogh_auswahl.json", basis / "data" / "ogh_auswahl.json")
     shutil.copy(REPO / "data" / "wien_traeger.json", basis / "data" / "wien_traeger.json")
     shutil.copy(REPO / "data" / "dokumente.json", basis / "data" / "dokumente.json")
@@ -214,8 +213,12 @@ with tempfile.TemporaryDirectory() as tmp:
                     if k > "2025-10" and abs(w2020[k] / a - 1) * 100 > 2:
                         gef = k
                         break
-                soll = f"erstmals überschritten im {monate[int(gef[5:]) - 1]} {gef[:4]}"
-                pruefe("VPI: Schwelle erstmals überschritten", soll in erg, erg.replace("\n", " | ")[-160:])
+                soll = f"{monate[int(gef[5:]) - 1]} {gef[:4]}: "
+                pruefe("VPI: Schwelle, erste Anpassung im richtigen Monat", "überschritten" in erg and "Anpassung" in erg and soll in erg, erg.replace("\n", " | ")[-200:])
+                pg.fill("#vBetrag", "1.000")
+                erg = pg.inner_text("#vErgebnis")
+                pruefe("VPI: „1.000“ gilt als tausend", "Betrag: 1.000,00 ×" in erg, erg.replace("\n", " | ")[:200])
+                pruefe("VPI: Rechnung steht in der Adresse", "#vpi?" in pg.url and "betrag=1.000" in pg.url and "s=2" in pg.url, pg.url[-80:])
                 pg.select_option("#vBasis", "1986")
                 erg = pg.inner_text("#vErgebnis")
                 p86 = (w1986["2026-10"] / w1986["2025-10"] - 1) * 100

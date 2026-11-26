@@ -8,11 +8,13 @@ Eine einzelne HTML-Seite zum Nachschlagen und Aktuell-Bleiben, jede Woche automa
 
 - **OGH-Entscheidungen zu MRG und WGG** (Mietrechtsgesetz, Wohnungsgemeinnützigkeitsgesetz) – mit Rechtssätzen aus dem RIS, Volltextsuche darin, Filtern (Thema, Jahr, Paragraf), Neu-Bereich, Hinweisen auf geänderte Rechtslage, Merken und Notizen. Entscheidungen, die nur andere Gesetze betreffen (etwa WEG oder ABGB allein), sind seit November 2026 nicht mehr enthalten.
 - **Wohnbauträger Wien** – Förderzusagen der MA 50 (Sanierung und Neubau) mit Förderungswerber, Vertreter (meist die Hausverwaltung), Objekt, Betrag und Maßnahme; dazu Prüfberichtsauszüge (§ 28 Abs 8 WGG) und BTVG-Bescheinigungen. Gruppiert nach Trägern wie GESIBA, Heimbau, MIGRA, Neues Leben, Sozialbau, Stadt Wien – Wiener Wohnen; weitere Unternehmen (z. B. Hausverwaltungen) werden über die Firmenbuchnummer automatisch zusammengeführt, Bauvereinigungen mit Prüfbericht oder BTVG-Bescheinigung über den Firmennamen. Förderzusagen an die Stadt Wien sind über die Adresse den Gemeindebauten von Wiener Wohnen zugeordnet (Name, Wohnungen, Bauzeit); die Karte „Stadt Wien – Wiener Wohnen“ zeigt dazu Infoblätter und Berichte von Wiener Wohnen. Darunter: Hintergrunddokumente der Stadt Wien (Rechtsgutachten Wärme-/Kältekosten, Berichtsstandard Wohnbauförderung, Stadtrechnungshof).
-- **Indexrechner (VPI)** – Veränderung zwischen zwei Monaten im Verbraucherpreisindex von Statistik Austria (alle Basen von VPI 2025 bis VPI I/II 1958), mit Faktor, Betrag und Schwelle; vorläufige Werte sind gekennzeichnet. Nur Rechnung, keine rechtliche Beurteilung (z. B. MieWeG).
+- **Indexrechner (VPI)** – Veränderung zwischen zwei Monaten im Verbraucherpreisindex von Statistik Austria (alle Basen von VPI 2025 bis VPI I/II 1958, dazu der HVPI 2025), mit Faktor, Betrag und Schwelle; mit Schwelle als Kette (nach jeder Anpassung gilt der erreichte Monat als neue Basis, wahlweise „erreicht“ oder „überschritten“). Vorläufige Werte sind gekennzeichnet. Darunter die Richtwerte je Bundesland und die Kategoriebeträge. Nur Rechnung, keine rechtliche Beurteilung (z. B. MieWeG).
 
 ## Benutzen
 
 Am einfachsten über den Link oben. Für unterwegs ohne Netz: `dist/ogh-wohnrecht.html` herunterladen und im Browser öffnen; die Datei enthält alle Daten (Stand der letzten Aktualisierung). Notizen bleiben im jeweiligen Browser; über „Notizen sichern / laden“ lassen sie sich exportieren und auf einem anderen Gerät importieren.
+
+Suche: Groß- und Kleinschreibung und Umlaute spielen keine Rolle („kuendigung“ findet „Kündigung“). „§ 37 MRG“ sucht den Paragrafen, eine Geschäftszahl wie „5 Ob 55/26p“ genau diese Entscheidung, auch wenn ein Schalter sie sonst ausblendet. Suche, Filter und Rechnungen stehen in der Adresse; „Link zu dieser Suche“ bzw. „Link zu dieser Rechnung“ kopiert sie zum Weitergeben. Paragrafen von MRG, WGG, WEG 2002 und ABGB verlinken auf die geltende Fassung im RIS. Der Bereich „Neu“ zeigt zusätzlich, was seit dem letzten Besuch in diesem Browser dazugekommen ist. Beim Drucken lädt die Seite alle Treffer und lässt die Bedienelemente weg.
 
 Der Filter steht in jeder Rubrik oben an seinem Platz. Weiter unten in den Einträgen dockt er als Leiste am oberen Rand an und fährt beim Antippen oder Herunterziehen heraus, wie die Benachrichtigungsleiste am Handy. Zwei Schalter sorgen für eine aufgeräumte Liste: „Einträge nur mit Paragrafen ausblenden“ (Entscheidungen, zu denen das RIS keinen Kurztext führt, sondern nur die Paragrafen) und „Förderzusagen mit „prüfen“ ausblenden“ (unsicher ausgelesene Zusagen). Beide Einstellungen merkt sich der Browser.
 
@@ -51,16 +53,20 @@ Automatisch verdichtete Texte und ausgelesene Werte sind keine amtlichen Angaben
 
 ## Ordner
 
-- `data/` – Daten (Grundbestand `ogh_auswahl.json`, Trägerliste `wien_traeger.json`, von Hand gepflegte Hintergrunddokumente `dokumente.json`, Abrufergebnisse)
+- `data/` – Daten (Grundbestand `ogh_auswahl.json`, Trägerliste `wien_traeger.json`, von Hand gepflegte Hintergrunddokumente `dokumente.json` und Richtwerte `richtwerte.json`, Abrufergebnisse)
 - `docs/` – fertige Seite für GitHub Pages (wird bei jedem Lauf neu gebaut)
 - `dist/` – dieselbe Seite als Einzeldatei zum Herunterladen
 - `scripts/` – Abruf und Seitenbau
 - `vorlage/` – HTML-Vorlage, Manifest und Symbole
-- `tests/` – `python -m unittest discover -s tests -p "test_*.py"`; Browsertests mit Playwright
+- `tests/` – `python -m unittest discover -s tests -p "test_*.py"`; Browsertests mit Playwright (`browser_test.py`, `wien_browser_test.py`, `ergaenzungen_browser_test.py`)
 
 ## Trägerliste anpassen
 
 `data/wien_traeger.json`: je Träger ein Name, die Firmenbuchnummer (`fn`, wenn bekannt), ein Suchmuster (regulärer Ausdruck) und die Art (gemeinnützig, gewerblich, kommunal). Die Zuordnung läuft zuerst über die Firmenbuchnummer, dann über das Suchmuster. Nicht aufgeführte Unternehmen erscheinen automatisch, sobald sie in einer Förderzusage stehen. Änderungen wirken beim nächsten Lauf; sofort: `python scripts/wien.py --nur-auswerten && python scripts/seite_bauen.py`.
+
+## Richtwerte und Kategoriebeträge anpassen
+
+`data/richtwerte.json` (von Hand gepflegt): je Stand das Datum, ab dem er gilt, die Werte in Euro je Quadratmeter (Richtwerte in der Reihenfolge der Bundesländer, Kategoriebeträge A, B, C, D brauchbar, D unbrauchbar) und die Quelle. Seit 2026 verlautbart Statistik Austria die Werte (als PDF, nicht als offene Daten), deshalb kein automatischer Abruf. Neuen Stand oben ergänzen; Zeilen mit falscher Anzahl an Werten lässt der Seitenbau weg.
 
 ## Hintergrunddokumente anpassen
 

@@ -848,6 +848,56 @@ class VpiTest(unittest.TestCase):
             self.assertEqual(daten["reihen"][0]["werte"][0], 100.0)
             self.assertEqual(daten["vorlaeufig"], [f"{monate[-1][:4]}-{monate[-1][4:]}"])
 
+    def test_freiwillige_reihe_laesst_lauf_nicht_scheitern(self):
+        heute = dt.date.today()
+        monate = []
+        j, m = heute.year, heute.month
+        for _ in range(8):
+            monate.insert(0, f"{j:04d}{m:02d}")
+            j, m = (j - 1, 12) if m == 1 else (j, m - 1)
+        with tempfile.TemporaryDirectory() as tmp:
+            quelle = pathlib.Path(tmp) / "quelle"
+            quelle.mkdir()
+            # HVPI-Datei im Format von Statistik Austria (Gesamtindex „HVPI-0“)
+            kopf = "C-VPIZR-0;C-HVPICOICOP18_5-0;F-VPIMZBM;F-VPIGEWBM"
+            zeilen = [kopf] + [f"VPIZR-{mo};HVPI-0;{100 + i},50000;100,00000" for i, mo in enumerate(monate)] + [f"VPIZR-{monate[0]};HVPI-01;90,0;12,1"]
+            (quelle / "H.csv").write_text("\n".join(zeilen), encoding="utf-8")
+            (quelle / "H_C-VPIZR-0.csv").write_text("code;name\n" + "\n".join(f"VPIZR-{mo};x" for mo in monate), encoding="utf-8")
+            alt_basen, alt_sleep = vpi.BASEN, vpi.time.sleep
+            vpi.BASEN = [("h", "HVPI H", "H", True), ("x", "HVPI X", "X", True)]   # X fehlt, ist aber freiwillig
+            vpi.time.sleep = lambda s: None
+            try:
+                rc = vpi.main(["--basis", tmp, "--quelle", quelle.as_uri() + "/"])
+            finally:
+                vpi.BASEN, vpi.time.sleep = alt_basen, alt_sleep
+            self.assertEqual(rc, 0)
+            daten = json.loads((pathlib.Path(tmp) / "data" / "vpi.json").read_text(encoding="utf-8"))
+            self.assertEqual([r["key"] for r in daten["reihen"]], ["h"])
+            self.assertEqual(daten["reihen"][0]["werte"][:2], [100.5, 101.5])
+
+    def test_hvpi_in_basen(self):
+        self.assertIn("hvpi2025", [b[0] for b in vpi.BASEN])
+
+
+class TestRichtwerte(unittest.TestCase):
+    def test_kompakt(self):
+        d = {"richtwerte": {"laender": ["A", "B"], "staende": [
+                {"ab": "2023-04-01", "werte": [1.0, 2.0], "quelle": "q1"},
+                {"ab": "2026-04-01", "werte": [1.1, 2.1], "link": "https://x"},
+                {"ab": "2020-01-01", "werte": [1.0]}]},   # unvollständig -> fällt weg
+             "kategorien": {"spalten": ["A"], "staende": []}}
+        k = seite_bauen.kompakt_richtwerte(d)
+        self.assertEqual([s["ab"] for s in k["richtwerte"]["s"]], ["2026-04-01", "2023-04-01"])
+        self.assertNotIn("kategorien", k)
+        self.assertIsNone(seite_bauen.kompakt_richtwerte(None))
+
+    def test_datei_im_repo_vollstaendig(self):
+        d = json.loads((HIER.parent / "data" / "richtwerte.json").read_text(encoding="utf-8"))
+        k = seite_bauen.kompakt_richtwerte(d)
+        self.assertEqual(len(k["richtwerte"]["s"]), len(d["richtwerte"]["staende"]))
+        self.assertEqual(len(k["kategorien"]["s"]), len(d["kategorien"]["staende"]))
+        self.assertEqual(k["richtwerte"]["k"][-1], "Wien")
+
 
 if __name__ == "__main__":
     unittest.main()
