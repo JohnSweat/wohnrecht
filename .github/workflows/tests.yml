@@ -1,11 +1,16 @@
 name: Tests
 
 # Prüft jeden Push und jeden Pull Request ohne Netz: Unittests, Syntax der Skripte, Bau der Seite und das
-# eingebettete JavaScript. Reine Datencommits des Ablaufs „Aktualisieren“ (data, docs, dist) lösen keinen Lauf aus.
+# eingebettete JavaScript. Reine Datencommits des Ablaufs „Aktualisieren“ lösen keinen Lauf aus.
 on:
   push:
+    # nur die vom Ablauf erzeugten Dateien; handgepflegte (richtwerte, wien_traeger, dokumente, ogh_auswahl) lösen Tests aus
     paths-ignore:
-      - "data/**"
+      - "data/ris.json"
+      - "data/ogh_feed.json"
+      - "data/wien.json"
+      - "data/vpi.json"
+      - "data/cache/**"
       - "docs/**"
       - "dist/**"
   pull_request:
