@@ -668,7 +668,7 @@ function render() {
   }
   if (weg.length) {
     var hw = el("div", "verdeckt sans");
-    hw.appendChild(document.createTextNode((treffer.length ? "Dazu " : "") + weg.length + (weg.length === 1 ? " Treffer" : " Treffer") + " außerhalb der gewählten Filter (Thema, Jahr, Paragraf oder Schalter). "));
+    hw.appendChild(document.createTextNode((treffer.length ? "Dazu " : "") + weg.length + " Treffer außerhalb der gewählten Filter (Thema, Jahr, Paragraf oder Schalter). "));
     var bw = el("button", "linkbtn", "Alle Treffer zeigen"); bw.type = "button";
     bw.onclick = function () {
       st.th = ""; st.yr = ""; $("yr").value = ""; st.para = ""; $("para").value = "";
@@ -982,11 +982,12 @@ function setzeWahl(id, wert) {
   return true;
 }
 function vonHash() {
-  var h = "";
-  try { h = decodeURIComponent(location.hash.slice(1)); } catch (err) { return; }
-  var i = h.indexOf("?"), name = i < 0 ? h : h.slice(0, i), p = {};
-  (i < 0 ? "" : h.slice(i + 1)).split("&").forEach(function (t) {
-    var j = t.indexOf("="); if (j > 0) p[t.slice(0, j)] = t.slice(j + 1);
+  // Erst am rohen Text zerlegen, dann jeden Teil einzeln dekodieren: ein „&“ oder „=“ im Suchtext bleibt so erhalten
+  var roh = location.hash.slice(1), i = roh.indexOf("?"), name = "", p = {};
+  try { name = decodeURIComponent(i < 0 ? roh : roh.slice(0, i)); } catch (err) { return; }
+  if (i >= 0) roh.slice(i + 1).split("&").forEach(function (t) {
+    var j = t.indexOf("=");
+    if (j > 0) { try { p[decodeURIComponent(t.slice(0, j))] = decodeURIComponent(t.slice(j + 1)); } catch (err) {} }
   });
   if (name === "wien") {
     zeigeAnsicht("w");
@@ -1023,7 +1024,7 @@ function vonHash() {
     render(); zeichneNeu();
     return;
   }
-  if (h && byId[h]) { imSprung = true; springe(byId[h]); imSprung = false; }
+  if (i < 0 && name && byId[name]) { imSprung = true; springe(byId[name]); imSprung = false; }
 }
 $("linkE").onclick = function () { setzeHash(eHash() || "ogh"); kopiere(location.href, "Link zu dieser Suche kopiert"); };
 
