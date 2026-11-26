@@ -45,6 +45,8 @@ Kein KI-Aufruf, keine Zugangsdaten nötig; nur Python-Standardbibliothek und `pd
 | Stadt Wien – Wiener Wohnen | Datensatz „Gemeindebauten“ (Name, Wohnungen, Bauzeit, Adressen) | CC BY 3.0 AT |
 | Statistik Austria | Verbraucherpreisindex (Gesamtindex, alle Basen) | CC BY 4.0 |
 
+**Code:** MIT-Lizenz (`LICENSE`). Sie gilt für Skripte, Vorlage und Tests, nicht für die Daten; für diese gelten die Lizenzen der Quellen oben.
+
 Automatisch verdichtete Texte und ausgelesene Werte sind keine amtlichen Angaben; maßgeblich ist das Originaldokument. Keine Rechtsberatung.
 
 **Datenschutz:** Ist eine Förderzusage an Privatpersonen oder Miteigentümer gerichtet, speichert die Seite keinen Namen und kürzt die Adresse auf den Bezirk; dasselbe gilt für Einzelpersonen als Vertreter. Die aus den PDFs ausgelesenen Texte liegen nicht im Repository, nur im Zwischenspeicher von GitHub Actions (`data/cache/wien_texte/`, in `.gitignore`); fehlt er, lädt der Ablauf die PDFs neu.
